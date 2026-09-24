@@ -1,0 +1,17 @@
+# Card metadata consumed by https://amishchadha.com
+name: SunSpoke
+slug: sunspoke
+area: Mobility and Logistics
+status: concept          # concept | design | prototype | tested | released
+shortlisted: false
+pitch: >-
+  Open, bolt-on electric conversion kit for existing steel bicycles, serviceable by local bike mechanics and charged from a single 100 W solar panel or a shared village hub, using a SwapCell-compatible battery.
+problem: >-
+  Most bicycles in rural Africa are unpowered steel roadsters, and commercial e-bikes are too costly and hard to charge where grid power is scarce. Design with, not for: requirements must come from co-design sessions and field trials with the intended users through a local partner.
+budget_usd: 250
+difficulty: 3  # 1 easiest, 5 hardest
+hero_image: media/hero.png
+licenses:
+  hardware: CERN-OHL-S-2.0
+  software: MIT
+tags: [mobility-and-logistics, open-hardware, cern-ohl-s]
