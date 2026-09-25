@@ -1,14 +1,14 @@
 # SunSpoke
 
-![TRL 2](https://img.shields.io/badge/TRL-2%20of%209-0F766E) ![Hardware: CERN-OHL-S-2.0](https://img.shields.io/badge/hardware-CERN--OHL--S--2.0-111827) ![Software: MIT](https://img.shields.io/badge/software-MIT-111827)
+![TRL 3](https://img.shields.io/badge/TRL-3%20of%209-0F766E) ![Hardware: CERN-OHL-S-2.0](https://img.shields.io/badge/hardware-CERN--OHL--S--2.0-111827) ![Software: MIT](https://img.shields.io/badge/software-MIT-111827)
 
-**Area:** Mobility and Logistics · **TRL:** 2 of 9 (concept formulated) · **Prototype budget:** about $250 USD · **Difficulty:** 3 of 5
+**Area:** Mobility and Logistics · **TRL:** 3 of 9 (proof of concept on paper) · **Prototype budget:** $250 USD for the bike kit (solar set costed separately; pack priced in SwapCell) · **Difficulty:** 3 of 5
 
 Open, bolt-on electric conversion kit for existing steel bicycles, serviceable by local bike mechanics and charged from a single 100 W solar panel or a shared village hub, using a SwapCell-compatible battery.
 
 ![SunSpoke concept](media/hero.png)
 
-[Interactive 3D model](media/viewer.html) · [Concept blueprint (PDF)](media/concept-blueprint.pdf) · [Review note](docs/REVIEW.md)
+[Interactive 3D model](media/viewer.html) · [Concept blueprint (PDF)](media/concept-blueprint.pdf) · [General arrangement SSP-DWG-001 (PDF)](cad/drawings/SSP-DWG-001.pdf) · [Sizing note SSP-CAL-001](docs/04-calcs/01-sizing.md) · [Review note](docs/REVIEW.md)
 
 ## Problem
 
@@ -22,11 +22,11 @@ Full design precis: [docs/02-concept.md](docs/02-concept.md)
 
 ## Key components
 
-- 250 W front hub motor wheel
-- 48 V SwapCell pack (proposed, see precis)
+- 250 W geared front hub motor wheel, 48 V
+- 48 V SwapCell pack (SwapCell interface v0.3; 48 V decided by Amish, 2026-09-25)
 - Sealed controller
 - Pedal-assist sensor
-- Universal clamp mounts (no welding)
+- SwapCell receiver cradle with band clamps (no welding) and host adapter
 - 100 W solar panel with MPPT charger
 - Weatherproof wiring harness
 

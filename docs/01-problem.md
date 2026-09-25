@@ -3,9 +3,9 @@ doc_id: SSP-PRB-001
 title: SunSpoke problem statement
 project: SunSpoke
 doc_type: Problem statement
-version: "0.2"
+version: "0.3"
 status: Draft
-date: '2026-09-24'
+date: '2026-09-25'
 author: Amish Chadha
 license: CERN-OHL-S-2.0
 revisions:
@@ -17,6 +17,10 @@ revisions:
   date: '2026-09-24'
   author: Amish Chadha
   change: Populate to TRL 2 (users, context, constraints, out of scope, prior work)
+- version: "0.3"
+  date: '2026-09-25'
+  author: Amish Chadha
+  change: Record SSP-DDR-001 (48 V on SwapCell, budget covers the bike kit only, pack priced in SwapCell); add checked sources to prior work
 ---
 
 # SunSpoke problem statement
@@ -55,12 +59,12 @@ SunSpoke is an open, bolt-on conversion kit that fits the roadsters people alrea
 
 ## Constraints
 
-- Garage-buildable prototype, about $250 USD for the kit. The SwapCell pack is costed separately (see `bom/bom-notes.md`).
+- Garage-buildable prototype: the bike conversion kit costs $250 USD or less in parts. The solar charging set is costed separately, and the SwapCell pack is priced once in the SwapCell repo and excluded (decided by Amish, 2026-09-25; SSP-DDR-001).
 - Bolt on to the donor bike with no welding, frame drilling or cutting.
 - Fitting and repair possible with the tools a roadside bike mechanic already has.
 - Standard, pluggable connectors and generic parts wherever possible, so a failed part can be swapped with one from the local market.
-- Legal and safe assist: 250 W rated power and an assist cutoff speed in line with pedelec practice (EN 15194 sets 250 W and 25 km/h in Europe); national rules in target countries to be checked.
-- Uses the SwapCell pack interface so packs can be shared across portfolio vehicles and charged at SwapCell docks. The motor voltage decision that follows from this is open (see SSP-PRC-001).
+- Legal and safe assist: 250 W rated power and an assist cutoff speed in line with pedelec practice (in the EU, 250 W and a 25 km/h cut-off under Regulation (EU) No 168/2013, with EN 15194 as the product standard); SunSpoke defaults to 20 km/h (decided, SSP-DDR-001). National rules in target countries are still to be checked.
+- Uses SwapCell interface v0.3 so packs can be shared across portfolio vehicles and charged at SwapCell docks. The system is 48 V on SwapCell (decided by Amish, 2026-09-25; SSP-DDR-001).
 
 ## Out of scope
 
@@ -74,18 +78,23 @@ SunSpoke is an open, bolt-on conversion kit that fits the roadsters people alrea
 
 - **Commercial conversion kits.** Front hub, rear hub and mid-drive kits with 36 V and 48 V batteries are sold worldwide and in regional markets. They prove the technology and set the price floor, but are not designed for 28 in roadster wheels, rod brakes or local repair.
 - **Regional e-bike ventures.** Several companies in East Africa assemble or sell e-bikes and electric motorcycles, some with battery swapping. They show demand and a working swap model, but most are closed products that need their own service network.
-- **Rugged bicycles for rural use.** Purpose-built heavy-duty bicycles such as the World Bicycle Relief Buffalo bicycle show that design for rural loads, local assembly and mechanic training works at scale.
+- **Rugged bicycles for rural use.** Purpose-built heavy-duty bicycles such as the World Bicycle Relief Buffalo bicycle show that design for rural loads and a single mechanic training curriculum works. World Bicycle Relief describes a heavy-gauge steel frame that carries 220 lb (about 100 kg) on the rear carrier, with frame, carrier, stand and wheels shared across models ([World Bicycle Relief, "The Bike"](https://worldbicyclerelief.org/the-bike/), checked 2026-09-25).
+- **Pedelec rules.** In the EU a pedal cycle with assist up to 250 W that cuts off by 25 km/h is excluded from motor-vehicle type approval under Regulation (EU) No 168/2013 ([Wikipedia, "Pedelec"](https://en.wikipedia.org/wiki/Pedelec), checked 2026-09-25; secondary source). Rules in the first target country are not yet checked.
 - **Bicycle taxis (boda-boda).** Bicycle taxis in East Africa show how much load and distance a roadster is asked to carry, and how important a local repair economy is.
 - **Solar charging for small vehicles.** Solar e-bike charging stations and off-grid battery hubs exist in pilot form. The first-order numbers in SSP-PRC-001 show one 100 W panel can cover a typical day of assisted riding.
 
-Links and named sources will be added at TRL 3 once each is checked.
+Two sources were checked on 2026-09-25 (above). The other entries are general descriptions without named sources; they stay unverified until a named source is checked.
 
 ## Open questions
 
-- Which partner organization and which region first (for example an East African bike mechanic cooperative, a health worker program, or a university engineering department)? Proposed, awaiting Amish.
-- Is a 48 V system acceptable locally, or are 36 V spares so much more common that a 36 V kit is preferred? This drives the motor voltage decision in SSP-PRC-001.
+- Which partner organization and which region first (for example an East African bike mechanic cooperative, a health worker program, or a university engineering department)? Proposed, awaiting Amish; the portfolio picks partners per area later.
+- The 48 V system is decided (SSP-DDR-001). Field work should still record how common 36 V and 48 V spares are locally, which bears on the later 36 V low-cost variant.
 - How much cargo and passenger carrying must the kit support, and does the pack location need to leave the rear carrier free? Assumed yes; to validate.
 - What assist speed limit and registration rules apply in the first target country?
+
+## Safety
+
+> **Safety:** A conversion adds a lithium-ion pack of about 468 Wh, more speed and more mass to a bicycle with weak rod brakes and an old steel fork. The hazards (pack fire, dropout failure, braking, wet connectors) are set out in SSP-PRC-001.
 
 ## User research and co-design
 

@@ -64,3 +64,66 @@ Requirements not met or at risk:
 ### Recommended next step
 
 Review this note and the media, then decide items 1 and 2. If approved, run `/advance-trl3` to check the energy, hill, thermal, braking and fork load estimates by calculation and produce the parametric model and drawing sheet.
+
+## Session 2026-09-25: TRL 3
+
+Authority: on 2026-09-25 Amish wrote "proceed with all of your recommendations across all batches. Make sure we don't proceed to TRL 4 on any of them." He also approved the SwapCell interface v0.3 additions (wake, charge-discharge mode, latch vibration rating) and the rule that shared SwapCell packs are priced once and excluded from each kit budget. TRL 4 is on hold by his instruction.
+
+### What was done
+
+- `docs/decisions/0001-trl2-review-decisions.md` (SSP-DDR-001 v0.1): decided and open items (below).
+- `docs/04-calcs/01-sizing.md` (SSP-CAL-001 v0.1) with `docs/04-calcs/sizing.py` and `docs/04-calcs/results.csv`: mass, energy and range, hill and motor heating, solar, SwapCell items W, C and V, torque arms, cradle retention, pack fit, braking, cost, and a status for every requirement.
+- `cad/src/model.py`: parametric build123d model (donor roadster, motor, torque arms, SwapCell envelope, cradle with V1 lever and receptacle, host adapter, controller, solar set) with fit checks; exports `cad/step/` and `cad/stl/` (`sunspoke-kit`, `sunspoke-cradle-with-pack`, `sunspoke-assembly`).
+- `cad/src/sheets.py` and `cad/drawings/SSP-DWG-001` (SVG, PDF, PNG): general arrangement at Rev P1 with a 1:5 cradle detail, "PRELIMINARY, NOT FOR FABRICATION". SSP-DWG-001 was free (the concept sheet is SSP-DWG-010).
+- `bom/bom.csv` and `bom/bom-notes.md`: every line priced with a supplier type; cradle $22 to $28 (V1 lever, coding resistor), host adapter $12 to $14 (charge inlet); pack $414 from SWC-CAL-001, excluded.
+- `docs/01-problem.md`, `docs/02-concept.md`, `docs/03-requirements.md` moved to v0.3 (decisions, corrected numbers, new R13, R1 and R12 redefined, status column).
+- `cad/src/concept_media.py` now draws from the model; all media refreshed and checked (flow labels shortened to stop overlap; exploded callouts moved apart). Temporary `media/_views*` folders deleted.
+- `project.yaml`: `trl: 3`, `trl_target: 3`, evidence listed; `budget_usd` unchanged at 250. `README.md`: TRL 3 badge, budget line, drawing and calc links, key components. The README no longer had a literal "36 V 10 Ah" line (it read "48 V SwapCell pack (proposed, see precis)"); it now states 48 V as decided.
+- Citations: two sources checked with web search on 2026-09-25 and added to SSP-PRB-001 (World Bicycle Relief "The Bike" page; Wikipedia "Pedelec" for Regulation (EU) No 168/2013, a secondary source). The other prior-work entries remain unsourced general descriptions and are flagged as unverified.
+
+### Requirements (SSP-CAL-001)
+
+| ID | Status | Value |
+| --- | --- | --- |
+| (none) | **Not met** | No requirement is shown to be not met |
+| R3 | At risk | Motor winding about 100 °C at the top of the 500 m climb from 35 °C (base), about 139 °C in a hotter-motor case; 204 W and 32.5 N·m needed |
+| R4 | At risk | 10 mm axle flats may need about 0.24 mm filed per side from 9.53 mm roadster slots |
+| R11 | At risk | 8.5 m dry from 20 km/h (9 % margin); 21.7 m wet |
+| R7, R9, R10, R13 | Not verifiable at TRL 3 | Sealing, swap time, cut-off timing, V1 retention (rotation margin 1.40 at 25 g) |
+| R1, R5 | Met (specification, on paper) | 250 W, 20 km/h default, walk assist; pack fits the triangle with 164 mm removal travel |
+| R2 | Met | 37 km design case (23 km with 80 kg cargo) |
+| R6 | Met | 6.65 kg |
+| R8 | Met | 27 km/day; 1.3 days to recharge |
+| R12 | Met (redefined) | Bike kit $183; solar set $86 separately; pack $414 in SwapCell |
+
+The model check found that the TRL 2 pack position (52 % up the down tube) left only 135 mm of removal travel against 143 mm needed; the pack now sits at 48 %.
+
+### Decisions recorded (Decided by Amish, 2026-09-25: go with recommendation)
+
+48 V on SwapCell (Option A; 36 V only as a later variant); budget kept at $250 with R12 redefined to the bike kit and the solar set costed separately; geared front hub; pack on the down tube; local lacing; 20 km/h default cut-off; pedal assist plus walk assist, no throttle; charge on the bike with the host adapter as charge host; SwapCell interface v0.3 items W, C and V; SwapCell pack priced once and excluded.
+
+### Still awaiting Amish
+
+1. First co-design partner and region (no recommendation; picked per area later).
+2. Whether light slot filing is acceptable with torque arms (R4; no recommendation until the donor survey).
+3. New proposal: handlebar power switch in series with the INTERLOCK coding resistor, host adapter powered from legacy discharge or the charge inlet. Recommendation: adopt.
+4. New proposal: controller with a motor thermistor input so R3 becomes a derate, not a cutout. Recommendation: adopt.
+5. For the SwapCell project, not changed here: interface v0.3 should state that a pack in legacy discharge (state 5) moves to heartbeat discharge (mode 2) without opening the output.
+
+### Safety concerns
+
+- Wet braking: about 22 m from 20 km/h with rod brakes on steel rims, versus 8.5 m dry. R11 covers only dry roads; a wet target and better blocks should be considered.
+- Motor overheating on long loaded climbs in heat; a cutout on a hill can stall a loaded bike.
+- Pack retention: V1 lever and clamp torque are safety-critical; rotation margin at 25 g is only about 1.4 on paper.
+- Fork dropouts: torque arms mandatory; filed or cracked dropouts must not be converted; fork fatigue unverified.
+- 468 Wh lithium-ion pack: charge in shade on a non-combustible surface; no damaged or wet packs.
+
+### TRL 4 material
+
+None found. `build-log/` holds only its README; `electronics/` and `firmware/` are empty. Nothing beyond TRL 3 was created.
+
+### Recommended next step
+
+Amish reviews SSP-DDR-001 open items 1 to 4 and forwards item 5 to the SwapCell project. Paper work that stays within TRL 3: pick a named 250 W geared hub and controller and rerun R3 with datasheet values, and define the donor survey questions (slot width, down tube diameter, frame size) with the partner once chosen.
+
+TRL 4 is on hold by Amish's instruction. For the record only, TRL 4 would need: a bench-built kit on a donor roadster, a lab test report (TST, `environment: lab`) covering motor temperature on a loaded climb profile, brake cut-off timing, stopping distance dry and wet, cradle vibration and shock to latch class V1, and IP checks, plus build log entries.
