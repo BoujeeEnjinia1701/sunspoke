@@ -6,6 +6,10 @@
 
 Open, bolt-on electric conversion kit for existing steel bicycles, serviceable by local bike mechanics and charged from a single 100 W solar panel or a shared village hub, using a SwapCell-compatible battery.
 
+![SunSpoke concept](media/hero.png)
+
+[Interactive 3D model](media/viewer.html) · [Concept blueprint (PDF)](media/concept-blueprint.pdf) · [Review note](docs/REVIEW.md)
+
 ## Problem
 
 Most bicycles in rural Africa are unpowered steel roadsters, and commercial e-bikes are too costly and hard to charge where grid power is scarce. Design with, not for: requirements must come from co-design sessions and field trials with the intended users through a local partner.
@@ -19,7 +23,7 @@ Full design precis: [docs/02-concept.md](docs/02-concept.md)
 ## Key components
 
 - 250 W front hub motor wheel
-- 36 V 10 Ah pack (SwapCell compatible)
+- 48 V SwapCell pack (proposed, see precis)
 - Sealed controller
 - Pedal-assist sensor
 - Universal clamp mounts (no welding)

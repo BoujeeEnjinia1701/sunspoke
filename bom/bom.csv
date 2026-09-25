@@ -1,8 +1,15 @@
 item,qty,spec,supplier,unit_cost_usd,make_buy,notes
-250 W front hub motor wheel,,,,,,
-36 V 10 Ah pack (SwapCell compatible),,,,,,
-Sealed controller,,,,,,
-Pedal-assist sensor,,,,,,
-Universal clamp mounts (no welding),,,,,,
-100 W solar panel with MPPT charger,,,,,,
-Weatherproof wiring harness,,,,,,
+1 Front hub motor wheel,1,"48 V 250 W geared hub motor, 100 mm dropout spacing, laced into a 28 in (ETRTO 635) steel rim with 13G spokes; donor tyre and tube reused",E-bike motor distributor; rim and spokes from local bike trade,70.00,buy,Indicative price (motor about $55; rim and spokes about $15); lacing by local mechanic; voltage choice proposed awaiting Amish
+2 Torque arms (pair),1,"4 to 5 mm steel plate arms keyed to the 10 mm axle flats, clamped to each fork blade with a band clip",E-bike parts supplier or local fabricator,6.00,buy,Indicative price; mandatory on both sides
+3 Controller,1,"48 V nominal (to 54.6 V), 15 A limit, sine-wave, potted or IP65 case, pedal-assist and brake cut-off inputs",E-bike parts supplier,22.00,buy,Indicative price
+4 SwapCell receiver cradle and clamps,1,"Folded steel cradle with SwapCell guide faces, latch catch and connector receptacle; two stainless band clamps with rubber liners for 28 to 32 mm down tubes",Local fabricator plus connector supplier,22.00,make,Indicative price; no welding to the donor frame
+5 Host adapter,1,"Small microcontroller with CAN transceiver, 12 V supply from the pack and interlock loop, potted in a sealed box",Electronics distributor,12.00,buy,Indicative price; sends the SwapCell heartbeat so the pack enables output
+6 SwapCell pack,1,"13S2P 21700, about 46.8 V nominal, about 468 Wh, 340 x 90 x 80 mm, about 2.8 kg (SwapCell interface v0.2)",SwapCell project,370.00,make,Not included in kit cost; prototype parts cost from SwapCell precis
+7 Pedal-assist sensor,1,"Split 12-magnet disc and Hall sensor, fits without removing the crank",E-bike parts supplier,6.00,buy,Indicative price
+8 Handlebar control and brake cut-off,1,"LED assist-level and charge display with power switch; two clamp-on magnetic brake cut-off sensors for rod or cable brake levers",E-bike parts supplier,14.00,buy,Indicative price
+9 Wiring harness with fuse,1,"Waterproof keyed connectors (IP65 class), 20 A blade fuse in sealed holder, spiral wrap and cable ties",E-bike parts supplier,15.00,buy,Indicative price
+10 Solar panel,1,"100 W monocrystalline, about 1,000 x 670 x 35 mm, Vmp about 18 V",Regional solar distributor,45.00,buy,Indicative price; can be shared at a village hub
+11 Boost MPPT charger,1,"Input 15 to 25 V, output CC/CV to 54.6 V at up to 2 A, input-voltage tracking, weather-protected case",Electronics distributor,25.00,buy,Indicative price; must also send the SwapCell charge heartbeat (open question)
+12 Panel stand,1,"Steel angle or timber A-frame, tilt 10 to 20 degrees",Local fabricator,10.00,make,Indicative material cost
+13 Charge cable,1,"5 m, 2-core 1.5 mm2 outdoor cable with keyed plug to the cradle charge port",E-bike parts supplier,6.00,buy,Indicative price; lets the pack charge in shade while the panel sits in sun
+14 Hardware and consumables,1,"Bolts, washers, rubber liners, cable ties, dielectric grease",Local hardware shop,8.00,buy,Indicative price; no exploded-view callout
