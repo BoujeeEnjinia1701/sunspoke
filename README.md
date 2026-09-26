@@ -39,11 +39,11 @@ For these riders, an e-bike that must be charged from a wall socket is not an op
 
 | Country or region | Why it matters there |
 | --- | --- |
-| Uganda and Kenya | Bicycle taxis began at the Uganda-Kenya border in the 1980s and gave the boda-boda its name ([Wikipedia, "Boda boda"](https://en.wikipedia.org/wiki/Boda_boda), secondary source); heavy roadsters still carry goods and passengers on rural roads |
-| Malawi, Tanzania and Zambia | Sub-Saharan Africa holds 18 of the 20 largest electricity access deficits ([World Bank, 2025](https://www.worldbank.org/en/news/press-release/2025/06/25/energy-access-has-improved-yet-international-financial-support-still-needed-to-boost-progress-and-address-disparities)); solar charging suits routes far from the grid |
-| India and Bangladesh | Large rural populations still rely on steel single-speed bicycles for work trips, with a dense network of roadside repair shops |
-| Andean and Central American highlands | Steep rural roads where a loaded bicycle is pushed more than ridden |
-| Netherlands | About 56 percent of the 804,000 new bicycles sold in 2023 were e-bikes (RAI and BOVAG figures, reported by [DutchNews.nl](https://www.dutchnews.nl/2024/11/the-dutch-are-cycling-more-and-buying-more-e-bikes/)); a conversion kit lets owners of sturdy older bicycles join that shift without buying new |
+| Uganda and Kenya | Uganda's *Daily Monitor* reports that the boda-boda began with bicycle riders in Busia, on the Kenya-Uganda border, who called "border, border" to find passengers before the trade moved to motorcycles ([Daily Monitor, 2017](https://www.monitor.co.ug/uganda/news/national/boda-boda-makes-its-way-to-oxford-advanced-learners-dictionary-1702836)); an assist kit fits the bicycle taxis and carriers that started that trade |
+| Wider sub-Saharan Africa | The region is home to 85 percent of the 666 million people without electricity and holds 18 of the 20 largest national access deficits ([World Bank, 2025](https://www.worldbank.org/en/news/press-release/2025/06/25/energy-access-has-improved-yet-international-financial-support-still-needed-to-boost-progress-and-address-disparities)); solar charging suits routes far from the grid |
+| India | Bicycle-owning households rose from 84 million in 2001 to 111 million in 2011, and an estimated 21 percent of rural work trips are made by bicycle ([TERI, *Benefits of Cycling in India*, 2020](https://www.teriin.org/sites/default/files/2020-06/benefits-cycling-report.pdf), drawing on Census of India data); rural riders are a large base for a low-cost conversion |
+| Haiti | The electricity access rate was estimated at about 47.1 percent in 2021, and the World Bank is financing solar mini-grids and standalone solar systems to extend access ([World Bank, 2024](https://www.worldbank.org/en/news/press-release/2024/10/18/world-bank-to-support-sustainable-energy-access-in-haiti)); a kit that charges from its own panel does not wait for the grid |
+| Netherlands | About 56 percent of the 804,000 new bicycles sold in 2023 were e-bikes ([BOVAG and RAI Vereniging, February 26, 2024](https://www.bovag.nl/pers/persberichten/fietsbranche-consolideert-hoge-omzetniveau); also reported by [DutchNews.nl](https://www.dutchnews.nl/2024/11/the-dutch-are-cycling-more-and-buying-more-e-bikes/)); a conversion kit lets owners of sturdy older bicycles join that shift without buying new |
 
 ## What sparked the idea
 
@@ -93,6 +93,12 @@ The working bill of materials is in [bom/bom.csv](bom/bom.csv).
 ## Documentation
 
 Controlled documents follow the portfolio [documentation standard](.kit/STANDARDS.md). Each carries a document ID (SSP-PRC-001 for the precis), a version and a revision history. Branded PDFs are built with `python .kit/render.py` and attached to GitHub Releases when a document is tagged, for example `SSP-PRC-001/v1.0`.
+
+## Credits
+
+Designed by Amish Chadha. See [CONTRIBUTORS.md](CONTRIBUTORS.md) for roles. To cite this design, use [CITATION.cff](CITATION.cff) (GitHub shows it as "Cite this repository").
+
+AI assistance (Claude) was used to accelerate concept renders, prototype documentation and first-pass sizing calculations. Design direction and all decisions are Amish Chadha's, recorded in this repository's decision records (`docs/decisions/`).
 
 ## Licenses
 

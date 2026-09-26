@@ -165,3 +165,17 @@ Other work this session: all generated files re-rendered so the footer reads des
 ### TRL 4
 
 TRL 4 remains on hold by Amish's instruction. Choosing and calibrating a real thermistor derate curve and a hill test are TRL 4 work and were not started. `trl: 3`, `trl_target: 3`.
+
+## Session 2026-09-26: sources strengthened
+
+README "Where it could be used" country table, per Amish's instruction of 2026-09-26 ("Fix the weaker sources"). Every link below was fetched and checked against the claim it supports.
+
+| Row | Old source | New source |
+| --- | --- | --- |
+| Uganda and Kenya | Wikipedia, "Boda boda" (alone) | *Daily Monitor* (Uganda), May 25, 2017; row now states only the Busia "border, border" origin it reports (the "1980s" date is dropped) |
+| Malawi, Tanzania and Zambia | World Bank 2025 press release, which names no countries | Row renamed "Wider sub-Saharan Africa"; same World Bank source, now matching what it says |
+| India and Bangladesh | None | Replaced by "India": TERI, *Benefits of Cycling in India* (2020), reporting Census of India bicycle ownership and rural work-trip share |
+| Andean and Central American highlands | None | Replaced by "Haiti": World Bank press release, October 18, 2024 (access about 47.1 percent in 2021; solar mini-grid financing) |
+| Netherlands | DutchNews.nl (alone) | BOVAG and RAI Vereniging press release, February 26, 2024 (804,000 bicycles, about 56 percent e-bikes); DutchNews.nl kept alongside |
+
+"What sparked the idea" already rests on the primary patent record (Google Patents, US552271A); rechecked, unchanged. No controlled document changed. Still open: `docs/01-problem.md` prior-work line on pedelec rules cites Wikipedia alone; it is outside this session's scope and should cite Regulation (EU) No 168/2013 on EUR-Lex at the next revision.
