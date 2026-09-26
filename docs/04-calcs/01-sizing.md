@@ -3,7 +3,7 @@ doc_id: SSP-CAL-001
 title: SunSpoke sizing calculations
 project: SunSpoke
 doc_type: Calculation note
-version: "0.1"
+version: "0.2"
 status: Draft
 date: '2026-09-25'
 author: Amish Chadha
@@ -13,11 +13,15 @@ revisions:
   date: '2026-09-25'
   author: Amish Chadha
   change: First TRL 3 sizing note (mass, energy and range, hill and motor heating, solar, SwapCell interface v0.3 items, fork and torque arms, cradle retention, braking, cost)
+- version: "0.2"
+  date: '2026-09-25'
+  author: Amish Chadha
+  change: Recommendations accepted by Amish (DDR-002). Motor thermistor derate added to section 4; costs updated for the thermistor motor and controller
 ---
 
 # SunSpoke sizing calculations
 
-The 48 V SunSpoke kit on a SwapCell pack meets its range, mass, solar charging and cost requirements on paper: about 37 km of loaded range against 30 km, 6.65 kg added against 7 kg, about 27 km of riding per day from one 100 W panel, and a bike kit of about $183 against the redefined $250 target. No requirement is shown to be not met. Three are **at risk**: R3 (motor winding reaches about 100 °C at the top of the design climb in the base case but about 139 °C in a hotter-motor case), R4 (roadster fork slots may need filing) and R11 (dry stopping distance about 8.5 m against 9 m, a 9 % margin, and about 22 m in the wet). Sealing, repair time, cut-off timing and SwapCell latch class V1 retention (R7, R9, R10, R13) cannot be verified until hardware exists, which is TRL 4 work and on hold by Amish's instruction.
+The 48 V SunSpoke kit on a SwapCell pack meets its range, mass, solar charging and cost requirements on paper: about 37 km of loaded range against 30 km, 6.65 kg added against 7 kg, about 27 km of riding per day from one 100 W panel, and a bike kit of about $188 against the redefined $250 target. No requirement is shown to be not met. Three are **at risk**: R3 (motor winding reaches about 100 °C at the top of the design climb in the base case but about 139 °C in a hotter-motor case, where the thermistor derate decided in SSP-DDR-002 would slow the bike instead of cutting assist), R4 (roadster fork slots may need filing) and R11 (dry stopping distance about 8.5 m against 9 m, a 9 % margin, and about 22 m in the wet). Sealing, repair time, cut-off timing and SwapCell latch class V1 retention (R7, R9, R10, R13) cannot be verified until hardware exists, which is TRL 4 work and on hold by Amish's instruction.
 
 Every number in this note is printed by `docs/04-calcs/sizing.py` (run from the repo root: `python docs/04-calcs/sizing.py`), which also writes `docs/04-calcs/results.csv`. The cost figures are read from `bom/bom.csv`. Fit checks in section 9 are printed by `python cad/src/model.py`. All values are first-principles estimates; nothing here is measured. SwapCell values follow SwapCell interface v0.3 and SWC-CAL-001.
 
@@ -34,7 +38,7 @@ Every number in this note is printed by `docs/04-calcs/sizing.py` (run from the 
 | Wheel radius | 0.355 m | 28 in (ETRTO 635) with tyre |
 | SwapCell pack | 466 Wh at 0.2C (452 Wh with minimum cells), 46.8 V, 110 mΩ, 2.85 kg; 90 % usable window | SWC-CAL-001 |
 | Motor | 48 V, 250 W geared hub, about 200 rpm no-load at 48 V, gear efficiency 90 %, winding 0.45 Ω, 15 W iron and gear loss, 40 N·m peak | Typical slow-wound 250 W geared hub; to confirm against a named motor |
-| Motor thermal | 600 J/K stator and winding, 1.2 K/W winding to ambient while riding, 120 °C practical limit (nylon planetary gears) | Assumed; hot case 0.60 Ω, 450 J/K, 1.5 K/W |
+| Motor thermal | 600 J/K stator and winding, 1.2 K/W winding to ambient while riding, 120 °C practical limit (nylon planetary gears); controller derate from 110 °C on the motor thermistor | Assumed; hot case 0.60 Ω, 450 J/K, 1.5 K/W; derate decided in SSP-DDR-002 |
 | Solar | 100 W panel, 4.5 peak sun hours (4.0 low), 80 % derating, 92 % boost MPPT, 95 % cell charging, 97 % pack output | SSP-PRC-001 |
 | Torque arms | 5 x 20 mm mild steel (250 MPa yield), clamp 130 mm from the axle; flats lever 5 mm on bare dropouts | |
 | Donor dropout slot | 9.53 mm (3/8 in) | Assumption until the donor survey |
@@ -79,7 +83,9 @@ R2 (30 km in the design case) is met. A trader carrying 80 kg on rough roads get
 
 On the 8 % grade at 8 km/h the loaded bike needs 127.6 N (grade 100.6 N, rolling 25.2 N, drag 1.8 N), or 284 W at the wheel. With the rider at 80 W the motor supplies **204 W** and **32.5 N·m**, about 81 % of the assumed 40 N·m peak, at about 15.8 A motor current. R3 is met on power and torque. On a 10 % grade the same 330 W gives about 7.8 km/h.
 
-At this low speed the motor is only about 62 % efficient and loses about 127 W. From a cruise temperature of about 68 °C at 35 °C ambient, the winding reaches about **100 °C** at the top of the 500 m climb (225 s), 20 K below the assumed 120 °C limit; the limit would be reached after about 919 m. In the hot case (0.60 Ω winding, 450 J/K, 1.5 K/W, a smaller hub) it reaches about **139 °C**, over the limit. R3 is therefore **at risk**: the result turns on motor data that a named motor datasheet, and later a test, must supply. A controller with a motor temperature input would turn an overheat into a derate instead of a cutout.
+At this low speed the motor is only about 62 % efficient and loses about 127 W. From a cruise temperature of about 68 °C at 35 °C ambient, the winding reaches about **100 °C** at the top of the 500 m climb (225 s), 20 K below the assumed 120 °C limit; the limit would be reached after about 919 m. In the hot case (0.60 Ω winding, 450 J/K, 1.5 K/W, a smaller hub) it reaches about **139 °C**, over the limit. R3 is therefore **at risk**: the result turns on motor data that a named motor datasheet, and later a test, must supply. Amish decided on 2026-09-25 (SSP-DDR-002) that the motor carries a winding thermistor and the controller reduces current from 110 °C so the winding never passes 120 °C, instead of cutting assist.
+
+**Thermal derate.** In the base case the winding reaches 110 °C only after about 697 m of the 8 % climb, so the 500 m design climb runs at full assist. In the hot case derating starts after about 225 m, that is, at the top of the design climb. On a climb that does not end, the derate holds the winding at 120 °C with about 11.1 A motor current in the base case and 8.3 A in the hot case, and the loaded bike slows to about 4.7 km/h and 3.7 km/h respectively with the rider at 80 W. The bike keeps moving at walking pace rather than stalling, which answers the safety concern, but in the hot case it would fall below the 8 km/h of R3 near the top of the climb. R3 stays **at risk** until a named motor's thermal data are known.
 
 ## 5. Solar charging (R8) and charge-discharge mode
 
@@ -103,7 +109,7 @@ R8 (20 km per day and 2 days to recharge) is met in both cases. The peak charge 
 
 The cradle receptacle loops INTERLOCK to SGND through the 10 kΩ ±1 % coding resistor that interface v0.3 requires. With the pack's 100 kΩ pull-up from 3.3 V the node sits at 0.30 V and draws 30 µA, inside the pack's 8.0 to 12.5 kΩ acceptance window, so a sleeping pack wakes with no supply from the bike.
 
-The handlebar power switch sits in series with the coding resistor. Switching on closes the loop and wakes the pack; switching off opens it, and the pack opens its output within 1 ms, which also gives the rider a hard off. The host adapter is powered from PACK+ (after the pack enables legacy discharge 2 s after a valid loop) or from the charge inlet, through a diode-OR. If the adapter fails, the pack still runs the bike in legacy discharge-only mode at 15 A, which matches the controller's limit, so the rider is not stranded; charging then needs a working adapter or a hub dock. This relies on the pack moving from legacy discharge (state 5) to heartbeat discharge (mode 2) without opening the output; interface v0.3 does not state that transition explicitly, so it is flagged to the SwapCell project (SSP-DDR-001), not changed here.
+The handlebar power switch sits in series with the coding resistor (decided by Amish, 2026-09-25, SSP-DDR-002). Switching on closes the loop and wakes the pack; switching off opens it, and the pack opens its output within 1 ms, which also gives the rider a hard off. The host adapter is powered from PACK+ (after the pack enables legacy discharge 2 s after a valid loop) or from the charge inlet, through a diode-OR. If the adapter fails, the pack still runs the bike in legacy discharge-only mode at 15 A, which matches the controller's limit, so the rider is not stranded; charging then needs a working adapter or a hub dock. This relies on the pack moving from legacy discharge (state 5) to heartbeat discharge (mode 2) without opening the output; interface v0.3 does not state that transition explicitly, so it is flagged to the SwapCell project (SSP-DDR-001 item 18; raising it was decided in SSP-DDR-002), not changed here.
 
 ## 7. Fork dropouts and torque arms (R4, R10)
 
@@ -129,13 +135,13 @@ From 20 km/h the bike covers 2.78 m during a 0.5 s application delay, so stoppin
 
 | Group | Items | Cost (USD) |
 | --- | --- | --- |
-| Bike conversion kit | 1 to 5, 7 to 9, 14 | 183 |
+| Bike conversion kit | 1 to 5, 7 to 9, 14 | 188 |
 | Solar charging set, costed separately | 10 to 13 | 86 |
-| Kit plus solar set, pack excluded | | 269 |
+| Kit plus solar set, pack excluded | | 274 |
 | SwapCell pack, priced once in SwapCell (SWC-CAL-001) | 6 | 414 |
-| Full system for one rider with own panel | all | 683 |
+| Full system for one rider with own panel | all | 688 |
 
-Under the redefined R12 (bike kit $250 or less; solar set costed separately; pack excluded), R12 is met with $67 margin. Generic parts make up about 84 % of the kit plus solar set cost (R9 asks for 70 %). The cradle rose from $22 to $28 (V1 lever, coding resistor) and the host adapter from $12 to $14 (charge inlet and diode-OR).
+Under the redefined R12 (bike kit $250 or less; solar set costed separately; pack excluded), R12 is met with $62 margin. Generic parts make up about 85 % of the kit plus solar set cost (R9 asks for 70 %). The cradle rose from $22 to $28 (V1 lever, coding resistor) and the host adapter from $12 to $14 (charge inlet and diode-OR). In v0.2 the motor wheel rose from $70 to $72 (built-in winding thermistor) and the controller from $22 to $25 (thermistor input and derate), both decided in SSP-DDR-002, so the bike kit rose from $183 to $188.
 
 ## 12. Results against requirements
 
@@ -143,11 +149,11 @@ Under the redefined R12 (bike kit $250 or less; solar set costed separately; pac
 
 | ID | Value (SSP-CAL-001) | Target | Status |
 | --- | --- | --- | --- |
-| R3 | 100 °C winding at the top of 500 m from 35 °C (139 °C in the hot case); 32.5 N·m; 204 W motor | 8 % for 500 m at 8 km/h, no over-temperature cutout at 35 °C | At risk |
+| R3 | 100 °C winding at the top of 500 m from 35 °C (139 °C in the hot case); 32.5 N·m; 204 W motor; hot case derates after 225 m | 8 % for 500 m at 8 km/h at 35 °C; thermistor derate from 110 °C, no cutout | At risk |
 | R4 | Slot filing about 0.24 mm per side on a 9.53 mm slot; fitting time not calculable | No fabrication; 90 min or less | At risk |
 | R11 | 8.5 m dry (9 % margin); 21.7 m wet | 9 m or less from 20 km/h, dry dirt | At risk |
 | R7 | IP ratings by part selection only | IP65 electronics, IP54 motor, 150 mm water, 0 to 45 °C | Not verifiable at TRL 3 |
-| R9 | Generic parts 84 % of kit cost; swap time not calculable | Pluggable joints, 20 min swap, 70 % generic | Not verifiable at TRL 3 |
+| R9 | Generic parts 85 % of kit cost; swap time not calculable | Pluggable joints, 20 min swap, 70 % generic | Not verifiable at TRL 3 |
 | R10 | Arm clamp 154 N each, arm safety factor 4.2; 0.5 s cut-off needs a bench test | Brake cut-off, 0.5 s stop, fuse, torque arms | Not verifiable at TRL 3 |
 | R13 | Coding node 0.30 V; mode 4 net 1.39 A; clamp rotation margin 1.40 at 25 g | SwapCell interface v0.3 items W, C and V1 | Not verifiable at TRL 3 |
 | R1 | 250 W rated motor, 20 km/h cut-off, pedal assist and 6 km/h walk assist | 250 W; 25 km/h or lower; assist only when pedaling | Met (by specification) |
@@ -155,7 +161,7 @@ Under the redefined R12 (bike kit $250 or less; solar set costed separately; pac
 | R5 | Cradle for 28 to 32 mm tubes; motor for 100 mm spacing and 635 rim; pack fits the main triangle in the model | Common roadster | Met (on paper) |
 | R6 | 6.65 kg | 7 kg or less | Met |
 | R8 | 27 km/day; recharge 1.3 days (1.5 at 4 h) | 20 km/day; 2 days or less | Met |
-| R12 | Bike kit $183; solar set $86 costed separately | Bike kit $250 or less | Met |
+| R12 | Bike kit $188; solar set $86 costed separately | Bike kit $250 or less | Met |
 
 ## 13. Checks against earlier documents
 

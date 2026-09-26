@@ -23,7 +23,7 @@ render_all(
                  "SwapCell about 468 Wh: about 37 km loaded (SSP-CAL-001)",
                  "100 W panel: about 315 Wh/day stored at 4.5 sun hours",
                  "Added mass 6.65 kg with pack; torque arms both sides",
-                 "Bike kit about $183; solar set about $86; pack excluded"],
+                 "Bike kit about $188; solar set about $86; pack excluded"],
     cut=False,
     flow={"title": "daily solar energy flow, Wh per day (estimates, 4.5 peak sun hours)", "unit": "Wh (est.)",
           "stages": [("Sun on 100 W panel", 450), ("Panel output", 360), ("Charger output", 331),

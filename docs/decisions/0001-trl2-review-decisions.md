@@ -3,7 +3,7 @@ doc_id: SSP-DDR-001
 title: SunSpoke TRL 2 review decisions
 project: SunSpoke
 doc_type: Design decision record
-version: "0.1"
+version: "0.2"
 status: Draft
 date: '2026-09-25'
 author: Amish Chadha
@@ -13,12 +13,16 @@ revisions:
   date: '2026-09-25'
   author: Amish Chadha
   change: Record Amish's 2026-09-25 decisions on the TRL 2 review and the SwapCell interface v0.3 items
+- version: "0.2"
+  date: '2026-09-25'
+  author: Amish Chadha
+  change: Recommendations accepted by Amish (DDR-002)
 ---
 
 # 0001: TRL 2 review decisions
 
 - **Date:** 2026-09-25
-- **Status:** accepted (items 1 to 8 and 10 to 13); items 14 to 18 remain proposed, awaiting Amish
+- **Status:** accepted (items 1 to 8, 10 to 13, and 16 to 18 through SSP-DDR-002); items 14 and 15 remain proposed, awaiting Amish
 
 ## Context
 
@@ -53,15 +57,15 @@ Item 9 of the TRL 2 list (first partner and region) had no recommendation and is
 
 ### Items that remain open
 
-*Table 2. Open items, Proposed, awaiting Amish.*
+*Table 2. Items left open by this record. Items 16 to 18 were decided later the same day (SSP-DDR-002).*
 
 | # | Item | Status |
 | --- | --- | --- |
 | 14 | First co-design partner and region | Proposed, awaiting Amish. No recommendation was made; portfolio rule: partners are chosen per area later |
 | 15 | Whether light filing of the donor fork slots (about 0.24 mm per side) is acceptable with torque arms fitted (R4) | Proposed, awaiting Amish. No recommendation yet; needs the donor survey |
-| 16 | Handlebar power switch wired in series with the INTERLOCK coding resistor, and host adapter powered from legacy discharge or the charge inlet (SSP-CAL-001 section 6) | New engineering proposal from this session, awaiting Amish. Recommendation: adopt |
-| 17 | Motor temperature input on the controller to derate instead of cutting out (R3) | New engineering proposal, awaiting Amish. Recommendation: specify a controller with a thermistor input |
-| 18 | Clarification to raise with the SwapCell project: the pack should move from legacy discharge (state 5) to heartbeat discharge (mode 2) without opening the output | Flag for SwapCell; not changed here. The interface is governed in the swapcell repo |
+| 16 | Handlebar power switch wired in series with the INTERLOCK coding resistor, and host adapter powered from legacy discharge or the charge inlet (SSP-CAL-001 section 6) | Decided by Amish, 2026-09-25: go with recommendation (adopt). See SSP-DDR-002 |
+| 17 | Motor temperature input on the controller to derate instead of cutting out (R3) | Decided by Amish, 2026-09-25: go with recommendation (controller with a thermistor input, motor with a winding thermistor). See SSP-DDR-002 |
+| 18 | Clarification to raise with the SwapCell project: the pack should move from legacy discharge (state 5) to heartbeat discharge (mode 2) without opening the output | Decided by Amish, 2026-09-25: go with recommendation (raise with SwapCell). Cross-repo action; not changed here. The interface is governed in the swapcell repo |
 
 ## Consequences
 

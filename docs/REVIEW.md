@@ -102,13 +102,13 @@ The model check found that the TRL 2 pack position (52 % up the down tube) left 
 
 48 V on SwapCell (Option A; 36 V only as a later variant); budget kept at $250 with R12 redefined to the bike kit and the solar set costed separately; geared front hub; pack on the down tube; local lacing; 20 km/h default cut-off; pedal assist plus walk assist, no throttle; charge on the bike with the host adapter as charge host; SwapCell interface v0.3 items W, C and V; SwapCell pack priced once and excluded.
 
-### Still awaiting Amish
+### Still awaiting Amish (items 3 to 5 decided later the same day, see the next session)
 
 1. First co-design partner and region (no recommendation; picked per area later).
 2. Whether light slot filing is acceptable with torque arms (R4; no recommendation until the donor survey).
-3. New proposal: handlebar power switch in series with the INTERLOCK coding resistor, host adapter powered from legacy discharge or the charge inlet. Recommendation: adopt.
-4. New proposal: controller with a motor thermistor input so R3 becomes a derate, not a cutout. Recommendation: adopt.
-5. For the SwapCell project, not changed here: interface v0.3 should state that a pack in legacy discharge (state 5) moves to heartbeat discharge (mode 2) without opening the output.
+3. Handlebar power switch in series with the INTERLOCK coding resistor, host adapter powered from legacy discharge or the charge inlet. Decided by Amish, 2026-09-25: go with recommendation (SSP-DDR-002).
+4. Controller with a motor thermistor input so R3 becomes a derate, not a cutout. Decided by Amish, 2026-09-25: go with recommendation (SSP-DDR-002).
+5. Decided by Amish, 2026-09-25: go with recommendation (raise with SwapCell; cross-repo action, SSP-DDR-002). For the SwapCell project, not changed here: interface v0.3 should state that a pack in legacy discharge (state 5) moves to heartbeat discharge (mode 2) without opening the output.
 
 ### Safety concerns
 
@@ -127,3 +127,41 @@ None found. `build-log/` holds only its README; `electronics/` and `firmware/` a
 Amish reviews SSP-DDR-001 open items 1 to 4 and forwards item 5 to the SwapCell project. Paper work that stays within TRL 3: pick a named 250 W geared hub and controller and rerun R3 with datasheet values, and define the donor survey questions (slot width, down tube diameter, frame size) with the partner once chosen.
 
 TRL 4 is on hold by Amish's instruction. For the record only, TRL 4 would need: a bench-built kit on a donor roadster, a lab test report (TST, `environment: lab`) covering motor temperature on a loaded climb profile, brake cut-off timing, stopping distance dry and wet, cradle vibration and shock to latch class V1, and IP checks, plus build log entries.
+
+## Session 2026-09-25: recommendations accepted
+
+Authority: on 2026-09-25 Amish wrote "i accept all your recommendations, go with them across all repos." Every open item with a recommendation is now "Decided by Amish, 2026-09-25: go with recommendation", recorded in `docs/decisions/0002-recommendations-accepted.md` (SSP-DDR-002 v0.1). Items without a recommendation stay open. TRL stays at 3.
+
+### Decisions applied and what changed
+
+| Item (SSP-DDR-001) | Decision | Change, before and after |
+| --- | --- | --- |
+| 16, power switch in the INTERLOCK loop | Adopt | R10 now requires the switch; already costed in BOM item 8 and shown on the drawing, so no cost or geometry change |
+| 17, motor thermistor and controller derate | Adopt | BOM item 1 $70 to $72, item 3 $22 to $25; bike kit $183 to $188 (margin $67 to $62); generic share 84 % to 85 %. R3 restated: derate from 110 °C, winding at or below 120 °C, no abrupt cutout. New CAL result: derate starts after 697 m of the 8 % climb (base case, so the 500 m design climb runs at full assist) or 225 m (hot case); sustained 4.7 or 3.7 km/h on an unending climb |
+| 18, legacy-to-heartbeat transition | Raise with SwapCell | Cross-repo action below; nothing changed here |
+
+`budget_usd` stays at $250 (the budget decision of SSP-DDR-001 already redefined R12 to the bike kit). Documents changed: SSP-REQ-001 v0.3 to v0.4, SSP-PRC-001 v0.3 to v0.4, SSP-CAL-001 v0.1 to v0.2, SSP-DDR-001 v0.1 to v0.2, SSP-DWG-001 Rev P1 to P2 (notes only; geometry unchanged), new SSP-DDR-002 v0.1. `bom/bom.csv`, `bom/bom-notes.md`, `docs/04-calcs/sizing.py` and `results.csv`, `cad/src/sheets.py` and `concept_media.py` (blueprint cost) updated; STEP, STL, drawings, media and PDFs regenerated.
+
+Other work this session: all generated files re-rendered so the footer reads designmolecule.com; README gains "Concept rationale", "Burning platform", "Where it could be used" and "What sparked the idea" (the 1895 Bolton hub-motor bicycle patent, US 552,271).
+
+### Requirement status (SSP-CAL-001 v0.2)
+
+| Status | Requirements |
+| --- | --- |
+| Not met | None |
+| At risk | R3 (100 °C base, 139 °C hot case; hot case now derates after 225 m instead of cutting out), R4 (slot filing about 0.24 mm per side), R11 (8.5 m dry, 21.7 m wet) |
+| Not verifiable at TRL 3 | R7, R9 (85 % generic), R10, R13 |
+| Met | R1, R2 (37 km), R5, R6 (6.65 kg), R8 (27 km/day, 1.3 days), R12 (bike kit $188) |
+
+### Still awaiting Amish
+
+1. First co-design partner and region (no recommendation).
+2. Whether light slot filing is acceptable with torque arms (R4; no recommendation until the donor survey).
+
+### Cross-repo actions
+
+- **SwapCell:** interface v0.3 should state that a pack in legacy discharge (state 5) moves to heartbeat discharge (mode 2) without opening the output (SSP-DDR-001 item 18, decided). Not changed here.
+
+### TRL 4
+
+TRL 4 remains on hold by Amish's instruction. Choosing and calibrating a real thermistor derate curve and a hill test are TRL 4 work and were not started. `trl: 3`, `trl_target: 3`.

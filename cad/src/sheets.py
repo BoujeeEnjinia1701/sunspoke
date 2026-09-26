@@ -1,4 +1,4 @@
-"""SunSpoke general arrangement drawing SSP-DWG-001 (Rev P1).
+"""SunSpoke general arrangement drawing SSP-DWG-001 (Rev P2).
 
 Run from the repo root:  python cad/src/sheets.py
 Builds cad/drawings/SSP-DWG-001.svg, .pdf and .png from the parametric model.
@@ -22,9 +22,10 @@ views = project_views(bike, work)
 f = fit_checks()
 
 s = Sheet(project="SunSpoke", title="General arrangement, kit on 28 in roadster", dwg_no="SSP-DWG-001",
-          rev="P1", author="Amish Chadha", date="2026-09-25", concept=True,
+          rev="P2", author="Amish Chadha", date="2026-09-25", concept=True,
           material="Kit parts per bom/bom.csv; donor roadster shown for context",
-          revisions=[("P1", "Preliminary GA, SwapCell interface v0.3 (SSP-CAL-001)", "2026-09-25", "AC")])
+          revisions=[("P1", "Preliminary GA, SwapCell interface v0.3 (SSP-CAL-001)", "2026-09-25", "AC"),
+                     ("P2", "Notes: motor thermistor and derate (SSP-DDR-002)", "2026-09-25", "AC")])
 s.add_ortho(views, ["front", "top", "right"])
 s.add_svg(views["iso"], 276, 30, 140, 84, label="Isometric view", sublabel="Not to scale")
 detail = project_views(Compound([cradle_local(), receptacle_local(), pack_local()]), work / "detail")
@@ -45,6 +46,7 @@ s.add_notes("Key dimensions and interfaces (mm)", [
     "INTERLOCK: 10 kOhm 1 % coding resistor in cradle, power",
     "  switch 8 in series (interface v0.3 item W)",
     "Controller 3 on seat tube; host adapter 5 below cradle",
+    "Motor 1 NTC thermistor to controller 3; derate 110 C",
     "Solar set 10 to 13 not shown (see SSP-DWG-010)",
     "PRELIMINARY, NOT FOR FABRICATION",
 ], x=276, y=128, width=140)

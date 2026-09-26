@@ -73,6 +73,8 @@ C_TH = 600.0                 # J/K, stator and winding heat capacity
 R_TH = 1.2                   # K/W, winding to ambient while riding
 T_WIND_LIMIT = 120.0         # C, practical limit for small geared hubs with nylon gears
 MOTOR_PEAK_NM = 40.0         # N m at the wheel, typical 250 W geared hub
+# Thermal derate on the motor thermistor (SSP-DDR-002, decided 2026-09-25)
+T_DERATE_START = 110.0       # C, controller starts reducing current
 
 # Solar (R8)
 PANEL_W, SUN_H, SUN_H_LOW, DERATE = 100.0, 4.5, 4.0, 0.80
@@ -221,6 +223,29 @@ ts2 = T_AMB_HOT + (i_c ** 2 * r2 + P_IRON) * th2
 tss2 = T_AMB_HOT + pl2 * th2
 te2 = tss2 - (tss2 - ts2) * math.exp(-t_climb / (c2 * th2))
 put("Sensitivity: winding at top of 500 m (0.60 ohm, 450 J/K, 1.5 K/W), C", te2, "{:.0f}")
+# Thermal derate (SSP-DDR-002): distance to the derate threshold, and the
+# sustained speed on an unending 8 % climb with the winding held at 120 C.
+def derate(r_w, c_th, r_th, t0):
+    t_ss_ = T_AMB_HOT + (i_ph ** 2 * r_w + P_IRON) * r_th
+    t_on = (-c_th * r_th * math.log((t_ss_ - T_DERATE_START) / (t_ss_ - t0))
+            if t_ss_ > T_DERATE_START else float("inf"))
+    p_cu_ok = (T_WIND_LIMIT - T_AMB_HOT) / r_th - P_IRON
+    i_ok = math.sqrt(max(p_cu_ok, 0.0) / r_w)
+    f_motor = min(i_ok, i_ph) * ke * GEAR_EFF / WHEEL_R
+    lo_, hi_ = 0.5, 30.0
+    for _ in range(60):
+        mid_ = (lo_ + hi_) / 2
+        need = sum(road_force(m_design, CRR, mid_, GRADE))
+        lo_, hi_ = (mid_, hi_) if f_motor + P_RIDER_CLIMB / (mid_ / 3.6) > need else (lo_, mid_)
+    return t_on * v, i_ok, lo_
+d_base, i_base, v_base = derate(R_WIND, C_TH, R_TH, t_start)
+d_hot, i_hot, v_hot = derate(r2, c2, th2, ts2)
+put("Derate: climb length to 110 C, base case, m", min(d_base, 99999), "{:.0f}")
+put("Derate: climb length to 110 C, hot case, m", d_hot, "{:.0f}")
+put("Derate: sustained motor current at 120 C, base case, A", i_base, "{:.1f}")
+put("Derate: sustained motor current at 120 C, hot case, A", i_hot, "{:.1f}")
+put("Derate: sustained speed on 8 % at 120 C, base case, km/h", v_base, "{:.1f}")
+put("Derate: sustained speed on 8 % at 120 C, hot case, km/h", v_hot, "{:.1f}")
 # Speed on a 10 % grade with 250 W motor plus 80 W rider
 lo, hi = 1.0, 30.0
 for _ in range(60):
@@ -344,8 +369,9 @@ R = OUT
 results = [
     ("R3", f"{R['Winding temperature at the top of 500 m, C']:.0f} °C winding at the top of 500 m from 35 °C "
            f"({R['Sensitivity: winding at top of 500 m (0.60 ohm, 450 J/K, 1.5 K/W), C']:.0f} °C in the hot case); "
-           f"{R['Motor torque, N m']:.1f} N·m motor torque; {R['Motor mechanical power (rider 80 W), W']:.0f} W motor",
-     "8 % for 500 m at 8 km/h, no over-temperature cutout at 35 °C", "At risk"),
+           f"{R['Motor torque, N m']:.1f} N·m motor torque; {R['Motor mechanical power (rider 80 W), W']:.0f} W motor; "
+           f"hot case derates after {R['Derate: climb length to 110 C, hot case, m']:.0f} m",
+     "8 % for 500 m at 8 km/h at 35 °C; thermistor derate from 110 °C, no cutout", "At risk"),
     ("R4", f"Slot filing about {R['Slot filing needed per side, mm']:.2f} mm per side on a 9.53 mm slot; fitting time not calculable",
      "No fabrication; 90 min or less", "At risk"),
     ("R11", f"{R['Stopping distance from 20 km/h, dry, m']:.1f} m dry ({R['Dry margin on deceleration, %']:.0f} % margin); "
