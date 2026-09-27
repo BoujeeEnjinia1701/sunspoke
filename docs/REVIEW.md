@@ -179,3 +179,35 @@ README "Where it could be used" country table, per Amish's instruction of 2026-0
 | Netherlands | DutchNews.nl (alone) | BOVAG and RAI Vereniging press release, February 26, 2024 (804,000 bicycles, about 56 percent e-bikes); DutchNews.nl kept alongside |
 
 "What sparked the idea" already rests on the primary patent record (Google Patents, US552271A); rechecked, unchanged. No controlled document changed. Still open: `docs/01-problem.md` prior-work line on pedelec rules cites Wikipedia alone; it is outside this session's scope and should cite Regulation (EU) No 168/2013 on EUR-Lex at the next revision.
+
+## Session 2026-09-26: product appearance model and photoreal renders
+
+Amish chose this repo for the first batch of product renders on 2026-09-26. This session adds `cad/src/product_model.py`, an appearance model for photoreal renders, and points the README hero at `media/render-hero.png` (with an exploded render link); the render files are produced separately.
+
+### What product_model.py adds
+
+- `product_parts()`: 96 parts (66 shell, 15 internal, 14 accessory, 1 context), each with colour, material class, BOM line and explode offset. All main dimensions and interfaces come from `PARAMS`, `geometry()`, `cradle_location()`, `pack_local()` and `receptacle_local()` in `model.py`.
+- Donor roadster, shown as part of the product: lugged black enamel frame, fork, chrome stem and swept bars with ribbed grips and brake levers, sprung leather saddle, tube carrier, chainring, chain and block pedals, and 36-spoke wheels.
+- Item 1: brushed hub motor with ribbed drum, spoke flanges, side covers and screws, a teal band, rating label, keyed axle, axle nuts and the cable exit, laced into the front rim.
+- Item 2: keyed torque arms with band clips and bolts on both fork blades.
+- Items 4 and 6: the cradle with guides, end stop and receptacle; the teal V1 preload lever with grip and pivot pin; stainless band clamps with rubber liners and screws; and the SwapCell pack with dark end caps, carry handle, accent stripe, label and a four-segment charge gauge (three segments lit).
+- Item 5: potted host adapter with a parting line, the keyed charge inlet, a lit status light and a label.
+- Item 3: finned aluminium controller with sealed end caps, glands, a name plate and straps to the seat tube.
+- Items 7 to 9: magnet disc and Hall sensor; handlebar display with lit assist and charge segments, power switch, walk-assist button and two brake-lever sensors; harness with cable ties and a sealed fuse holder behind a clear cover.
+- Items 10 to 13: panel with aluminium frame, 24 cells, busbars and junction box; timber A-frame stand with coach bolts; finned boost charger with a lit charge light; panel lead; and the 5 m charge cable with its plug in the charge inlet.
+- Context: the shared clay mannequin (1.75 m) in the "ride" pose, placed on the bike's bottom bracket, with the torso and arm angles set so the hands close on the grips and the feet land on the pedals.
+- `TITLE` and three `RENDER_VIEWS`: "hero" (front right, about 18 deg elevation, rider and solar set), "exploded" (front right, about 28 deg), and "detail" (front right, about 12 deg: the hub motor wheel, fork and torque arms without the rider).
+
+### Where the appearance model differs from model.py
+
+Each is render-only; `model.py`, the STEP files and SSP-DWG-001 are unchanged.
+
+1. **Cranks turned to vertical** so the rider's feet sit on the pedals (cranks rotate; no dimension changes). Proposed, awaiting Amish. Recommendation: accept.
+2. **Saddle top raised about 12 mm** (to about 964 mm) to meet the mannequin's seat point. Proposed, awaiting Amish. Recommendation: accept; it is within normal saddle-height adjustment.
+3. **Brake cut-off sensors moved about 45 mm forward and 32 mm lower** (to X = 905 mm, Z = 918 mm, under the bar at the lever pivots) so the rider's hands clear them; `model.py` places them on the grip section. Proposed, awaiting Amish. Recommendation: move the envelopes in `model.py` to match at the next drawing revision.
+4. **Panel stand drawn as square timber** (36 mm legs, 28 x 24 mm rails) instead of round tube, plus a small upright for the charger, which floats in `model.py`. The BOM allows steel angle or timber. Proposed, awaiting Amish. Recommendation: accept, and add the charger upright to `model.py` at the next revision.
+5. **Hero scene shows the rider seated while the pack charges** from the panel (the adapter's mode 4, bike on while charging). This reads as a waiting rider rather than riding. Proposed, awaiting Amish. Options: keep it; or pose a standing owner beside the parked bike. Recommendation: keep it for one image that shows the whole system; revisit if the render reads oddly.
+
+### TRL
+
+This is an appearance model only: no tolerances, fabrication detail or build instructions were added. `trl: 3` and `trl_target: 3` are unchanged, and TRL 4 remains on hold by Amish's instruction.
