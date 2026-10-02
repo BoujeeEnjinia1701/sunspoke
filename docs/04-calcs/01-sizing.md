@@ -3,9 +3,9 @@ doc_id: SSP-CAL-001
 title: SunSpoke sizing calculations
 project: SunSpoke
 doc_type: Calculation note
-version: "0.2"
+version: "0.3"
 status: Draft
-date: '2026-09-25'
+date: '2026-10-01'
 author: Amish Chadha
 license: CERN-OHL-S-2.0
 revisions:
@@ -17,11 +17,15 @@ revisions:
   date: '2026-09-25'
   author: Amish Chadha
   change: Recommendations accepted by Amish (DDR-002). Motor thermistor derate added to section 4; costs updated for the thermistor motor and controller
+- version: "0.3"
+  date: '2026-10-01'
+  author: Amish Chadha
+  change: Constructable design (SSP-DDR-003). Mass, cradle retention (three band clamps over V-saddles, real band path), end stop and gate loads, fit check, cost against the value-engineering target
 ---
 
 # SunSpoke sizing calculations
 
-The 48 V SunSpoke kit on a SwapCell pack meets its range, mass, solar charging and cost requirements on paper: about 37 km of loaded range against 30 km, 6.65 kg added against 7 kg, about 27 km of riding per day from one 100 W panel, and a bike kit of about $188 against the redefined $250 target. No requirement is shown to be not met. Three are **at risk**: R3 (motor winding reaches about 100 °C at the top of the design climb in the base case but about 139 °C in a hotter-motor case, where the thermistor derate decided in SSP-DDR-002 would slow the bike instead of cutting assist), R4 (roadster fork slots may need filing) and R11 (dry stopping distance about 8.5 m against 9 m, a 9 % margin, and about 22 m in the wet). Sealing, repair time, cut-off timing and SwapCell latch class V1 retention (R7, R9, R10, R13) cannot be verified until hardware exists, which is TRL 4 work and on hold by Amish's instruction.
+The 48 V SunSpoke kit on a SwapCell pack meets its range, mass, solar charging and cost requirements on paper: about 37 km of loaded range against 30 km, 6.78 kg added against 7 kg, about 27 km of riding per day from one 100 W panel, and a bike kit of about USD 196, USD 54 under the USD 250 value-engineering target. Version 0.3 recomputes mass, cradle retention, the fit in the main triangle and cost for the constructable design of SSP-DDR-003. No requirement is shown to be not met. Three are **at risk**: R3 (motor winding reaches about 100 °C at the top of the design climb in the base case but about 139 °C in a hotter-motor case, where the thermistor derate decided in SSP-DDR-002 would slow the bike instead of cutting assist), R4 (roadster fork slots may need filing) and R11 (dry stopping distance about 8.5 m against 9 m, a 9 % margin, and about 22 m in the wet). Sealing, repair time, cut-off timing and SwapCell latch class V1 retention (R7, R9, R10, R13) cannot be verified until hardware exists, which is TRL 4 work and on hold by Amish's instruction.
 
 Every number in this note is printed by `docs/04-calcs/sizing.py` (run from the repo root: `python docs/04-calcs/sizing.py`), which also writes `docs/04-calcs/results.csv`. The cost figures are read from `bom/bom.csv`. Fit checks in section 9 are printed by `python cad/src/model.py`. All values are first-principles estimates; nothing here is measured. SwapCell values follow SwapCell interface v0.3 and SWC-CAL-001.
 
@@ -42,7 +46,7 @@ Every number in this note is printed by `docs/04-calcs/sizing.py` (run from the 
 | Solar | 100 W panel, 4.5 peak sun hours (4.0 low), 80 % derating, 92 % boost MPPT, 95 % cell charging, 97 % pack output | SSP-PRC-001 |
 | Torque arms | 5 x 20 mm mild steel (250 MPa yield), clamp 130 mm from the axle; flats lever 5 mm on bare dropouts | |
 | Donor dropout slot | 9.53 mm (3/8 in) | Assumption until the donor survey |
-| Cradle retention | 3.5 kg receiver design pack plus 1.0 kg cradle; 8 g vibration and 25 g shock (latch class V1); band tension 1.5 kN, liner friction 0.40, centroid 70 mm above the tube axis | SwapCell interface v0.3 item V |
+| Cradle retention | 3.5 kg receiver design pack plus 1.10 kg cradle; 8 g vibration and 25 g shock (latch class V1); three band clamps at 1.5 kN tension each over 120 degree V-saddles with 1.5 mm rubber liners, friction 0.40; centroid 77 mm above the axis of a 28.6 mm tube | SwapCell interface v0.3 item V; SSP-DDR-003 |
 | Braking | 0.5 s application delay; 250 N clamp per block from a 100 N hand force; block on steel rim 0.40 dry and 0.12 wet; braking radius 0.310 m | Rod brakes on steel rims |
 
 ## 2. Mass (R6)
@@ -52,18 +56,18 @@ Every number in this note is printed by `docs/04-calcs/sizing.py` (run from the 
 | Part | Mass (kg) |
 | --- | --- |
 | Motor wheel, increase over the donor front wheel | 1.20 |
-| Torque arms and band clips | 0.30 |
-| Controller | 0.50 |
-| Receiver cradle, band clamps and V1 lever | 1.00 |
+| Torque arms and band clamps | 0.28 |
+| Controller, rubber pad and two band clamps | 0.55 |
+| Receiver cradle, three band clamps, gate and draw latch | 1.10 |
 | Host adapter and charge port | 0.15 |
 | Pedal-assist sensor | 0.10 |
 | Handlebar control and brake sensors | 0.15 |
 | Wiring harness and fuse | 0.40 |
-| **Kit** | **3.80** |
+| **Kit** | **3.93** |
 | SwapCell pack (SWC-CAL-001) | 2.85 |
-| **Added mass** | **6.65 (14.7 lb)** |
+| **Added mass** | **6.78 (14.9 lb)** |
 
-R6 (7 kg) is met with 0.35 kg margin. The design load case totals 128.65 kg, rounded to "about 130 kg" in the requirements.
+R6 (7 kg) is met with 0.22 kg margin. The design load case totals 128.78 kg, rounded to "about 130 kg" in the requirements. In v0.3 the cradle mass comes from the model's volumes (tray 0.44 kg, three V-saddles 0.10 kg, end stop 0.08 kg, slide strips 0.08 kg, gate 0.07 kg, catch bar 0.02 kg) plus the bought parts (three band clamps, hinge, draw latch, receptacle and fixings); the 3 mm aluminium tray replaces the concept's folded steel to hold the mass to 1.10 kg.
 
 ## 3. Energy per kilometer and range (R2)
 
@@ -73,19 +77,19 @@ On a dry dirt road at 18 km/h the design case sees 25.2 N of rolling resistance 
 
 | Case | Mass (kg) | Pack energy (Wh/km) | Range (km) |
 | --- | --- | --- | --- |
-| Design: 25 kg cargo, dirt, 18 km/h | 128.7 | 11.3 | 37 (36 with minimum cells) |
-| Light: no cargo, graded murram (Crr 0.015, 20 % allowance) | 103.7 | 5.6 | 75 |
-| Heavy: 80 kg cargo, rough dirt (Crr 0.025), 15 km/h | 183.7 | 18.5 | 23 |
+| Design: 25 kg cargo, dirt, 18 km/h | 128.8 | 11.3 | 37 (36 with minimum cells) |
+| Light: no cargo, graded murram (Crr 0.015, 20 % allowance) | 103.8 | 5.6 | 75 |
+| Heavy: 80 kg cargo, rough dirt (Crr 0.025), 15 km/h | 183.8 | 18.5 | 23 |
 
-R2 (30 km in the design case) is met. A trader carrying 80 kg on rough roads gets about 23 km, so R2 depends on the load case chosen with users. At cruise the pack delivers about 203 W and 4.3 A, which heats it by only about 2.1 W; at the controller's 15 A limit the pack makes about 25 W, far inside SwapCell's 20 A rating.
+R2 (30 km in the design case) is met. A trader carrying 80 kg on rough roads gets about 23 km, so R2 depends on the load case chosen with users. At cruise the pack delivers about 204 W and 4.3 A, which heats it by only about 2.1 W; at the controller's 15 A limit the pack makes about 25 W, far inside SwapCell's 20 A rating.
 
 ## 4. Hill climb and motor heating (R3)
 
-On the 8 % grade at 8 km/h the loaded bike needs 127.6 N (grade 100.6 N, rolling 25.2 N, drag 1.8 N), or 284 W at the wheel. With the rider at 80 W the motor supplies **204 W** and **32.5 N·m**, about 81 % of the assumed 40 N·m peak, at about 15.8 A motor current. R3 is met on power and torque. On a 10 % grade the same 330 W gives about 7.8 km/h.
+On the 8 % grade at 8 km/h the loaded bike needs 127.6 N (grade 100.6 N, rolling 25.2 N, drag 1.8 N), or 284 W at the wheel. With the rider at 80 W the motor supplies **204 W** and **32.6 N·m**, about 81 % of the assumed 40 N·m peak, at about 15.8 A motor current. R3 is met on power and torque. On a 10 % grade the same 330 W gives about 7.8 km/h.
 
-At this low speed the motor is only about 62 % efficient and loses about 127 W. From a cruise temperature of about 68 °C at 35 °C ambient, the winding reaches about **100 °C** at the top of the 500 m climb (225 s), 20 K below the assumed 120 °C limit; the limit would be reached after about 919 m. In the hot case (0.60 Ω winding, 450 J/K, 1.5 K/W, a smaller hub) it reaches about **139 °C**, over the limit. R3 is therefore **at risk**: the result turns on motor data that a named motor datasheet, and later a test, must supply. Amish decided on 2026-09-25 (SSP-DDR-002) that the motor carries a winding thermistor and the controller reduces current from 110 °C so the winding never passes 120 °C, instead of cutting assist.
+At this low speed the motor is only about 62 % efficient and loses about 127 W. From a cruise temperature of about 68 °C at 35 °C ambient, the winding reaches about **100 °C** at the top of the 500 m climb (225 s), 20 K below the assumed 120 °C limit; the limit would be reached after about 915 m. In the hot case (0.60 Ω winding, 450 J/K, 1.5 K/W, a smaller hub) it reaches about **139 °C**, over the limit. R3 is therefore **at risk**: the result turns on motor data that a named motor datasheet, and later a test, must supply. Amish decided on 2026-09-25 (SSP-DDR-002) that the motor carries a winding thermistor and the controller reduces current from 110 °C so the winding never passes 120 °C, instead of cutting assist.
 
-**Thermal derate.** In the base case the winding reaches 110 °C only after about 697 m of the 8 % climb, so the 500 m design climb runs at full assist. In the hot case derating starts after about 225 m, that is, at the top of the design climb. On a climb that does not end, the derate holds the winding at 120 °C with about 11.1 A motor current in the base case and 8.3 A in the hot case, and the loaded bike slows to about 4.7 km/h and 3.7 km/h respectively with the rider at 80 W. The bike keeps moving at walking pace rather than stalling, which answers the safety concern, but in the hot case it would fall below the 8 km/h of R3 near the top of the climb. R3 stays **at risk** until a named motor's thermal data are known.
+**Thermal derate.** In the base case the winding reaches 110 °C only after about 694 m of the 8 % climb, so the 500 m design climb runs at full assist. In the hot case derating starts after about 224 m, that is, at the top of the design climb. On a climb that does not end, the derate holds the winding at 120 °C with about 11.1 A motor current in the base case and 8.3 A in the hot case, and the loaded bike slows to about 4.7 km/h and 3.7 km/h respectively with the rider at 80 W. The bike keeps moving at walking pace rather than stalling, which answers the safety concern, but in the hot case it would fall below the 8 km/h of R3 near the top of the climb. R3 stays **at risk** until a named motor's thermal data are known.
 
 ## 5. Solar charging (R8) and charge-discharge mode
 
@@ -113,35 +117,43 @@ The handlebar power switch sits in series with the coding resistor (decided by A
 
 ## 7. Fork dropouts and torque arms (R4, R10)
 
-At the assumed 40 N·m motor peak, bare dropouts would carry about 4,000 N on each slot face (20 N·m per side over a 5 mm lever). Torque arms clamped 130 mm up each blade carry about 308 N in total, 154 N per arm clamp, and the 5 x 20 mm arm sees about 60 MPa in bending at the axle, a safety factor of about 4.2 on mild steel yield. On the design climb the reaction torque is 32.5 N·m. Torque arms on both sides stay mandatory (R10).
+At the assumed 40 N·m motor peak, bare dropouts would carry about 4,000 N on each slot face (20 N·m per side over a 5 mm lever). Torque arms clamped 130 mm up each blade carry about 308 N in total, 154 N per arm clamp, and the 5 x 20 mm arm sees about 60 MPa in bending at the axle, a safety factor of about 4.2 on mild steel yield. On the design climb the reaction torque is 32.6 N·m. Torque arms on both sides stay mandatory (R10).
 
 If the donor slot is 3/8 in (9.53 mm), the 10 mm axle flats need about 0.24 mm filed from each slot face. That is small, but it is fabrication on the donor fork, which R4 forbids, and whether it is acceptable with torque arms fitted is open (R4 **at risk**). Fork fatigue under the heavier wheel is not calculated.
 
 ## 8. Cradle retention, latch class V1 (item V)
 
-SwapCell class V1 asks the vehicle receiver to hold the pack with no release under 8 g vibration and 25 g shocks, preloading it against its end stop with at least 330 N through an over-centre lever. At a 50 N hand force that needs a lever ratio of 6.6 or more, which the cradle's lever is sized to. For the receiver design mass of 3.5 kg plus the 1.0 kg cradle, 8 g gives about 353 N and 25 g about 1,104 N. The two lined band clamps resist axial slip up to about 7,540 N (margin 6.8 at 25 g) but resist rotation about the down tube only up to about 108 N·m against a 77 N·m moment from a 25 g lateral shock, a margin of about 1.40. The clamps must be tightened to their stated torque and checked at service; a V-shaped saddle under the cradle base helps. Retention cannot be verified at TRL 3.
+SwapCell class V1 asks the vehicle receiver to hold the pack with no release under 8 g vibration and 25 g shocks, preloading it against its end stop with at least 330 N through an over-centre lever. At a 50 N hand force that needs a lever ratio of 6.6 or more. In the constructable design (SSP-DDR-003) the lever is a bought over-centre draw latch that pulls a drop-down gate against the pack's top end; the gate is hinged 2.5 mm above the tray and its pad sits a little below the latch, so the latch pulls about 314 N for 330 N on the pack. For the receiver design mass of 3.5 kg plus the 1.10 kg cradle, 8 g gives about 361 N and 25 g about 1,128 N.
+
+The concept assumed each band clamp gripped the tube over a full turn. A cradle sitting on the tube cannot be gripped that way: in the constructable design each band passes through two slots in the tray, round a 120 degree V-saddle and under the tube, so it wraps about 150 degrees of a 28.6 mm tube and presses the saddle's V onto the rest. Together that gives a normal force on the tube of about 4.86 times the band tension, against 6.28 times in the concept's assumption. Three band clamps instead of two restore the margin: they resist axial slip up to about 8,740 N (margin 7.7 at 25 g, was 6.8) and rotation about the down tube up to about 125 N·m against an 87 N·m moment from a 25 g lateral shock, a margin of about 1.44 (was 1.40). The V-saddles lift the pack 7 mm, which is included in the 77 mm centroid height. The clamps must still be tightened to their stated torque and checked at service. Retention cannot be verified at TRL 3.
+
+The end stop takes the pack's 25 g shock toward the bottom bracket. The pack bears on the 3 mm aluminium wall round the open-topped plug notch at about 0.30 MPa; the strips beside and below the notch, held by the bolted side flanges and foot, see about 62 MPa in bending, a safety factor of about 3.1 on 5052-H32 yield (193 MPa). These are simple cantilever estimates.
 
 ## 9. Fit in the main triangle (R5)
 
-The parametric model (`cad/src/model.py`) places the pack on a 721 mm down tube with its centre at 48 % of the tube length from the bottom bracket. At that position the pack clears the top tube, seat tube and head tube by 123 mm, and it can slide 164 mm up the tube before touching the frame, against 143 mm needed to clear the 120 mm guides and the 18 mm plug before lifting it out sideways. At the TRL 2 position (52 %) the free travel was only 135 mm, so the pack could not be removed; the model was corrected. Smaller frames need this check on the donor survey.
+The parametric model (`cad/src/model.py`) places the pack on a 721 mm down tube with its centre at 48 % of the tube length from the bottom bracket. With the V-saddles lifting it 7 mm, the pack clears the top tube, seat tube and head tube by 121 mm (123 mm in the concept). To come out, the gate is folded down flat, the pack's latch released and the pack slid 143 mm up the tube (clear of the 120 mm guides and the 18 mm plug), then lifted 45 mm and taken out to the left. The model checks that path step by step against every cradle part and the frame: nothing is in the way, and the pack could slide 165 mm before touching the frame. In the concept the lever's hinge block stood in the pack's path; that is fixed in SSP-DDR-003. Smaller frames need this check on the donor survey.
+
+`python cad/src/model.py --check` runs 57 constructability checks (parts that must touch do, parts that must clear do, and the removal path); all pass.
 
 ## 10. Braking (R11)
 
-From 20 km/h the bike covers 2.78 m during a 0.5 s application delay, so stopping in 9 m needs 2.48 m/s². Both rod brakes on dry steel rims give about 2.72 m/s² and a stopping distance of about **8.5 m** (9 % margin on deceleration); from 25 km/h the dry distance is about 12.4 m. In the wet, block friction on steel rims falls to about 0.12 and the distance rises to about 21.7 m. The loaded bike at 20 km/h carries about 1,985 J, about 2.5 times the 795 J of the unconverted bike at 13 km/h. R11 is specified dry and is **at risk** on a thin margin; the wet case is a safety concern whatever the requirement says. The 20 km/h default assist limit (decided) is supported by this result.
+From 20 km/h the bike covers 2.78 m during a 0.5 s application delay, so stopping in 9 m needs 2.48 m/s². Both rod brakes on dry steel rims give about 2.72 m/s² and a stopping distance of about **8.5 m** (9 % margin on deceleration); from 25 km/h the dry distance is about 12.4 m. In the wet, block friction on steel rims falls to about 0.12 and the distance rises to about 21.7 m. The loaded bike at 20 km/h carries about 1,987 J, about 2.5 times the 795 J of the unconverted bike at 13 km/h. R11 is specified dry and is **at risk** on a thin margin; the wet case is a safety concern whatever the requirement says. The 20 km/h default assist limit (decided) is supported by this result.
 
 ## 11. Cost (R12)
+
+Value-engineering target: USD 250 for the bike kit (`budget_usd`, a hypothetical control target, not a limit). Estimated cost of the constructable design: USD 196 for the bike kit (USD 54 under the target).
 
 *Table 5. Cost from `bom/bom.csv` (indicative prices).*
 
 | Group | Items | Cost (USD) |
 | --- | --- | --- |
-| Bike conversion kit | 1 to 5, 7 to 9, 14 | 188 |
-| Solar charging set, costed separately | 10 to 13 | 86 |
-| Kit plus solar set, pack excluded | | 274 |
+| Bike conversion kit | 1 to 5, 7 to 9, 14 | 196 |
+| Solar charging set, costed separately | 10 to 13 | 90 |
+| Kit plus solar set, pack excluded | | 286 |
 | SwapCell pack, priced once in SwapCell (SWC-CAL-001) | 6 | 414 |
-| Full system for one rider with own panel | all | 688 |
+| Full system for one rider with own panel | all | 700 |
 
-Under the redefined R12 (bike kit $250 or less; solar set costed separately; pack excluded), R12 is met with $62 margin. Generic parts make up about 85 % of the kit plus solar set cost (R9 asks for 70 %). The cradle rose from $22 to $28 (V1 lever, coding resistor) and the host adapter from $12 to $14 (charge inlet and diode-OR). In v0.2 the motor wheel rose from $70 to $72 (built-in winding thermistor) and the controller from $22 to $25 (thermistor input and derate), both decided in SSP-DDR-002, so the bike kit rose from $183 to $188.
+R12 (bike kit USD 250 or less; solar set costed separately; pack excluded) is met, USD 54 under the value-engineering target. Generic parts make up about 84 % of the kit plus solar set cost (R9 asks for 70 %). Making the design constructable (SSP-DDR-003) moved the cradle from USD 28 to USD 33 (aluminium tray, V-saddles, a third band clamp, hinge and draw latch), hardware from USD 8 to USD 11 (four more band clamps and the controller pad) and the panel stand from USD 10 to USD 14 (timber, coach bolts); the bike kit rose from USD 188 to USD 196 and the solar set from USD 86 to USD 90.
 
 ## 12. Results against requirements
 
@@ -149,19 +161,19 @@ Under the redefined R12 (bike kit $250 or less; solar set costed separately; pac
 
 | ID | Value (SSP-CAL-001) | Target | Status |
 | --- | --- | --- | --- |
-| R3 | 100 °C winding at the top of 500 m from 35 °C (139 °C in the hot case); 32.5 N·m; 204 W motor; hot case derates after 225 m | 8 % for 500 m at 8 km/h at 35 °C; thermistor derate from 110 °C, no cutout | At risk |
+| R3 | 100 °C winding at the top of 500 m from 35 °C (139 °C in the hot case); 32.6 N·m; 204 W motor; hot case derates after 224 m | 8 % for 500 m at 8 km/h at 35 °C; thermistor derate from 110 °C, no cutout | At risk |
 | R4 | Slot filing about 0.24 mm per side on a 9.53 mm slot; fitting time not calculable | No fabrication; 90 min or less | At risk |
 | R11 | 8.5 m dry (9 % margin); 21.7 m wet | 9 m or less from 20 km/h, dry dirt | At risk |
 | R7 | IP ratings by part selection only | IP65 electronics, IP54 motor, 150 mm water, 0 to 45 °C | Not verifiable at TRL 3 |
-| R9 | Generic parts 85 % of kit cost; swap time not calculable | Pluggable joints, 20 min swap, 70 % generic | Not verifiable at TRL 3 |
+| R9 | Generic parts 84 % of kit cost; swap time not calculable | Pluggable joints, 20 min swap, 70 % generic | Not verifiable at TRL 3 |
 | R10 | Arm clamp 154 N each, arm safety factor 4.2; 0.5 s cut-off needs a bench test | Brake cut-off, 0.5 s stop, fuse, torque arms | Not verifiable at TRL 3 |
-| R13 | Coding node 0.30 V; mode 4 net 1.39 A; clamp rotation margin 1.40 at 25 g | SwapCell interface v0.3 items W, C and V1 | Not verifiable at TRL 3 |
+| R13 | Coding node 0.30 V; mode 4 net 1.39 A; clamp rotation margin 1.44 at 25 g | SwapCell interface v0.3 items W, C and V1 | Not verifiable at TRL 3 |
 | R1 | 250 W rated motor, 20 km/h cut-off, pedal assist and 6 km/h walk assist | 250 W; 25 km/h or lower; assist only when pedaling | Met (by specification) |
 | R2 | 37 km (36 km with minimum cells) | 30 km or more | Met |
-| R5 | Cradle for 28 to 32 mm tubes; motor for 100 mm spacing and 635 rim; pack fits the main triangle in the model | Common roadster | Met (on paper) |
-| R6 | 6.65 kg | 7 kg or less | Met |
+| R5 | V-saddles for 28 to 32 mm tubes; motor for 100 mm spacing and 635 rim; pack fits and comes out of the main triangle in the model | Common roadster | Met (on paper) |
+| R6 | 6.78 kg | 7 kg or less | Met |
 | R8 | 27 km/day; recharge 1.3 days (1.5 at 4 h) | 20 km/day; 2 days or less | Met |
-| R12 | Bike kit $188; solar set $86 costed separately | Bike kit $250 or less | Met |
+| R12 | Bike kit USD 196 (USD 54 under the value-engineering target); solar set USD 90 costed separately | Bike kit USD 250 or less (value-engineering target) | Met |
 
 ## 13. Checks against earlier documents
 

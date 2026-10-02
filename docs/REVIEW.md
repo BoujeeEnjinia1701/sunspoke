@@ -217,3 +217,59 @@ This is an appearance model only: no tolerances, fabrication detail or build ins
 - Kit 1.5.0 synced: STANDARDS v1.5 (sections 12 to 15: product renders, storefront images and image quality, public release, authorship and signing), `.kit/cards.py`, `.kit/image_qc.py`, `.kit/release_gate.py`, issue templates, and the `/render-product` and `/release` commands. `CLAUDE.md` now matches `.kit/CLAUDE.md`.
 - Every `media/render-*.png` recaptioned from its original render with the new layout: the title, concept label and repository sit in a band above the render and the view note in a band below it, each line wrapped to the image width, so no text overlaps other text or the render or runs off the image. `media/card.png` and `media/social-preview.png` regenerated with the same rules.
 - `python .kit/image_qc.py` and `python .kit/release_gate.py` pass. trl stays 3.
+
+## Session 2026-10-01: kit 1.7.0, design made constructable, build plan
+
+Authority: Amish's instruction of 2026-09-30 to give every repo the approved build plan and to "fix the design assumptions to match and be physically feasible as you draw the illustrations", with open decisions in a separate register (SSP-DEC-001), and his 2026-10-01 guidance that `budget_usd` is a value-engineering target. Kit 1.7.0 installed (`.kit/`, `.claude/commands/`, `CLAUDE.md`).
+
+### Design changes made for construction (SSP-DDR-003, Draft, open for Amish's review)
+
+1. Cradle base: the concept's flat plate cut into the down tube; now a folded 3 mm 5052 aluminium tray on three 120 degree aluminium V-saddles with rubber liners (aluminium, not steel, to hold the cradle at 1.10 kg).
+2. Band clamps: drawn as rings through the plate; now three band clamps (was two), each through two slots in the tray, round the saddle and under the tube. The real band path wraps about 150 degrees of the tube, so a third band was needed to keep the 25 g rotation margin (1.44, was 1.40).
+3. End stop: a solid block with the receptacle inside it; now a folded aluminium end stop with an open-topped plug notch, bolted to the tray and guides, the receptacle bolted behind it.
+4. V1 lever: three loose blocks whose hinge stood in the pack's path, so the pack could not come out; now a drop-down gate with a rubber pad on a butt hinge, closed by an over-centre draw latch with a safety catch (330 N preload, latch pull about 314 N).
+5. Slide rails and catch: loose steel bars; now HDPE slide strips and a steel catch bar on screws from below.
+6. Host adapter: floating beyond the base; now on a 70 mm extension of the tray with a lead to the receptacle.
+7. Torque arms: ran into the fork blades, clips not joined; now joggled 20 x 5 mm steel arms with an open 10 mm slot on the axle flats, held by a band clamp round blade and arm. Donor dropouts and a 150 mm axle added to the model.
+8. Controller: floating; now on a rubber pad with two band clamps round the seat tube.
+9. Pedal-assist sensor: disc on nothing, no sensor; now a disc clamped on the spindle and a Hall sensor on a bracket under the left lockring.
+10. Display and brake sensors: cut into the bar; now each on its own bar clamp, magnets on the levers (matches proposal 3 of 2026-09-26).
+11. Harness: through open space and the cradle; now routed along the left side of the tubes.
+12. Panel stand: legs ran into the panel, nothing held it; now a bolted timber A-frame, panel bolted to its rails, charger on the rear leg.
+13. Front wheel spokes now run from the motor's flanges (context).
+
+`cad/src/model.py` now runs 57 constructability checks (`--check`), including the pack's removal path; all pass.
+
+### Key results (SSP-CAL-001 v0.3)
+
+| Quantity | Before | Now |
+| --- | --- | --- |
+| Added mass with pack (R6, 7 kg) | 6.65 kg | 6.78 kg (0.22 kg margin) |
+| Retention at 25 g: axial / rotation margin | 6.8 / 1.40 | 7.7 / 1.44 |
+| End stop at 25 g | (solid block) | about 62 MPa, factor 3.1 on yield |
+| Pack clearance in the triangle; free travel | 123 mm; 164 mm | 121 mm; 165 mm (143 needed), path checked |
+| Bike kit cost (value-engineering target USD 250) | USD 188 | USD 196, USD 54 under the target |
+| Solar set cost | USD 86 | USD 90 |
+
+No requirement changed status: none not met; R3, R4 and R11 at risk; R7, R9, R10 and R13 not verifiable at TRL 3.
+
+### Files
+
+- New: `docs/05-build-plan.md` (SSP-BLD-001 v0.1), `docs/06-design-decisions.md` (SSP-DEC-001 v0.1), `docs/decisions/0003-design-for-construction.md` (SSP-DDR-003 v0.1), `cad/src/build_plan_media.py`, `cad/drawings/SSP-DWG-101` to `110`, `docs/05-build-plan/` (3 overviews, tray layout, wiring, 10 joints, 15 steps).
+- Updated: `cad/src/model.py`, `cad/src/sheets.py` (SSP-DWG-001 Rev P3), `cad/src/concept_media.py`, `cad/step/`, `cad/stl/`, `media/` concept media and `model.glb`, `bom/bom.csv` (lines 2, 4, 7, 8, 12, 14), `bom/bom-notes.md`, `docs/04-calcs/sizing.py` and `results.csv`, SSP-CAL-001 v0.3, SSP-REQ-001 v0.5, SSP-PRC-001 v0.5, `project.yaml` (`design_state: constructable`, new evidence), `README.md`.
+
+### Proposed, awaiting Amish
+
+All in the design decisions register: accept SSP-DDR-003 (decision 1); the two-movement pack swap (2); timber stand (3); plus the open items carried over (fork slot filing, co-design partner, appearance-model proposals 1, 2, 3 and 5 of 2026-09-26, wet braking, motor data).
+
+### Stale media (made on Amish's Mac)
+
+The design changed visibly at the cradle, lever, torque arms and panel stand, so `media/render-hero.png`, `media/render-exploded.png`, `media/render-detail.png`, `media/card.png`, `media/social-preview.png` and the appearance model `cad/src/product_model.py` are stale and need regenerating on the Mac. They were not regenerated here.
+
+### Safety
+
+Unchanged hazards (lithium pack, retention, fork dropouts, wet braking, motor heat). The build plan adds seven safety stops (S1 to S7); first rides are TRL 4 tests on a closed, dry site. Retention depends on the three band clamps being at torque and the latch's safety catch being on.
+
+### Recommended next step
+
+Amish reviews SSP-DDR-003 and the register. TRL 4 (building to the plan) remains on hold; trl stays 3.

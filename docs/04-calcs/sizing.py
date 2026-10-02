@@ -23,9 +23,9 @@ RIDER, CARGO, BIKE = 75.0, 25.0, 22.0          # kg
 # Kit mass (kg), estimates; pack from SWC-CAL-001
 KIT_MASS = {
     "Motor wheel, increase over the donor front wheel": 1.20,
-    "Torque arms (pair) and band clips": 0.30,
-    "Controller": 0.50,
-    "SwapCell receiver cradle, band clamps, V1 lever": 1.00,
+    "Torque arms (pair) and band clamps": 0.28,
+    "Controller, rubber pad and two band clamps": 0.55,
+    "SwapCell receiver cradle, three band clamps, gate and draw latch": 1.10,
     "Host adapter and charge port": 0.15,
     "Pedal-assist sensor": 0.10,
     "Handlebar control and brake sensors": 0.15,
@@ -90,14 +90,19 @@ STEEL_YIELD = 250.0          # MPa, mild steel
 MOTOR_FLATS = 10.0           # mm across flats
 DROPOUT_SLOT = 9.53          # mm, 3/8 in roadster slot (assumption, to survey)
 
-# Cradle retention (interface v0.3 item V, class V1)
-CRADLE_MASS = 1.0            # kg
+# Cradle retention (interface v0.3 item V, class V1), constructable design (SSP-DDR-003):
+# three band clamps, each through two slots in the tray, round a 120 degree V-saddle and the tube
+CRADLE_MASS = 1.10           # kg, from the model volumes plus bought parts (SSP-DDR-003)
+N_BANDS = 3
+V_HALF = math.radians(60.0)  # half angle of the V-saddle, from the vertical
+LINER = 1.5                  # mm, rubber liner in the V
+SADDLE_HALF_W, SADDLE_H, SADDLE_LAND = 17.5, 12.0, 4.0   # mm
 RECEIVER_DESIGN_PACK = 3.5   # kg, SwapCell receiver design mass
 VIB_G, SHOCK_G = 8.0, 25.0
 BAND_T = 1500.0              # N, worm-drive band tension at 3 to 4 N m screw torque
 MU_LINER = 0.40              # rubber liner on painted steel
 TUBE_R = 0.0143              # m, 28.6 mm down tube
-CG_OFFSET = 0.070            # m, pack plus cradle centroid above the down tube axis
+CG_OFFSET = 0.077            # m, pack plus cradle centroid above the down tube axis (70 mm, plus 7 mm for the V-saddles)
 HAND_F = 50.0                # N
 PRELOAD = 330.0              # N, SwapCell V1 receiver preload
 
@@ -309,18 +314,45 @@ section("Cradle retention, latch class V1 (item V)")
 m_ret = RECEIVER_DESIGN_PACK + CRADLE_MASS
 f_vib = m_ret * VIB_G * G
 f_shock = m_ret * SHOCK_G * G
-f_band = MU_LINER * 2 * math.pi * BAND_T
-cap_axial = 2 * f_band
-cap_rot = 2 * f_band * TUBE_R
+# Normal force each band puts on the tube: its own wrap on the underside of the tube, plus the
+# V-saddle pressed down by the band's two legs (a 120 degree V gives 1/cos(30 deg) of that load).
+r_mm = TUBE_R * 1000
+apex = (r_mm + LINER) / math.sin(V_HALF)
+sad_bot = apex + SADDLE_LAND - SADDLE_H
+px, pz = SADDLE_HALF_W, sad_bot                  # the saddle's lower corner, where the band leaves it
+d = math.hypot(px, pz)
+th_t = math.atan2(pz, px) - math.acos(r_mm / d)  # where the band leaves the tube (from horizontal)
+wrap = math.pi + 2 * th_t
+tx, tz = r_mm * math.cos(th_t), r_mm * math.sin(th_t)
+leg = math.hypot(px - tx, pz - tz)
+w_saddle = 2 * (pz - tz) / leg                   # downward pull on the saddle, per unit band tension
+n_factor = wrap + w_saddle / math.cos(math.pi / 2 - V_HALF)
+f_band = MU_LINER * n_factor * BAND_T
+cap_axial = N_BANDS * f_band
+cap_rot = N_BANDS * f_band * TUBE_R
+put("Band wrap on the tube (each band), degrees", math.degrees(wrap), "{:.0f}")
+put("Normal force on the tube per unit band tension", n_factor)
 put("Retained mass (3.5 kg pack plus cradle), kg", m_ret)
 put("Load at 8 g, N", f_vib, "{:.0f}")
 put("Load at 25 g, N", f_shock, "{:.0f}")
-put("Axial slip capacity of two band clamps, N", cap_axial, "{:.0f}")
+put("Axial slip capacity of three band clamps, N", cap_axial, "{:.0f}")
 put("Axial margin at 25 g", cap_axial / f_shock, "{:.1f}")
 put("Rotation moment at 25 g lateral, N m", f_shock * CG_OFFSET, "{:.0f}")
-put("Rotation capacity of two band clamps, N m", cap_rot, "{:.0f}")
+put("Rotation capacity of three band clamps, N m", cap_rot, "{:.0f}")
 put("Rotation margin at 25 g lateral", cap_rot / (f_shock * CG_OFFSET), "{:.2f}")
 put("Over-centre lever ratio for 330 N at 50 N", PRELOAD / HAND_F, "{:.1f}")
+# Drop-down gate: hinged 2.5 mm above the tray, pad centre 19.5 mm above the hinge, latch 20.5 mm above
+put("Draw latch pull for 330 N preload, N", PRELOAD * 19.5 / 20.5, "{:.0f}")
+# End stop at 25 g: the pack bears on the wall round the plug notch; the 16 mm columns beside the
+# notch are held along the side flanges and the 25 mm strip below it along the foot (cantilevers)
+STOP_T, AL_YIELD = 3.0, 193.0                    # mm; MPa, 5052-H32
+area = 92 * 72 - 60 * 47                         # wall less the open-topped notch, mm2
+q = f_shock / area
+sig_col = 6 * (q * 16 ** 2 / 2) / STOP_T ** 2
+sig_low = 6 * (q * 25 ** 2 / 2) / STOP_T ** 2
+put("End stop bearing pressure at 25 g, MPa", q, "{:.3f}")
+put("End stop bending stress at 25 g, worst strip, MPa", max(sig_col, sig_low), "{:.0f}")
+put("End stop safety factor on yield at 25 g", AL_YIELD / max(sig_col, sig_low), "{:.1f}")
 
 # ---------------------------------------------------------------- braking
 section("Braking (R11)")
@@ -361,7 +393,7 @@ put("Solar charging set (10-13), USD", solar, "{:.0f}")
 put("Kit plus solar set, pack excluded, USD", bike_kit + solar, "{:.0f}")
 put("SwapCell pack, priced in SwapCell, USD", cost[6], "{:.0f}")
 put("Full system for one rider, USD", bike_kit + solar + cost[6], "{:.0f}")
-put("Margin of bike kit to $250, USD", 250 - bike_kit, "{:.0f}")
+put("Bike kit under the USD 250 value-engineering target by, USD", 250 - bike_kit, "{:.0f}")
 put("Generic share of kit plus solar cost, %", 100 * generic / (bike_kit + solar), "{:.0f}")
 
 # ---------------------------------------------------------------- results table
@@ -393,8 +425,8 @@ results = [
     ("R6", f"{R['Added mass with pack, kg']:.2f} kg", "7 kg or less", "Met"),
     ("R8", f"{R['Daily loaded range, mid, km']:.0f} km/day; recharge {R['Days to recharge 10 to 100 %, mid']:.1f} days "
            f"({R['Days to recharge 10 to 100 %, low']:.1f} at 4 h)", "20 km/day; 2 days or less", "Met"),
-    ("R12", f"Bike kit ${R['Bike conversion kit (1-5, 7-9, 14), USD']:.0f}; solar set ${R['Solar charging set (10-13), USD']:.0f} costed separately",
-     "Bike kit $250 or less", "Met"),
+    ("R12", f"Bike kit ${R['Bike conversion kit (1-5, 7-9, 14), USD']:.0f} (${R['Bike kit under the USD 250 value-engineering target by, USD']:.0f} under the target); solar set ${R['Solar charging set (10-13), USD']:.0f} costed separately",
+     "Bike kit $250 or less (value-engineering target)", "Met"),
 ]
 with (Path(__file__).parent / "results.csv").open("w", newline="") as f:
     w = csv.writer(f)

@@ -1,14 +1,14 @@
 id,value,target,status
-R3,100 °C winding at the top of 500 m from 35 °C (139 °C in the hot case); 32.5 N·m motor torque; 204 W motor; hot case derates after 225 m,"8 % for 500 m at 8 km/h at 35 °C; thermistor derate from 110 °C, no cutout",At risk
+R3,100 °C winding at the top of 500 m from 35 °C (139 °C in the hot case); 32.6 N·m motor torque; 204 W motor; hot case derates after 224 m,"8 % for 500 m at 8 km/h at 35 °C; thermistor derate from 110 °C, no cutout",At risk
 R4,Slot filing about 0.24 mm per side on a 9.53 mm slot; fitting time not calculable,No fabrication; 90 min or less,At risk
 R11,8.5 m dry (9 % margin); 21.7 m wet,"9 m or less from 20 km/h, dry dirt",At risk
 R7,IP ratings by part selection only,"IP65 electronics, IP54 motor, 150 mm water, 0 to 45 °C",Not verifiable at TRL 3
-R9,Generic parts 85 % of kit cost; swap time not calculable,"Pluggable joints, 20 min swap, 70 % generic",Not verifiable at TRL 3
+R9,Generic parts 84 % of kit cost; swap time not calculable,"Pluggable joints, 20 min swap, 70 % generic",Not verifiable at TRL 3
 R10,"Arm clamp 154 N each, arm safety factor 4.2; 0.5 s cut-off needs a bench test","Brake cut-off, 0.5 s stop, fuse, torque arms",Not verifiable at TRL 3
-R13,Coding node 0.30 V; mode 4 net 1.39 A; clamp rotation margin 1.40 at 25 g,"SwapCell interface v0.3 items W, C and V1",Not verifiable at TRL 3
+R13,Coding node 0.30 V; mode 4 net 1.39 A; clamp rotation margin 1.44 at 25 g,"SwapCell interface v0.3 items W, C and V1",Not verifiable at TRL 3
 R1,"250 W rated motor, 20 km/h cut-off, pedal assist and 6 km/h walk assist",250 W; 25 km/h or lower; assist only when pedaling,Met (by specification)
 R2,37 km (36 km with minimum cells),30 km or more,Met
 R5,Cradle for 28 to 32 mm tubes; motor for 100 mm spacing and 635 rim; pack fits the main triangle in the model,Common roadster,Met (on paper)
-R6,6.65 kg,7 kg or less,Met
+R6,6.78 kg,7 kg or less,Met
 R8,27 km/day; recharge 1.3 days (1.5 at 4 h),20 km/day; 2 days or less,Met
-R12,Bike kit $188; solar set $86 costed separately,Bike kit $250 or less,Met
+R12,Bike kit $196 ($54 under the target); solar set $90 costed separately,Bike kit $250 or less (value-engineering target),Met

@@ -2,13 +2,13 @@
 
 ![TRL 3](https://img.shields.io/badge/TRL-3%20of%209-0F766E) ![Hardware: CERN-OHL-S-2.0](https://img.shields.io/badge/hardware-CERN--OHL--S--2.0-111827) ![Software: MIT](https://img.shields.io/badge/software-MIT-111827) [![DOI](https://zenodo.org/badge/1386426353.svg)](https://zenodo.org/badge/latestdoi/1386426353) [![REUSE compliant](https://github.com/BoujeeEnjinia1701/sunspoke/actions/workflows/reuse.yml/badge.svg)](https://github.com/BoujeeEnjinia1701/sunspoke/actions/workflows/reuse.yml) [![Archived in Software Heritage](https://archive.softwareheritage.org/badge/origin/https://github.com/BoujeeEnjinia1701/sunspoke/)](https://archive.softwareheritage.org/browse/origin/?origin_url=https://github.com/BoujeeEnjinia1701/sunspoke)
 
-**Area:** Mobility and Logistics · **TRL:** 3 of 9 (proof of concept on paper) · **Prototype budget:** $250 USD for the bike kit (solar set costed separately; pack priced in SwapCell) · **Difficulty:** 3 of 5
+**Area:** Mobility and Logistics · **TRL:** 3 of 9 (proof of concept on paper) · **Value-engineering target:** USD 250 for the bike kit (estimated USD 196; solar set costed separately; pack priced in SwapCell) · **Difficulty:** 3 of 5
 
 Open, bolt-on electric conversion kit for existing steel bicycles, serviceable by local bike mechanics and charged from a single 100 W solar panel or a shared village hub, using a SwapCell-compatible battery.
 
 ![SunSpoke: solar-charged e-bike conversion kit for steel roadster bicycles, product render](media/render-hero.png)
 
-[Exploded render](media/render-exploded.png) · [Detail render](media/render-detail.png) · [Interactive 3D model](media/viewer.html) · [Concept blueprint (PDF)](media/concept-blueprint.pdf) · [General arrangement SSP-DWG-001 (PDF)](cad/drawings/SSP-DWG-001.pdf) · [Sizing note SSP-CAL-001](docs/04-calcs/01-sizing.md) · [Review note](docs/REVIEW.md)
+[Exploded render](media/render-exploded.png) · [Detail render](media/render-detail.png) · [Interactive 3D model](media/viewer.html) · [Concept blueprint (PDF)](media/concept-blueprint.pdf) · [General arrangement SSP-DWG-001 (PDF)](cad/drawings/SSP-DWG-001.pdf) · [Sizing note SSP-CAL-001](docs/04-calcs/01-sizing.md) · [Prototype build plan](docs/05-build-plan.md) · [Design decisions](docs/06-design-decisions.md) · [Review note](docs/REVIEW.md)
 
 ## Concept rationale
 
@@ -66,11 +66,17 @@ Full design precis: [docs/02-concept.md](docs/02-concept.md)
 - Sealed controller with a motor thermistor input that derates instead of cutting out (decided by Amish, 2026-09-25)
 - Handlebar power switch in the SwapCell INTERLOCK loop
 - Pedal-assist sensor
-- SwapCell receiver cradle with band clamps (no welding) and host adapter
+- SwapCell receiver cradle on V-saddles and three band clamps (no welding or drilling), with a drop-down gate and over-centre draw latch, and the host adapter
 - 100 W solar panel with MPPT charger
 - Weatherproof wiring harness
 
 The working bill of materials is in [bom/bom.csv](bom/bom.csv).
+
+## Building the prototype
+
+The [prototype build plan](docs/05-build-plan.md) (SSP-BLD-001) shows, in pictures drawn from the model, how each part is made and how it fits the next, then how the kit goes onto a donor roadster in twelve steps and the solar set in three. Making the design buildable changed the concept in places (decision record [SSP-DDR-003](docs/decisions/0003-design-for-construction.md)): the cradle now sits on V-saddles with three band clamps, the pack is held by a drop-down gate and an over-centre draw latch, the torque arms are joggled to lie on the fork blades, and the panel stand is a bolted timber frame. Nothing is welded, and nothing is drilled or cut on the donor bicycle. Decisions still open are in the [design decisions register](docs/06-design-decisions.md).
+
+![SunSpoke kit on the donor bicycle, pulled apart and numbered in build order](docs/05-build-plan/overview.png)
 
 ## Safety
 
