@@ -3,9 +3,9 @@ doc_id: SSP-DDR-003
 title: SunSpoke design for construction
 project: SunSpoke
 doc_type: Design decision record
-version: "0.1"
+version: "0.2"
 status: Draft
-date: '2026-10-01'
+date: '2026-10-02'
 author: Amish Chadha
 license: CERN-OHL-S-2.0
 revisions:
@@ -13,12 +13,16 @@ revisions:
   date: '2026-10-01'
   author: Amish Chadha
   change: Changes that make the concept physically buildable, with the reason for each; made under Amish's 2026-09-30 instruction to make the design physically buildable; open for his review
+- version: "0.2"
+  date: '2026-10-02'
+  author: Amish Chadha
+  change: "Accepted by Amish on 2026-10-02, with A1 and A2 as recommended"
 ---
 
 # 0003: Design for construction
 
 - **Date:** 2026-10-01
-- **Status:** Draft. Every change in Table 1 was made under Amish's 2026-09-30 instruction to make the design physically buildable; open for his review. The items in Table 3 are Proposed, awaiting Amish.
+- **Status:** accepted. Amish, 2026-10-02: "i approve your recommendations for all 555 open decisions." This covers every change in Table 1 (P1 to P13) and the items in Table 3 (A1 and A2), now decided as recommended and recorded in the design decisions register (SSP-DEC-001).
 
 ## Context
 
@@ -59,16 +63,16 @@ The changes keep what SunSpoke does: the same 250 W front hub motor, 48 V SwapCe
 | Documents | SSP-CAL-001 v0.3, SSP-REQ-001 v0.5, SSP-PRC-001 v0.5: mass, cost, retention and fit figures updated. No requirement changed status. | Follows the model. |
 | Unchanged | Motor, torque arm lever arm, controller, pack, charging, solar yield, range, hill climb and braking results (each within rounding of v0.2). | |
 
-*Table 3. Proposed, awaiting Amish.*
+*Table 3. Proposed, then accepted by Amish as recommended on 2026-10-02.*
 
 | # | Question | Options | Recommendation |
 | --- | --- | --- | --- |
-| A1 | The pack swap now has two hand movements at the cradle (open the latch, fold the gate) where the concept showed one lever. | (a) gate and draw latch as modelled; (b) design a single lever that also folds the gate (a linkage, more parts, not yet designed). | (a) for the prototype; review after the first swap trials at TRL 4. |
-| A2 | Timber for the panel stand (also proposal 4 of 2026-09-26). | (a) timber, as modelled; (b) steel angle, bolted. | (a): no welding, local materials, and it is what the renders show. |
+| A1 | The pack swap now has two hand movements at the cradle (open the latch, fold the gate) where the concept showed one lever. | (a) gate and draw latch as modelled; (b) design a single lever that also folds the gate (a linkage, more parts, not yet designed). | (a) for the prototype; review after the first swap trials at TRL 4. **Decided 2026-10-02: (a).** |
+| A2 | Timber for the panel stand (also proposal 4 of 2026-09-26). | (a) timber, as modelled; (b) steel angle, bolted. | (a): no welding, local materials, and it is what the renders show. **Decided 2026-10-02: (a).** |
 
 ## Consequences
 
-- `design_state: constructable` in `project.yaml`. The build plan SSP-BLD-001 shows every component and step in pictures generated from the model (`cad/src/build_plan_media.py`); open decisions are in the design decisions register SSP-DEC-001.
+- `design_state: constructable` in `project.yaml`. The build plan SSP-BLD-001 shows every component and step in pictures generated from the model (`cad/src/build_plan_media.py`); the decisions are recorded in the design decisions register SSP-DEC-001.
 - Requirement status is unchanged: none not met; R3, R4 and R11 at risk; R7, R9, R10 and R13 not verifiable at TRL 3; the rest met on paper (SSP-CAL-001 v0.3).
 - The photoreal renders (`media/render-*.png`), `media/card.png`, `media/social-preview.png` and the appearance model `cad/src/product_model.py` still show the concept cradle, lever, torque arms and stand; they need updating on Amish's Mac, where Blender is.
-- The fork must take the motor's 10 mm axle flats without filing (decision 15 of SSP-DDR-001 is still open); the build plan asks for a donor fork that does.
+- The fork must take the motor's 10 mm axle flats without filing (decided on 2026-10-02: the fork is never filed for now, SSP-DEC-001); the build plan asks for a donor fork that does.

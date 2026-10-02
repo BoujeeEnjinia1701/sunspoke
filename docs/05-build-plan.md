@@ -3,9 +3,9 @@ doc_id: SSP-BLD-001
 title: SunSpoke prototype build plan
 project: SunSpoke
 doc_type: Build plan
-version: "0.1"
+version: "0.2"
 status: Draft
-date: '2026-10-01'
+date: '2026-10-02'
 author: Amish Chadha
 license: CERN-OHL-S-2.0
 revisions:
@@ -13,6 +13,10 @@ revisions:
     date: '2026-10-01'
     author: Amish Chadha
     change: First build plan, with pictures by component and step; design made constructable (SSP-DDR-003)
+  - version: "0.2"
+    date: '2026-10-02'
+    author: Amish Chadha
+    change: "Safety stop S7 adds the no-wet-riding rule decided by Amish on 2026-10-02"
 ---
 
 # SunSpoke prototype build plan
@@ -451,7 +455,7 @@ Stop at each point. Carry on only when everything listed is true.
 - **S4. Before the pack goes in (step 12).** Fuse in; power switch off; brake sensors and their magnets fitted; the wheel off the ground or the bike on a stand.
 - **S5. Before any powered test.** Gate closed with the latch over centre and its safety catch on; cradle bands at torque; the bike on a stand with the front wheel clear of the ground; brakes adjusted with new blocks.
 - **S6. Before any charging.** The charging place of S1; the charger's output set and measured at 54.6 V or less with nothing connected; the panel lead and charge cable polarity checked with a meter; never charge a pack that is hot, damaged or below 0 °C; attended throughout the first charge.
-- **S7. Before anyone rides it (outside this plan).** First rides are TRL 4 tests on a closed, dry site, at walking pace first, by a rider with a helmet, after the brake cut-off and stopping checks pass. Rod brakes on steel rims stop poorly in the wet: no wet riding.
+- **S7. Before anyone rides it (outside this plan).** No trial is ridden in the wet until a wet braking test with the wet-weather blocks meets R11's wet target (SSP-DEC-001). First rides are TRL 4 tests on a closed, dry site, at walking pace first, by a rider with a helmet, after the brake cut-off and stopping checks pass. Rod brakes on steel rims stop poorly in the wet: no wet riding.
 
 ## 7. Tools, skills and workspace
 

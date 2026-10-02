@@ -273,3 +273,36 @@ Unchanged hazards (lithium pack, retention, fork dropouts, wet braking, motor he
 ### Recommended next step
 
 Amish reviews SSP-DDR-003 and the register. TRL 4 (building to the plan) remains on hold; trl stays 3.
+
+## Session 2026-10-02: open decisions decided
+
+Amish approved every recommendation for the open decisions on 2026-10-02: "i approve your recommendations for all 555 open decisions."
+
+### Decisions recorded
+
+Eleven, all moved to "Decisions made" in SSP-DEC-001 (open items 1 to 11): design for construction accepted (SSP-DDR-003, P1 to P13); gate and draw latch for the pack swap; timber panel stand; the fork is never filed for now, and donors are chosen whose slots take 10 mm flats; western Kenya and eastern Uganda as the default region, with a bicycle mechanics' group or rural transport organization as the partner type; vertical cranks, the raised saddle, brake sensors under the bar and the seated rider accepted in the renders; R11 gains a wet stopping target, wet-weather brake blocks go in the kit and trials are not ridden in the wet until a wet braking test meets the target; a widely sold 250 W front geared hub such as one of Bafang's as the reference motor for rerunning R3.
+
+### Documents changed
+
+- `docs/06-design-decisions.md` SSP-DEC-001 v0.2: decisions made; open decisions section now reads "None"; To confirm items 1 and 2 updated for the no-filing rule.
+- `docs/decisions/0003-design-for-construction.md` SSP-DDR-003 v0.2: accepted (status Draft kept); A1 and A2 as recommended.
+- `docs/03-requirements.md` SSP-REQ-001 v0.6: R11 adds a wet stopping target; safety note.
+- `docs/04-calcs/01-sizing.md` SSP-CAL-001 v0.4: R4, R11 and motor assumption text; no figures changed.
+- `docs/02-concept.md` SSP-PRC-001 v0.6 and `docs/01-problem.md` SSP-PRB-001 v0.4: region and partner type, slot filing, reference motor and wet braking.
+- `docs/05-build-plan.md` SSP-BLD-001 v0.2: safety stop S7 adds the no-wet-riding rule.
+- `README.md`: Safety note adds the no-filing rule, the wet-weather blocks and the no-wet-riding rule.
+- `bom/bom-notes.md`: wet-weather brake blocks and the reference motor noted.
+
+### Follow-up actions to carry approved decisions into the design
+
+1. Decision 10 (calculations): set the value of R11's wet stopping target and calculate the wet stopping distance with wet-weather blocks suited to steel rims; revisit the 20 km/h default cut-off once the wet target is set.
+2. Decision 10 (BOM): add wet-weather brake blocks for steel rims, front and rear, as a line in `bom/bom.csv`.
+3. Decision 10 (pictures): add fitting the wet-weather blocks to the build plan (section 1 and the brake check) with its picture.
+4. Decision 11 (calculations): rerun R3 with the reference motor's winding resistance, thermal capacity and gear temperature limit once the maker supplies them.
+5. Decision 4 (BOM): after the donor survey, confirm the motor's axle flats fit the common slot width (line 1).
+
+### Points found in the review
+
+- Items 3 and 8 are already settled by DDR-003 (P12 makes the stand timber; P10 moves the brake sensors), so accepting item 1 closes them.
+- R11 is specified dry only, yet the calculation note itself calls the 21.7 m wet stop "a safety concern whatever the requirement says"; the register should treat item 10 as a safety item, not an option.
+- The 20 km/h default cut-off was decided partly on the dry braking result; it should be revisited once the wet target is set.

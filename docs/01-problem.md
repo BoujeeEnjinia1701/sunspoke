@@ -3,9 +3,9 @@ doc_id: SSP-PRB-001
 title: SunSpoke problem statement
 project: SunSpoke
 doc_type: Problem statement
-version: "0.3"
+version: "0.4"
 status: Draft
-date: '2026-09-25'
+date: '2026-10-02'
 author: Amish Chadha
 license: CERN-OHL-S-2.0
 revisions:
@@ -21,6 +21,10 @@ revisions:
   date: '2026-09-25'
   author: Amish Chadha
   change: Record SSP-DDR-001 (48 V on SwapCell, budget covers the bike kit only, pack priced in SwapCell); add checked sources to prior work
+- version: "0.4"
+  date: '2026-10-02'
+  author: Amish Chadha
+  change: "First region and partner type decided by Amish on 2026-10-02 (SSP-DEC-001)"
 ---
 
 # SunSpoke problem statement
@@ -87,7 +91,7 @@ Two sources were checked on 2026-09-25 (above). The other entries are general de
 
 ## Open questions
 
-- Which partner organization and which region first (for example an East African bike mechanic cooperative, a health worker program, or a university engineering department)? Proposed, awaiting Amish; the portfolio picks partners per area later.
+- Which partner organization and which region first (for example an East African bike mechanic cooperative, a health worker program, or a university engineering department)? Decided 2026-10-02: western Kenya and eastern Uganda as the default region, where 28 in roadsters and bicycle taxis are common, with a bicycle mechanics' group or rural transport organization there as the partner type; the partner is named when the portfolio picks partners for this area (SSP-DEC-001).
 - The 48 V system is decided (SSP-DDR-001). Field work should still record how common 36 V and 48 V spares are locally, which bears on the later 36 V low-cost variant.
 - How much cargo and passenger carrying must the kit support, and does the pack location need to leave the rear carrier free? Assumed yes; to validate.
 - What assist speed limit and registration rules apply in the first target country?

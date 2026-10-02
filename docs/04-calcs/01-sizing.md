@@ -3,9 +3,9 @@ doc_id: SSP-CAL-001
 title: SunSpoke sizing calculations
 project: SunSpoke
 doc_type: Calculation note
-version: "0.3"
+version: "0.4"
 status: Draft
-date: '2026-10-01'
+date: '2026-10-02'
 author: Amish Chadha
 license: CERN-OHL-S-2.0
 revisions:
@@ -21,6 +21,10 @@ revisions:
   date: '2026-10-01'
   author: Amish Chadha
   change: Constructable design (SSP-DDR-003). Mass, cradle retention (three band clamps over V-saddles, real band path), end stop and gate loads, fit check, cost against the value-engineering target
+- version: "0.4"
+  date: '2026-10-02'
+  author: Amish Chadha
+  change: "R4, R11 and motor assumption text follow Amish's decisions of 2026-10-02; no figures changed"
 ---
 
 # SunSpoke sizing calculations
@@ -41,7 +45,7 @@ Every number in this note is printed by `docs/04-calcs/sizing.py` (run from the 
 | Motor plus controller efficiency, cruise | 75 % | Small geared hub at part load |
 | Wheel radius | 0.355 m | 28 in (ETRTO 635) with tyre |
 | SwapCell pack | 466 Wh at 0.2C (452 Wh with minimum cells), 46.8 V, 110 mΩ, 2.85 kg; 90 % usable window | SWC-CAL-001 |
-| Motor | 48 V, 250 W geared hub, about 200 rpm no-load at 48 V, gear efficiency 90 %, winding 0.45 Ω, 15 W iron and gear loss, 40 N·m peak | Typical slow-wound 250 W geared hub; to confirm against a named motor |
+| Motor | 48 V, 250 W geared hub, about 200 rpm no-load at 48 V, gear efficiency 90 %, winding 0.45 Ω, 15 W iron and gear loss, 40 N·m peak | Typical slow-wound 250 W geared hub; to confirm against the reference motor decided on 2026-10-02, a widely sold 250 W front geared hub such as one of Bafang's (maker's data requested; winding resistance measured at TRL 4 if not published) |
 | Motor thermal | 600 J/K stator and winding, 1.2 K/W winding to ambient while riding, 120 °C practical limit (nylon planetary gears); controller derate from 110 °C on the motor thermistor | Assumed; hot case 0.60 Ω, 450 J/K, 1.5 K/W; derate decided in SSP-DDR-002 |
 | Solar | 100 W panel, 4.5 peak sun hours (4.0 low), 80 % derating, 92 % boost MPPT, 95 % cell charging, 97 % pack output | SSP-PRC-001 |
 | Torque arms | 5 x 20 mm mild steel (250 MPa yield), clamp 130 mm from the axle; flats lever 5 mm on bare dropouts | |
@@ -119,7 +123,7 @@ The handlebar power switch sits in series with the coding resistor (decided by A
 
 At the assumed 40 N·m motor peak, bare dropouts would carry about 4,000 N on each slot face (20 N·m per side over a 5 mm lever). Torque arms clamped 130 mm up each blade carry about 308 N in total, 154 N per arm clamp, and the 5 x 20 mm arm sees about 60 MPa in bending at the axle, a safety factor of about 4.2 on mild steel yield. On the design climb the reaction torque is 32.6 N·m. Torque arms on both sides stay mandatory (R10).
 
-If the donor slot is 3/8 in (9.53 mm), the 10 mm axle flats need about 0.24 mm filed from each slot face. That is small, but it is fabrication on the donor fork, which R4 forbids, and whether it is acceptable with torque arms fitted is open (R4 **at risk**). Fork fatigue under the heavier wheel is not calculated.
+If the donor slot is 3/8 in (9.53 mm), the 10 mm axle flats need about 0.24 mm filed from each slot face. That is small, but it is fabrication on the donor fork, which R4 forbids. Amish decided on 2026-10-02 that the fork is never filed for now: donors are chosen whose slots take 10 mm flats, and if 3/8 in slots are the norm, a motor whose axle flats fit them is looked for first (SSP-DEC-001). R4 stays **at risk** until the donor survey shows such donors are common. Fork fatigue under the heavier wheel is not calculated.
 
 ## 8. Cradle retention, latch class V1 (item V)
 
@@ -137,7 +141,7 @@ The parametric model (`cad/src/model.py`) places the pack on a 721 mm down tube 
 
 ## 10. Braking (R11)
 
-From 20 km/h the bike covers 2.78 m during a 0.5 s application delay, so stopping in 9 m needs 2.48 m/s². Both rod brakes on dry steel rims give about 2.72 m/s² and a stopping distance of about **8.5 m** (9 % margin on deceleration); from 25 km/h the dry distance is about 12.4 m. In the wet, block friction on steel rims falls to about 0.12 and the distance rises to about 21.7 m. The loaded bike at 20 km/h carries about 1,987 J, about 2.5 times the 795 J of the unconverted bike at 13 km/h. R11 is specified dry and is **at risk** on a thin margin; the wet case is a safety concern whatever the requirement says. The 20 km/h default assist limit (decided) is supported by this result.
+From 20 km/h the bike covers 2.78 m during a 0.5 s application delay, so stopping in 9 m needs 2.48 m/s². Both rod brakes on dry steel rims give about 2.72 m/s² and a stopping distance of about **8.5 m** (9 % margin on deceleration); from 25 km/h the dry distance is about 12.4 m. In the wet, block friction on steel rims falls to about 0.12 and the distance rises to about 21.7 m. The loaded bike at 20 km/h carries about 1,987 J, about 2.5 times the 795 J of the unconverted bike at 13 km/h. R11 was specified dry and is **at risk** on a thin margin; the wet case is a safety concern whatever the requirement says. On 2026-10-02 Amish added a wet stopping target to R11, put wet-weather brake blocks suited to steel rims in the kit and set a no-wet-riding rule for trials until a wet braking test meets the target (SSP-DEC-001); the wet target's value and the wet case with those blocks are still to be calculated. The 20 km/h default assist limit (decided) is supported by this result.
 
 ## 11. Cost (R12)
 
@@ -163,7 +167,7 @@ R12 (bike kit USD 250 or less; solar set costed separately; pack excluded) is me
 | --- | --- | --- | --- |
 | R3 | 100 °C winding at the top of 500 m from 35 °C (139 °C in the hot case); 32.6 N·m; 204 W motor; hot case derates after 224 m | 8 % for 500 m at 8 km/h at 35 °C; thermistor derate from 110 °C, no cutout | At risk |
 | R4 | Slot filing about 0.24 mm per side on a 9.53 mm slot; fitting time not calculable | No fabrication; 90 min or less | At risk |
-| R11 | 8.5 m dry (9 % margin); 21.7 m wet | 9 m or less from 20 km/h, dry dirt | At risk |
+| R11 | 8.5 m dry (9 % margin); 21.7 m wet | 9 m or less from 20 km/h, dry dirt; wet target added 2026-10-02, value to be set | At risk |
 | R7 | IP ratings by part selection only | IP65 electronics, IP54 motor, 150 mm water, 0 to 45 °C | Not verifiable at TRL 3 |
 | R9 | Generic parts 84 % of kit cost; swap time not calculable | Pluggable joints, 20 min swap, 70 % generic | Not verifiable at TRL 3 |
 | R10 | Arm clamp 154 N each, arm safety factor 4.2; 0.5 s cut-off needs a bench test | Brake cut-off, 0.5 s stop, fuse, torque arms | Not verifiable at TRL 3 |

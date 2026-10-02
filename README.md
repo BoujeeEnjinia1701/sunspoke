@@ -80,7 +80,7 @@ The [prototype build plan](docs/05-build-plan.md) (SSP-BLD-001) shows, in pictur
 
 ## Safety
 
-> Check that the donor frame and fork can take a hub motor's torque; fit torque arms. Contains a lithium battery pack. Use a BMS with cell-level protection, fuse the pack, and charge on a non-combustible surface.
+> Check that the donor frame and fork can take a hub motor's torque; fit torque arms, and never file the fork's dropout slots: choose a donor whose slots take the motor's axle flats. Rod brakes on steel rims lose most of their grip in rain; fit the wet-weather brake blocks in the kit, and do not ride a trial bike in the wet until a wet braking test meets the target. Contains a lithium battery pack. Use a BMS with cell-level protection, fuse the pack, and charge on a non-combustible surface.
 
 ## Repository layout
 

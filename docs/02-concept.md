@@ -3,9 +3,9 @@ doc_id: SSP-PRC-001
 title: SunSpoke design precis
 project: SunSpoke
 doc_type: Design precis
-version: "0.5"
+version: "0.6"
 status: Draft
-date: '2026-10-01'
+date: '2026-10-02'
 author: Amish Chadha
 license: CERN-OHL-S-2.0
 revisions:
@@ -29,6 +29,10 @@ revisions:
   date: '2026-10-01'
   author: Amish Chadha
   change: "Constructable design (SSP-DDR-003): cradle on V-saddles with three band clamps, drop-down gate and draw latch, joggled torque arms, timber panel stand; figures from SSP-CAL-001 v0.3; build plan SSP-BLD-001"
+- version: "0.6"
+  date: '2026-10-02'
+  author: Amish Chadha
+  change: "Region, slot filing, reference motor and wet braking decided by Amish on 2026-10-02 (SSP-DEC-001)"
 ---
 
 # SunSpoke design precis
@@ -130,7 +134,7 @@ All of these were decided by Amish on 2026-09-25 (go with recommendation), in SS
 - **Lithium pack.** A cell in thermal runaway vents flammable, toxic gas and can ignite its neighbors. Use only a SwapCell pack with its BMS, fuse the harness (item 9), charge on a non-combustible surface in shade and away from sleeping areas, never charge a pack that is damaged, swollen or has been submerged, and keep the pack out of direct sun when parked. The pack refuses charge below 0 °C and above 45 °C cell temperature.
 - **Pack retention.** A pack that leaves its cradle at speed is a 2.85 kg projectile with live contacts. The cradle must meet SwapCell latch class V1, the draw latch must have its safety catch engaged, and the three band clamps must be tightened to their stated torque and checked at every service; rotation resistance at a 25 g lateral shock has only about 1.44 margin on paper.
 - **Fork dropout failure.** A spun axle can rip the motor cable and let the wheel leave the fork, which throws the rider over the bars. Torque arms on both sides are mandatory, axle nuts need a set torque and a check at every service, and a fork with cracked, bent or heavily filed dropouts must not be converted. Fork fatigue under the heavier wheel is unverified.
-- **Braking with added speed and mass.** At 20 km/h the loaded bike carries about 2.0 kJ, about 2.5 times the unconverted bike at 13 km/h. Rod brakes on steel rims lose most of their grip in rain: about 22 m to stop from 20 km/h wet against 8.5 m dry. Brake cut-off sensors on both levers, the 20 km/h limit, and a brake check with new blocks at fitting are part of the kit. Braking with only the front brake on loose ground can wash out the front wheel.
+- **Braking with added speed and mass.** At 20 km/h the loaded bike carries about 2.0 kJ, about 2.5 times the unconverted bike at 13 km/h. Rod brakes on steel rims lose most of their grip in rain: about 22 m to stop from 20 km/h wet against 8.5 m dry. Brake cut-off sensors on both levers, the 20 km/h limit, and a brake check at fitting with new wet-weather blocks suited to steel rims are part of the kit (decided 2026-10-02). R11 now has a wet stopping target, and no trial is ridden in the wet until a wet braking test meets it (SSP-DEC-001). Braking with only the front brake on loose ground can wash out the front wheel.
 - **Motor overheating.** On a long loaded climb in the heat the winding may exceed its limit (R3). A sudden cutout on a hill can stall a loaded bike, so the controller derates on the motor thermistor instead (decided, SSP-DDR-002); the bike slows to walking pace on a very long hot climb but keeps moving.
 - **Wiring in rain.** The system is about 50 V DC, below the usual touch-safety threshold, but water in connectors causes corrosion, shorts and sudden loss of assist. Use keyed IP65 connectors with dielectric grease, drip loops, and routing that keeps the motor cable exit facing down. The fuse protects against a pinched cable shorting to the frame. Opening the power switch opens the pack output within 1 ms.
 - **Traction.** With cargo on the rear carrier, the front wheel carries little weight and a front motor can spin on sand or wet laterite. Assist ramp-up must be soft.
@@ -139,10 +143,10 @@ All of these were decided by Amish on 2026-09-25 (go with recommendation), in SS
 
 These remain after SSP-DDR-001. None of them is TRL 4 work to be started now; TRL 4 is on hold by Amish's instruction.
 
-- First partner and region for co-design and fitting trials. Proposed, awaiting Amish.
-- Whether light slot filing is acceptable with torque arms (R4). Needs the donor survey; awaiting Amish.
-- Motor data for R3: winding resistance, thermal capacity and gear temperature limit of a named 250 W geared hub.
-- Wet braking: whether R11 should add a wet target, and whether better blocks or a rim brake upgrade belong in the kit.
+- First partner and region for co-design and fitting trials. Decided 2026-10-02: western Kenya and eastern Uganda as the default region, with a bicycle mechanics' group or rural transport organization there as the partner type; the partner is named when the portfolio picks partners for this area (SSP-DEC-001).
+- Slot filing (R4). Decided 2026-10-02: never file the fork for now; choose donors whose slots take 10 mm flats, and if the donor survey shows 3/8 in slots are the norm, look first for a motor whose axle flats fit them (SSP-DEC-001).
+- Motor data for R3: winding resistance, thermal capacity and gear temperature limit. Decided 2026-10-02: the reference motor is a widely sold 250 W front geared hub such as one of Bafang's; its maker is asked for the data and R3 is rerun, and the winding resistance is measured at TRL 4 if the data are not published (SSP-DEC-001).
+- Wet braking: decided 2026-10-02, R11 adds a wet stopping target (value still to be set), wet-weather brake blocks suited to steel rims go in the kit, and trials keep a no-wet-riding rule until a wet braking test meets the target (SSP-DEC-001).
 - The legacy-to-heartbeat transition in the SwapCell pack. Raising it with the SwapCell project is decided (SSP-DDR-002); the change belongs to that repo.
 - Confirm that a low-cost boost charger with input-voltage tracking gives near-MPPT yield from one 18 V panel.
 

@@ -3,9 +3,9 @@ doc_id: SSP-REQ-001
 title: SunSpoke requirements
 project: SunSpoke
 doc_type: Requirements
-version: "0.5"
+version: "0.6"
 status: Draft
-date: '2026-10-01'
+date: '2026-10-02'
 author: Amish Chadha
 license: CERN-OHL-S-2.0
 revisions:
@@ -29,11 +29,15 @@ revisions:
   date: '2026-10-01'
   author: Amish Chadha
   change: Status values from SSP-CAL-001 v0.3 for the constructable design (SSP-DDR-003); R12 reported against the value-engineering target
+- version: "0.6"
+  date: '2026-10-02'
+  author: Amish Chadha
+  change: "R11 adds a wet stopping target, decided by Amish on 2026-10-02 (SSP-DEC-001)"
 ---
 
 # SunSpoke requirements
 
-These requirements were checked by calculation in SSP-CAL-001 at TRL 3. None is shown to be not met; R3, R4 and R11 are at risk, and R7, R9, R10 and R13 cannot be verified until hardware exists (TRL 4, on hold by Amish's instruction). Targets are not yet validated with users and will be revised after co-design sessions (see SSP-PRB-001). Changes in v0.3 follow Amish's decisions of 2026-09-25 (SSP-DDR-001). In v0.5 the status values follow SSP-CAL-001 v0.3 for the constructable design (SSP-DDR-003); no requirement changed status. In v0.4, R3 is restated to require a thermal derate instead of a cutout and R10 adds the handlebar power switch in the INTERLOCK loop (SSP-DDR-002).
+These requirements were checked by calculation in SSP-CAL-001 at TRL 3. None is shown to be not met; R3, R4 and R11 are at risk, and R7, R9, R10 and R13 cannot be verified until hardware exists (TRL 4, on hold by Amish's instruction). Targets are not yet validated with users and will be revised after co-design sessions (see SSP-PRB-001). Changes in v0.3 follow Amish's decisions of 2026-09-25 (SSP-DDR-001). In v0.5 the status values follow SSP-CAL-001 v0.3 for the constructable design (SSP-DDR-003); no requirement changed status. In v0.6, R11 adds a wet stopping target (SSP-DEC-001, 2026-10-02). In v0.4, R3 is restated to require a thermal derate instead of a cutout and R10 adds the handlebar power switch in the INTERLOCK loop (SSP-DDR-002).
 
 The **design load case** used throughout is a 75 kg rider, 25 kg of cargo on the rear carrier, a 22 kg roadster and about 6.78 kg of kit and pack: about 130 kg (128.78 kg) in total, on a dry dirt road.
 
@@ -51,7 +55,7 @@ The **design load case** used throughout is a 75 kg rider, 25 kg of cargo on the
 | R8 | Charge from one 100 W solar panel | Energy for 20 km or more of loaded assist per day at 4.5 peak sun hours; full recharge (10 to 100 %) of the pack in 2 days or less | Solar yield calculation | Met (27 km/day, 1.3 days) |
 | R9 | Repairable by a local mechanic | Every electrical joint pluggable with keyed connectors; any single kit part swapped in 20 min or less at the roadside; basic faults diagnosed with a multimeter and a printed fault chart; 70 % or more of kit cost in generic parts available in regional towns | Design review; parts availability survey with the partner | Not verifiable at TRL 3 (84 % generic) |
 | R10 | Safe assist control | Brake cut-off on both brake levers; assist stops within 0.5 s of braking or of pedaling stopping; pack output fused; torque arms on both fork dropouts; a handlebar power switch in series with the INTERLOCK coding resistor opens the pack output when switched off | Design review; later bench test | Not verifiable at TRL 3 |
-| R11 | Stop safely with the added mass and speed | Design load case stops from 20 km/h in 9 m or less on a dry dirt road | Braking calculation; later field test with the donor brakes | At risk (8.5 m dry) |
+| R11 | Stop safely with the added mass and speed | Design load case stops from 20 km/h in 9 m or less on a dry dirt road, and meets a wet stopping target on a wet dirt road (added 2026-10-02, SSP-DEC-001; its value is to be set with the wet-weather blocks' data) | Braking calculation; later field tests dry and wet with wet-weather brake blocks for steel rims | At risk (8.5 m dry; 21.7 m wet with standard blocks; wet target not yet set) |
 | R12 | Affordable | Bike conversion kit (items 1 to 5, 7 to 9, 14) $250 or less in parts; the solar charging set is costed separately; the SwapCell pack is excluded and priced once in SwapCell | Priced BOM (`bom/bom.csv`) | Met (USD 196, USD 54 under the USD 250 value-engineering target) |
 | R13 | Build to SwapCell interface v0.3 | Cradle receptacle fits the 10 kΩ ±1 % INTERLOCK coding resistor (item W); host adapter acts as the vehicle host for modes 2, 3 and 4 within the pack's published limits (item C); cradle is a latch class V1 vehicle receiver with at least 330 N preload (item V) | Design review against SWC-PRC-001 v0.3; later vibration and shock test | Not verifiable at TRL 3 |
 
@@ -64,4 +68,4 @@ The **design load case** used throughout is a 75 kg rider, 25 kg of cargo on the
 - The 25 km/h ceiling follows EU pedelec practice (Regulation (EU) No 168/2013 excludes pedal cycles with assist up to 250 W that cuts off at 25 km/h; EN 15194 is the matching product standard). The 20 km/h default is decided (SSP-DDR-001) and is supported by the braking result in SSP-CAL-001.
 - R12 covers only the bike kit, and its USD 250 is the value-engineering target (`budget_usd`), a hypothetical control target rather than a spending limit. The solar set (about USD 90) is costed separately because a rider who charges at a village hub does not need it.
 
-> **Safety:** R6, R10, R11 and R13 are safety requirements for a bicycle carrying a 468 Wh lithium-ion pack at up to 20 km/h. Braking in the wet (about 22 m from 20 km/h in SSP-CAL-001) falls far short of the dry target, and pack retention and fork loads are unverified. No conversion may be ridden before these are verified by test, which is TRL 4 work and on hold.
+> **Safety:** R6, R10, R11 and R13 are safety requirements for a bicycle carrying a 468 Wh lithium-ion pack at up to 20 km/h. Braking in the wet (about 22 m from 20 km/h in SSP-CAL-001) falls far short of the dry target, and pack retention and fork loads are unverified. Since 2026-10-02 R11 carries a wet target, the kit includes wet-weather brake blocks suited to steel rims, and no trial is ridden in the wet until a wet braking test meets the target (SSP-DEC-001). No conversion may be ridden before these are verified by test, which is TRL 4 work and on hold.
