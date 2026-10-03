@@ -3,7 +3,7 @@ doc_id: SSP-CAL-001
 title: SunSpoke sizing calculations
 project: SunSpoke
 doc_type: Calculation note
-version: "0.4"
+version: "0.5"
 status: Draft
 date: '2026-10-02'
 author: Amish Chadha
@@ -25,11 +25,15 @@ revisions:
   date: '2026-10-02'
   author: Amish Chadha
   change: "R4, R11 and motor assumption text follow Amish's decisions of 2026-10-02; no figures changed"
+- version: "0.5"
+  date: '2026-10-02'
+  author: Amish Chadha
+  change: "Approved follow-ups (SSP-DEC-001 decision 10). Wet-weather brake blocks added to the kit (BOM line 15, 0.10 kg, USD 12); proposed wet target of 14 m from 20 km/h and the wet stop with those blocks calculated (assumed friction 0.25); 20 km/h cut-off revisited; added mass 6.88 kg; bike kit USD 208"
 ---
 
 # SunSpoke sizing calculations
 
-The 48 V SunSpoke kit on a SwapCell pack meets its range, mass, solar charging and cost requirements on paper: about 37 km of loaded range against 30 km, 6.78 kg added against 7 kg, about 27 km of riding per day from one 100 W panel, and a bike kit of about USD 196, USD 54 under the USD 250 value-engineering target. Version 0.3 recomputes mass, cradle retention, the fit in the main triangle and cost for the constructable design of SSP-DDR-003. No requirement is shown to be not met. Three are **at risk**: R3 (motor winding reaches about 100 °C at the top of the design climb in the base case but about 139 °C in a hotter-motor case, where the thermistor derate decided in SSP-DDR-002 would slow the bike instead of cutting assist), R4 (roadster fork slots may need filing) and R11 (dry stopping distance about 8.5 m against 9 m, a 9 % margin, and about 22 m in the wet). Sealing, repair time, cut-off timing and SwapCell latch class V1 retention (R7, R9, R10, R13) cannot be verified until hardware exists, which is TRL 4 work and on hold by Amish's instruction.
+The 48 V SunSpoke kit on a SwapCell pack meets its range, mass, solar charging and cost requirements on paper: about 37 km of loaded range against 30 km, 6.88 kg added against 7 kg, about 27 km of riding per day from one 100 W panel, and a bike kit of about USD 208, USD 42 under the USD 250 value-engineering target. Version 0.3 recomputed mass, cradle retention, the fit in the main triangle and cost for the constructable design of SSP-DDR-003. No requirement is shown to be not met. Three are **at risk**: R3 (motor winding reaches about 100 °C at the top of the design climb in the base case but about 139 °C in a hotter-motor case, where the thermistor derate decided in SSP-DDR-002 would slow the bike instead of cutting assist), R4 (roadster fork slots may need filing) and R11 (dry stopping distance about 8.5 m against 9 m, a 9 % margin, and about 22 m in the wet with the standard blocks; the wet-weather blocks of version 0.5 are calculated at about 11.9 m against a proposed wet target of 14 m). Sealing, repair time, cut-off timing and SwapCell latch class V1 retention (R7, R9, R10, R13) cannot be verified until hardware exists, which is TRL 4 work and on hold by Amish's instruction.
 
 Every number in this note is printed by `docs/04-calcs/sizing.py` (run from the repo root: `python docs/04-calcs/sizing.py`), which also writes `docs/04-calcs/results.csv`. The cost figures are read from `bom/bom.csv`. Fit checks in section 9 are printed by `python cad/src/model.py`. All values are first-principles estimates; nothing here is measured. SwapCell values follow SwapCell interface v0.3 and SWC-CAL-001.
 
@@ -52,6 +56,7 @@ Every number in this note is printed by `docs/04-calcs/sizing.py` (run from the 
 | Donor dropout slot | 9.53 mm (3/8 in) | Assumption until the donor survey |
 | Cradle retention | 3.5 kg receiver design pack plus 1.10 kg cradle; 8 g vibration and 25 g shock (latch class V1); three band clamps at 1.5 kN tension each over 120 degree V-saddles with 1.5 mm rubber liners, friction 0.40; centroid 77 mm above the axis of a 28.6 mm tube | SwapCell interface v0.3 item V; SSP-DDR-003 |
 | Braking | 0.5 s application delay; 250 N clamp per block from a 100 N hand force; block on steel rim 0.40 dry and 0.12 wet; braking radius 0.310 m | Rod brakes on steel rims |
+| Wet-weather blocks | Friction on a wet steel rim 0.25 (assumed); proposed wet target 14 m from 20 km/h, 1.5 times the dry target | No maker data yet; to be replaced by the maker's figure or a wet braking test (TRL 4) |
 
 ## 2. Mass (R6)
 
@@ -66,12 +71,13 @@ Every number in this note is printed by `docs/04-calcs/sizing.py` (run from the 
 | Host adapter and charge port | 0.15 |
 | Pedal-assist sensor | 0.10 |
 | Handlebar control and brake sensors | 0.15 |
+| Wet-weather brake blocks, four (they replace the donor blocks; counted in full to be safe) | 0.10 |
 | Wiring harness and fuse | 0.40 |
-| **Kit** | **3.93** |
+| **Kit** | **4.03** |
 | SwapCell pack (SWC-CAL-001) | 2.85 |
-| **Added mass** | **6.78 (14.9 lb)** |
+| **Added mass** | **6.88 (15.2 lb)** |
 
-R6 (7 kg) is met with 0.22 kg margin. The design load case totals 128.78 kg, rounded to "about 130 kg" in the requirements. In v0.3 the cradle mass comes from the model's volumes (tray 0.44 kg, three V-saddles 0.10 kg, end stop 0.08 kg, slide strips 0.08 kg, gate 0.07 kg, catch bar 0.02 kg) plus the bought parts (three band clamps, hinge, draw latch, receptacle and fixings); the 3 mm aluminium tray replaces the concept's folded steel to hold the mass to 1.10 kg.
+R6 (7 kg) is met with 0.12 kg margin (it was 0.22 kg before the wet-weather blocks were added). The design load case totals 128.88 kg, rounded to "about 130 kg" in the requirements. In v0.3 the cradle mass comes from the model's volumes (tray 0.44 kg, three V-saddles 0.10 kg, end stop 0.08 kg, slide strips 0.08 kg, gate 0.07 kg, catch bar 0.02 kg) plus the bought parts (three band clamps, hinge, draw latch, receptacle and fixings); the 3 mm aluminium tray replaces the concept's folded steel to hold the mass to 1.10 kg.
 
 ## 3. Energy per kilometer and range (R2)
 
@@ -141,23 +147,23 @@ The parametric model (`cad/src/model.py`) places the pack on a 721 mm down tube 
 
 ## 10. Braking (R11)
 
-From 20 km/h the bike covers 2.78 m during a 0.5 s application delay, so stopping in 9 m needs 2.48 m/s². Both rod brakes on dry steel rims give about 2.72 m/s² and a stopping distance of about **8.5 m** (9 % margin on deceleration); from 25 km/h the dry distance is about 12.4 m. In the wet, block friction on steel rims falls to about 0.12 and the distance rises to about 21.7 m. The loaded bike at 20 km/h carries about 1,987 J, about 2.5 times the 795 J of the unconverted bike at 13 km/h. R11 was specified dry and is **at risk** on a thin margin; the wet case is a safety concern whatever the requirement says. On 2026-10-02 Amish added a wet stopping target to R11, put wet-weather brake blocks suited to steel rims in the kit and set a no-wet-riding rule for trials until a wet braking test meets the target (SSP-DEC-001); the wet target's value and the wet case with those blocks are still to be calculated. The 20 km/h default assist limit (decided) is supported by this result.
+From 20 km/h the bike covers 2.78 m during a 0.5 s application delay, so stopping in 9 m needs 2.48 m/s². Both rod brakes on dry steel rims give about 2.72 m/s² and a stopping distance of about **8.5 m** (9 % margin on deceleration); from 25 km/h the dry distance is about 12.4 m. In the wet, block friction on steel rims falls to about 0.12 and the distance rises to about 21.8 m. The loaded bike at 20 km/h carries about 1,989 J, about 2.5 times the 795 J of the unconverted bike at 13 km/h. R11 was specified dry and is **at risk** on a thin margin; the wet case is a safety concern whatever the requirement says. On 2026-10-02 Amish added a wet stopping target to R11, put wet-weather brake blocks suited to steel rims in the kit and set a no-wet-riding rule for trials until a wet braking test meets the target (SSP-DEC-001); in this version the wet case with those blocks is calculated. The value of the wet target is proposed, not decided: 14 m from 20 km/h, which is 1.5 times the dry target. Wet-weather blocks are assumed to give a friction of 0.25 on a wet steel rim (no maker data yet), which gives a deceleration of about 1.69 m/s² and a wet stop of about **11.9 m**. The wet target needs 1.38 m/s², so the margin on deceleration is about 23 %. At this friction the highest speed that meets 14 m wet is about 21.9 km/h, and the highest that would meet the dry 9 m figure wet is about 17.1 km/h. The 20 km/h default assist limit therefore stays: it meets the proposed wet target, and wet riding stays banned in trials until a wet braking test (TRL 4, on hold) shows the real friction. R11 stays **at risk** because the wet friction is an assumption.
 
 ## 11. Cost (R12)
 
-Value-engineering target: USD 250 for the bike kit (`budget_usd`, a hypothetical control target, not a limit). Estimated cost of the constructable design: USD 196 for the bike kit (USD 54 under the target).
+Value-engineering target: USD 250 for the bike kit (`budget_usd`, a hypothetical control target, not a limit). Estimated cost of the constructable design: USD 208 for the bike kit (USD 42 under the target).
 
 *Table 5. Cost from `bom/bom.csv` (indicative prices).*
 
 | Group | Items | Cost (USD) |
 | --- | --- | --- |
-| Bike conversion kit | 1 to 5, 7 to 9, 14 | 196 |
+| Bike conversion kit | 1 to 5, 7 to 9, 14, 15 | 208 |
 | Solar charging set, costed separately | 10 to 13 | 90 |
-| Kit plus solar set, pack excluded | | 286 |
+| Kit plus solar set, pack excluded | | 298 |
 | SwapCell pack, priced once in SwapCell (SWC-CAL-001) | 6 | 414 |
-| Full system for one rider with own panel | all | 700 |
+| Full system for one rider with own panel | all | 712 |
 
-R12 (bike kit USD 250 or less; solar set costed separately; pack excluded) is met, USD 54 under the value-engineering target. Generic parts make up about 84 % of the kit plus solar set cost (R9 asks for 70 %). Making the design constructable (SSP-DDR-003) moved the cradle from USD 28 to USD 33 (aluminium tray, V-saddles, a third band clamp, hinge and draw latch), hardware from USD 8 to USD 11 (four more band clamps and the controller pad) and the panel stand from USD 10 to USD 14 (timber, coach bolts); the bike kit rose from USD 188 to USD 196 and the solar set from USD 86 to USD 90.
+R12 (bike kit USD 250 or less; solar set costed separately; pack excluded) is met, USD 42 under the value-engineering target. Generic parts make up about 84 % of the kit plus solar set cost (R9 asks for 70 %). Making the design constructable (SSP-DDR-003) moved the cradle from USD 28 to USD 33 (aluminium tray, V-saddles, a third band clamp, hinge and draw latch), hardware from USD 8 to USD 11 (four more band clamps and the controller pad) and the panel stand from USD 10 to USD 14 (timber, coach bolts); the bike kit rose from USD 188 to USD 196 and the solar set from USD 86 to USD 90. Adding two pairs of wet-weather brake blocks (line 15, USD 6 a pair, an indicative price and not a quote) raised the bike kit from USD 196 to USD 208.
 
 ## 12. Results against requirements
 
@@ -167,7 +173,7 @@ R12 (bike kit USD 250 or less; solar set costed separately; pack excluded) is me
 | --- | --- | --- | --- |
 | R3 | 100 °C winding at the top of 500 m from 35 °C (139 °C in the hot case); 32.6 N·m; 204 W motor; hot case derates after 224 m | 8 % for 500 m at 8 km/h at 35 °C; thermistor derate from 110 °C, no cutout | At risk |
 | R4 | Slot filing about 0.24 mm per side on a 9.53 mm slot; fitting time not calculable | No fabrication; 90 min or less | At risk |
-| R11 | 8.5 m dry (9 % margin); 21.7 m wet | 9 m or less from 20 km/h, dry dirt; wet target added 2026-10-02, value to be set | At risk |
+| R11 | 8.5 m dry (9 % margin); 21.8 m wet with standard blocks, 11.9 m wet with wet-weather blocks (assumed friction 0.25) | 9 m or less from 20 km/h, dry dirt; wet target added 2026-10-02, proposed value 14 m | At risk |
 | R7 | IP ratings by part selection only | IP65 electronics, IP54 motor, 150 mm water, 0 to 45 °C | Not verifiable at TRL 3 |
 | R9 | Generic parts 84 % of kit cost; swap time not calculable | Pluggable joints, 20 min swap, 70 % generic | Not verifiable at TRL 3 |
 | R10 | Arm clamp 154 N each, arm safety factor 4.2; 0.5 s cut-off needs a bench test | Brake cut-off, 0.5 s stop, fuse, torque arms | Not verifiable at TRL 3 |
@@ -175,9 +181,9 @@ R12 (bike kit USD 250 or less; solar set costed separately; pack excluded) is me
 | R1 | 250 W rated motor, 20 km/h cut-off, pedal assist and 6 km/h walk assist | 250 W; 25 km/h or lower; assist only when pedaling | Met (by specification) |
 | R2 | 37 km (36 km with minimum cells) | 30 km or more | Met |
 | R5 | V-saddles for 28 to 32 mm tubes; motor for 100 mm spacing and 635 rim; pack fits and comes out of the main triangle in the model | Common roadster | Met (on paper) |
-| R6 | 6.78 kg | 7 kg or less | Met |
+| R6 | 6.88 kg | 7 kg or less | Met |
 | R8 | 27 km/day; recharge 1.3 days (1.5 at 4 h) | 20 km/day; 2 days or less | Met |
-| R12 | Bike kit USD 196 (USD 54 under the value-engineering target); solar set USD 90 costed separately | Bike kit USD 250 or less (value-engineering target) | Met |
+| R12 | Bike kit USD 208 (USD 42 under the value-engineering target); solar set USD 90 costed separately | Bike kit USD 250 or less (value-engineering target) | Met |
 
 ## 13. Checks against earlier documents
 

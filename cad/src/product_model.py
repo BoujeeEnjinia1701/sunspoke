@@ -319,6 +319,21 @@ def product_parts(P=PARAMS):
     rhub += _hex_y(rear[0], 56, rear[1], 15, 8) + _hex_y(rear[0], -56, rear[1], 15, 8)
     add("Rear hub and axle nuts", rhub, C_CHROME, "metal", None, "shell", (0, 0, 0))
 
+    # ============================================================ item 15: wet-weather brake blocks (front and rear rims)
+    # Sizes and positions come from model.py (wb_len, wb_t, wb_h, wb_r, wb_angle); each block carries a short steel shoe.
+    wang = math.radians(P["wb_angle"])
+    for sy, side in ((-1, "left"), (1, "right")):
+        blks = []
+        for (cx, cz), sgn in ((front, -1), (rear, 1)):
+            rx, rz = sgn * math.sin(wang), math.cos(wang)
+            rot = Rot(0, math.degrees(math.atan2(rx, rz)), 0)
+            y0 = sy * (10.0 + P["wb_t"] / 2)
+            blks.append(Pos(cx + P["wb_r"] * rx, y0, cz + P["wb_r"] * rz) * rot * Box(P["wb_len"], P["wb_t"], P["wb_h"]))
+            blks.append(Pos(cx + (P["wb_r"] - P["wb_h"]) * rx, sy * (10.0 + P["wb_t"] + 1.5), cz + (P["wb_r"] - P["wb_h"]) * rz)
+                        * rot * Box(P["wb_len"] - 8, 3.0, P["wb_h"] + 6))
+        add(f"Wet-weather brake blocks, {side} side (front and rear rims)", _comp(blks), "#B4532A", "rubber", 15, "shell",
+            (0, sy * 260.0, 90))
+
     # ============================================================ item 1: hub motor wheel (front)
     EW = (170, -430, 0)
     fx, fz = front

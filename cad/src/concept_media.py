@@ -18,12 +18,12 @@ parts = [Part(n, shape, colour, bom, ex) if bom else Part(n, shape, colour, None
          for n, shape, colour, bom, ex in build_parts()]
 
 render_all(
-    parts, project="SunSpoke", title="Roadster conversion kit concept", dwg_no="SSP-DWG-010", date="2026-10-01", rev="P2",
+    parts, project="SunSpoke", title="Roadster conversion kit concept", dwg_no="SSP-DWG-010", date="2026-10-02", rev="P3",
     key_figures=["250 W geared front hub, 48 V on SwapCell (decided)",
                  "SwapCell about 468 Wh: about 37 km loaded (SSP-CAL-001)",
                  "100 W panel: about 315 Wh/day stored at 4.5 sun hours",
-                 "Added mass 6.78 kg with pack; torque arms both sides",
-                 "Bike kit about USD 196; solar set about USD 90; pack excluded"],
+                 "Added mass 6.88 kg with pack; torque arms both sides",
+                 "Bike kit about USD 208; solar set about USD 90; pack excluded"],
     cut=False,
     flow={"title": "daily solar energy flow, Wh per day (estimates, 4.5 peak sun hours)", "unit": "Wh (est.)",
           "stages": [("Sun on 100 W panel", 450), ("Panel output", 360), ("Charger output", 331),

@@ -60,6 +60,8 @@ PARAMS = {
     "window_x": ((-80.0, -12.0), (12.0, 80.0)), "window_half_w": 22.0,
     "ear_x": (110.0, 172.0), "ear_h": 31.0,
     "gate_t": 3.0, "gate_z": (6.0, 31.0), "pad_t": 3.0,
+    # Wet-weather brake blocks (item 15, decided 2026-10-02): two per wheel, one each side of the rim
+    "wb_len": 60.0, "wb_h": 10.0, "wb_t": 10.0, "wb_r": 310.0, "wb_angle": 20.0,
     # Legacy concept names kept for cad/src/product_model.py (appearance model, to be updated on the Mac)
     "guide_len": 120.0, "guide_h_old": 50.0, "stop_len": 30.0, "band_pitch": 200.0, "lever_len": 90.0,
     # Host adapter (item 5) and controller (item 3)
@@ -597,6 +599,18 @@ def build_components(p=PARAMS, gate_closed=True):
         bs.append(Pos(m.X + 5 + 1, m.Y, a.Z - 20) * Rot(0, 90, 0) * Cylinder(4, 2))   # magnet on the lever post
     C["brake_sensors"] = (_fuse(bs), "#1D4ED8", 8)
 
+    # ---------------- item 15: wet-weather brake blocks, one each side of the front and the rear rim
+    # (they replace the donor's blocks; the donor's stirrups and rods are not drawn). The block bears
+    # on the rim side face at the 310 mm braking radius, 20 deg behind the fork and ahead of the seat stays.
+    wb = []
+    for (cx, cz), sgn in ((front, -1), (rear, 1)):
+        ang = math.radians(p["wb_angle"])
+        rx, rz = sgn * math.sin(ang), math.cos(ang)
+        for sy in (-1, 1):
+            blk = Rot(0, math.degrees(math.atan2(rx, rz)), 0) * Box(p["wb_len"], p["wb_t"], p["wb_h"])
+            wb.append(Pos(cx + p["wb_r"] * rx, sy * (10.0 + p["wb_t"] / 2), cz + p["wb_r"] * rz) * blk)
+    C["wet_blocks"] = (_fuse(wb), "#7C2D12", 15)
+
     # ---------------- item 9: harness, routed on the left side of the tubes and held by cable ties
     cr = 4.0
     sd = -(tr + cr)                       # left side of the seat and top tubes
@@ -709,6 +723,7 @@ GROUPS = [  # (label, component keys, colour, bom item, explode offset)
     ("Pedal-assist sensor", ["pas_disc", "pas_sensor"], "#0EA5E9", 7, (0, -360, -60)),
     ("Handlebar control and brake cut-off", ["display", "brake_sensors"], "#2563EB", 8, (160, -120, 300)),
     ("Wiring harness with fuse", ["harness", "adapter_lead"], "#111827", 9, (0, -300, -260)),
+    ("Wet-weather brake blocks (4)", ["wet_blocks"], "#7C2D12", 15, (0, -420, 120)),
     ("Solar panel, 100 W", ["panel", "panel_lead"], "#1E3A8A", 10, (-600, -2600, -300)),
     ("Boost MPPT charger", ["charger"], "#16A34A", 11, (-600, -2900, -700)),
     ("Panel stand (local make)", ["stand"], "#A16207", 12, (-600, -2600, -700)),
@@ -833,6 +848,8 @@ def constructability_checks(p=PARAMS):
     touch("Brake sensor clamps on the bar", S["brake_sensors"], S["stem_bars"])
     clear("Brake sensors clear of the levers", S["brake_sensors"] - _fuse([Pos(bar_point(905, s).X + 6, bar_point(905, s).Y, bar_point(925, s).Z - 20)
                                                                               * Rot(0, 90, 0) * Cylinder(4.5, 3) for s in (-1, 1)]), S["levers"], 1.0)
+    touch("Wet-weather blocks on the rim faces", S["wet_blocks"], S["wheels"], 0.05)
+    clear("Wet-weather blocks clear of the fork, frame and carrier", S["wet_blocks"], S["fork"] + S["frame"], 5.0)
     clear("Harness clear of the cradle", S["harness"], _fuse([S[k] for k in ("tray", "bands", "saddles", "stop", "receptacle", "gate", "latch")]), 2.0)
     clear("Harness clear of the wheels", S["harness"], S["wheels"], 10.0)
     clear("Harness clear of the cranks and chainring", S["harness"], S["drive"], 3.0)
@@ -863,7 +880,7 @@ def masses(p=PARAMS):
     return m
 
 
-KIT_ITEMS = {1, 2, 3, 4, 5, 7, 8, 9}
+KIT_ITEMS = {1, 2, 3, 4, 5, 7, 8, 9, 15}
 
 
 if __name__ == "__main__":

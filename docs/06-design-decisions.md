@@ -3,7 +3,7 @@ doc_id: SSP-DEC-001
 title: SunSpoke design decisions register
 project: SunSpoke
 doc_type: Design decisions register
-version: "0.2"
+version: "0.3"
 status: Draft
 date: '2026-10-02'
 author: Amish Chadha
@@ -17,6 +17,10 @@ revisions:
     date: '2026-10-02'
     author: Amish Chadha
     change: "Amish approved the recommendations for all eleven open decisions (SSP-DDR-003 accepted); moved to decisions made; To confirm items 1 and 2 updated"
+  - version: "0.3"
+    date: '2026-10-02'
+    author: Amish Chadha
+    change: "Approved follow-ups: wet-weather brake blocks added to the BOM (line 15) and the model; wet stopping distance calculated; Value engineering section updated (bike kit USD 208); To confirm item 11 added (wet target value and block friction)"
 ---
 
 # SunSpoke design decisions register
@@ -41,12 +45,14 @@ None. All open decisions were decided on 2026-10-02.
 | 8 | The panel's mounting hole positions on its frame | The stand's rail holes are drilled to match | SSP-DDR-003, P12 |
 | 9 | The pack moves from legacy discharge (state 5) to heartbeat discharge (mode 2) without opening its output | The bike relies on it if the adapter is slow to start; raised with SwapCell | SSP-DDR-002, item 18 |
 | 10 | A low-cost boost charger with input-voltage tracking gives near-MPPT yield from one 18 V panel | R8 assumes 92 % | SSP-PRC-001, open questions |
+| 11 | The value of R11's wet stopping target (proposed 14 m from 20 km/h, 1.5 times the dry target) and the wet friction of the wet-weather blocks (assumed 0.25; maker's data needed) | The wet stop of 11.9 m and the decision to keep the 20 km/h cut-off rest on both; the blocks' USD 6 a pair price is also indicative | SSP-CAL-001 section 10; bom line 15 |
 
 ## Value engineering
 
-Value-engineering target: USD 250 for the bike kit (a hypothetical control target, not a limit). Estimated cost of the constructable design: USD 196 for the bike kit (USD 54 under the target). The solar set is costed separately at USD 90, and the SwapCell pack (USD 414) is priced once in the SwapCell project. Main cost drivers and savings worth trying:
+Value-engineering target: USD 250 for the bike kit (a hypothetical control target, not a limit). Estimated cost of the constructable design: USD 208 for the bike kit (USD 42 under the target). The solar set is costed separately at USD 90, and the SwapCell pack (USD 414) is priced once in the SwapCell project. Main cost drivers and savings worth trying:
 
 - The largest lines are the motor wheel (USD 72), the receiver cradle (USD 33), the controller (USD 25), the harness (USD 15), the host adapter (USD 14) and the handlebar display and brake sensors (USD 14).
+- The wet-weather brake blocks (two pairs, USD 12, decided 2026-10-02) are the newest line.
 - Making the design constructable added USD 8 to the bike kit (cradle USD 28 to 33, hardware USD 8 to 11) and USD 4 to the solar set (stand USD 10 to 14).
 - Savings worth trying: buy the receptacle, draw latch and hinge in batches with other SwapCell vehicle receivers; fold the tray from 2 mm aluminium if the retention and end stop margins still hold; a shared panel and stand at a village hub removes the USD 90 solar set for riders who swap packs there.
 

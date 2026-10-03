@@ -26,7 +26,7 @@ from model import PARAMS as P  # noqa: E402
 
 OUT = ROOT / "docs" / "05-build-plan"
 DWG = ROOT / "cad" / "drawings"
-DATE = "2026-10-01"
+DATE = "2026-10-02"
 G = M.geometry(P)
 LV = M.saddle_levels(P)
 LOC = M.cradle_location(P)
@@ -46,7 +46,7 @@ COL = {"tray": "#94A3B8", "saddles": "#475569", "liners": "#111827", "bands": "#
        "stop": "#1D4ED8", "receptacle": "#1F2937", "gate": "#0F766E", "pad": "#111827", "hinge": "#6B7280", "latch": "#7C2D12",
        "keeper": "#6B7280", "adapter": "#7C3AED", "pack": "#C2410C", "tube": "#D6D3D1", "arm": "#D4A017", "motor": "#0F766E",
        "ctrl": "#115E59", "pas": "#0EA5E9", "bar": "#2563EB", "harness": "#111827", "panel": "#1E3A8A", "timber": "#A16207",
-       "leg": "#92400E", "brace": "#CA8A04", "batten": "#78350F", "charger": "#16A34A", "cable": "#374151", "donor": "#D1D5DB"}
+       "leg": "#92400E", "brace": "#CA8A04", "batten": "#78350F", "charger": "#16A34A", "cable": "#374151", "donor": "#D1D5DB", "blocks": "#7C2D12"}
 
 
 def part(name, shape, color, explode=(0, 0, 0), alpha=1.0):
@@ -86,6 +86,13 @@ def add(*vs):
     return tuple(sum(c) for c in zip(*vs))
 
 
+def front_blocks(side=None):
+    """The wet-weather blocks on the front rim only (the rear wheel is not drawn in the pictures)."""
+    fr = G["front"]
+    y0, y1 = {None: (-100, 100), "L": (-100, 0), "R": (0, 100)}[side]
+    return comps()["wet_blocks"][0] & M._box(fr[0] - 420, fr[0] + 420, y0, y1, fr[1] - 420, fr[1] + 420)
+
+
 def front_wheel():
     fr = G["front"]
     return M.wheel(fr[0], fr[1], P["wheel_r"], hub_r=62, hub_y=25)
@@ -108,6 +115,7 @@ def overview():
         part("Controller, pad and band clamps", S("controller", "ctrl_pad", "ctrl_bands"), COL["ctrl"], (-170, -60, 40)),
         part("Pedal-assist disc and sensor", S("pas_disc", "pas_sensor"), COL["pas"], (0, -100, -180)),
         part("Display and brake sensors", S("display", "brake_sensors"), "#4338CA", (40, 0, 170)),
+        part("Wet-weather brake blocks (4; the front pair is drawn)", front_blocks(), COL["blocks"], (260, -150, -40)),
         part("Harness with fuse", S("harness"), COL["harness"], (0, 0, 0)),
         part("SwapCell pack (not part of the kit)", S("pack"), COL["pack"], add(along(zd, -330), along(xdir(), -40))),
         part("Donor roadster frame, fork and bars (yours)", donor, COL["donor"], (0, 0, 0)),
@@ -614,6 +622,24 @@ def joints(only=None):
             OUT / "joint-10.png", "Joint 10: rear leg, top rail and panel (left rear corner of the stand)",
             subtitle="Seen from the left and behind. The leg laps the rail's outside face on one coach bolt; the panel frame bolts down through the rail",
             elev=15, azim=-130, size=(8, 6)))
+    # 11 wet-weather blocks on the rim, cut across the rim through the block
+    if want(11):
+        fr = G["front"]
+        a = math.radians(P["wb_angle"])
+        rx, rz = -math.sin(a), math.cos(a)
+        bc = (fr[0] + P["wb_r"] * rx, fr[1] + P["wb_r"] * rz)
+        sl = Pos(bc[0], 0, bc[1]) * Rot(0, math.degrees(math.atan2(rx, rz)), 0) * M._box(-6, 6, -50, 50, -30, 55)
+        W0 = Pos(fr[0], 0, fr[1]) * Rot(90, 0, 0)
+        r_ = P["wheel_r"]
+        tyre_s = (W0 * M.Torus(r_ - 20, 20)) & sl
+        rim_s = (W0 * (M.Cylinder(r_ - 38, 20) - M.Cylinder(r_ - 52, 22))) & sl
+        out.append(bv.joint([
+            part("Tyre", tyre_s, "#1F2937"),
+            part("Rim (donor steel)", rim_s, "#9CA3AF"),
+            part("Wet-weather blocks, one each side of the rim", C["wet_blocks"][0] & sl, COL["blocks"])],
+            OUT / "joint-11.png", "Joint 11: wet-weather brake blocks on the front rim (cut across the rim through the blocks)",
+            subtitle="Seen along the rim from the front. A block presses on each side face of the steel rim; the tyre sits outside the braking surface",
+            elev=20, azim=0, size=(8, 6)))
     return out
 
 
@@ -691,13 +717,19 @@ def steps(only=None):
                      mv(part("Brake sensors and magnets", S("brake_sensors"), "#1D4ED8"), (0, 0, -70))],
        "display and brake cut-off sensors", "Display clamp left of the stem; a sensor clamp inboard of each lever; magnets glued to the lever posts",
        elev=22, azim=-40)
-    kit_done = S("tray", "saddles", "rails", "stop", "gate", "latch", "adapter", "bands", "motor", "arms", "arm_clamps", "controller",
+    kit_pre = S("tray", "saddles", "rails", "stop", "gate", "latch", "adapter", "bands", "motor", "arms", "arm_clamps", "controller",
                  "ctrl_bands", "pas_disc", "pas_sensor", "display", "brake_sensors") + front_wheel()
-    st(11, donor_ctx + [part("Kit fitted", kit_done, "#D1D5DB")],
+    kit_done = kit_pre + front_blocks()
+    st(11, donor_ctx + [part("Kit fitted", kit_pre, "#D1D5DB")],
+       [mv(part("Wet-weather block, left of the rim", front_blocks("L"), COL["blocks"]), (0, -90, 0)),
+        mv(part("Wet-weather block, right of the rim", front_blocks("R"), COL["blocks"]), (0, 90, 0))],
+       "wet-weather brake blocks", "Front pair shown; the rear pair fits the same way. Old block off its stirrup, new block on, set square to the rim face, 2 to 3 mm off the rim",
+       elev=14, azim=-80, label_done=False)
+    st(12, donor_ctx + [part("Kit fitted", kit_done, "#D1D5DB")],
        [mv(part("Harness, fuse and leads", S("harness"), COL["harness"]), (0, -140, 0))],
        "harness", "Left side of the tubes, cable ties every 150 mm, drip loops at every plug. Fuse out until the safety stops allow",
        elev=18, azim=-62, label_done=False)
-    st(12, donor_ctx + [part("Kit fitted", kit_done + S("harness"), "#D1D5DB")],
+    st(13, donor_ctx + [part("Kit fitted", kit_done + S("harness"), "#D1D5DB")],
        [mv(part("SwapCell pack", S("pack"), COL["pack"]), add(along(xdir(), 150), along(zd, 50), (0, -120, 0)))],
        "pack in, gate up, latch closed", "Gate folded down; pack in from the left, onto the strips, slid down onto the plug; gate up, latch closed and caught",
        elev=18, azim=-62, label_done=False)
@@ -705,14 +737,14 @@ def steps(only=None):
     rails = part("Top rails", _stand_bit("rails"), COL["timber"])
     legs = part("Legs", _stand_bit("legs"), COL["leg"])
     braces = part("Low braces", _stand_bit("braces"), COL["brace"])
-    st(13, [rails], [mv(legs, (0, -90, 0)), mv(braces, (0, 0, -90))], "the two side frames",
+    st(14, [rails], [mv(legs, (0, -90, 0)), mv(braces, (0, 0, -90))], "the two side frames",
        "Each side: a rail and a brace, both inside two legs; one M8 coach bolt at each rail lap, two at each brace lap", elev=20, azim=-55)
     sides = [part("Side frames", _stand_bit("rails") + _stand_bit("legs") + _stand_bit("braces"), "#D1D5DB")]
-    st(14, sides, [mv(part("Cross battens", _stand_bit("battens"), COL["batten"]), (0, 0, -80)),
+    st(15, sides, [mv(part("Cross battens", _stand_bit("battens"), COL["batten"]), (0, 0, -80)),
                    mv(part("Solar panel", S("panel"), COL["panel"]), (0, 0, 200))],
        "battens, then the panel", "Battens across the rear and front legs, two screws at each end; panel on the rails, four M6 bolts through its frame",
        elev=22, azim=-55, label_done=False)
-    st(15, sides + [part("Panel and battens", S("panel") + _stand_bit("battens"), "#D1D5DB")],
+    st(16, sides + [part("Panel and battens", S("panel") + _stand_bit("battens"), "#D1D5DB")],
        [mv(part("Boost charger", S("charger"), COL["charger"]), (0, -120, 0)),
         mv(part("Panel lead", S("panel_lead"), COL["cable"]), (0, -60, 60))],
        "charger and panel lead", "Charger on the outside of the left rear leg, in the panel's shade, two screws; panel lead into its input",

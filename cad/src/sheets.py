@@ -1,4 +1,4 @@
-"""SunSpoke general arrangement drawing SSP-DWG-001 (Rev P3).
+"""SunSpoke general arrangement drawing SSP-DWG-001 (Rev P4).
 
 Run from the repo root:  python cad/src/sheets.py
 Builds cad/drawings/SSP-DWG-001.svg, .pdf and .png from the parametric model.
@@ -16,17 +16,18 @@ from drawing import Sheet, project_views  # noqa: E402
 from model import PARAMS as P, build_parts, cradle_local, cradle_parts, fit_checks, pack_local, receptacle_local  # noqa: E402
 
 parts = build_parts()
-bike = Compound([s for _, s, _, b, _ in parts if b is None or b <= 9])
+bike = Compound([s for _, s, _, b, _ in parts if b is None or b <= 9 or b == 15])
 work = ROOT / "cad/drawings/_views"
 views = project_views(bike, work)
 f = fit_checks()
 
 s = Sheet(project="SunSpoke", title="General arrangement, kit on 28 in roadster", dwg_no="SSP-DWG-001",
-          rev="P3", author="Amish Chadha", date="2026-10-01", concept=True,
+          rev="P4", author="Amish Chadha", date="2026-10-02", concept=True,
           material="Kit parts per bom/bom.csv; donor roadster shown for context",
           revisions=[("P1", "Preliminary GA, SwapCell interface v0.3 (SSP-CAL-001)", "2026-09-25", "AC"),
                      ("P2", "Notes: motor thermistor and derate (SSP-DDR-002)", "2026-09-25", "AC"),
-                     ("P3", "Constructable design: cradle, gate, arms, mounts (SSP-DDR-003)", "2026-10-01", "AC")])
+                     ("P3", "Constructable design: cradle, gate, arms, mounts (SSP-DDR-003)", "2026-10-01", "AC"),
+                     ("P4", "Wet-weather brake blocks, item 15 (SSP-DEC-001)", "2026-10-02", "AC")])
 s.add_ortho(views, ["front", "top", "right"])
 s.add_svg(views["iso"], 276, 36, 140, 76, label="Isometric view", sublabel="Not to scale")
 detail = project_views(Compound([cradle_local(), receptacle_local(), pack_local(), cradle_parts()["adapter"]]), work / "detail")
@@ -48,6 +49,7 @@ s.add_notes("Key dimensions and interfaces (mm)", [
     "INTERLOCK: 10 kOhm 1 % coding resistor in receptacle,",
     "  power switch 8 in series (interface v0.3 item W)",
     "Controller 3 on seat tube; host adapter 5 on tray",
+    "Wet-weather brake blocks 15: 4, on the rims at 310 radius",
     "Making sketches SSP-DWG-101 to 110 (SSP-BLD-001)",
     "Solar set 10 to 13 not shown (see SSP-DWG-010)",
 ], x=276, y=128, width=140)

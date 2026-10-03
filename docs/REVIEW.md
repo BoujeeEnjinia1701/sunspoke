@@ -306,3 +306,48 @@ Eleven, all moved to "Decisions made" in SSP-DEC-001 (open items 1 to 11): desig
 - Items 3 and 8 are already settled by DDR-003 (P12 makes the stand timber; P10 moves the brake sensors), so accepting item 1 closes them.
 - R11 is specified dry only, yet the calculation note itself calls the 21.7 m wet stop "a safety concern whatever the requirement says"; the register should treat item 10 as a safety item, not an option.
 - The 20 km/h default cut-off was decided partly on the dry braking result; it should be revisited once the wet target is set.
+
+## 2026-10-02: Approved follow-ups carried out
+
+Amish approved on 2026-10-02 that the follow-up actions listed above be carried out. Three of the five are done; two are not.
+
+### Done
+
+1. **Decision 10, calculations.** `docs/04-calcs/sizing.py` now takes a proposed wet target of 14 m from 20 km/h (1.5 times the dry target) and assumes a wet friction of 0.25 for the wet-weather blocks. Wet stop with those blocks: 11.9 m (deceleration 1.69 m/s2; 1.38 needed; margin 23 %). Standard blocks wet: 21.8 m. The highest speed that meets 14 m wet is 21.9 km/h, so the 20 km/h default cut-off is kept; at 17.1 km/h the wet stop would match the dry 9 m figure. Dry stop 8.5 m (9 % margin) is unchanged.
+2. **Decision 10, BOM.** Line 15 added to `bom/bom.csv`: wet-weather brake blocks, two pairs at USD 6 (USD 12; an indicative price, not a quote). Bike kit USD 208 against the USD 250 target (USD 42 under); solar set USD 90 unchanged. Added mass 6.88 kg (R6 margin 0.12 kg).
+3. **Decision 10, pictures and model.** `cad/src/model.py` has four blocks on the rims (59 of 59 constructability checks pass; STEP and STL regenerated). Build plan: new step 11, new Figure 26 (joint 11) and section 3.9.6, overview item 10, steps 11 to 15 renumbered 12 to 16, new first check. General arrangement DWG-001 Rev P4 and the concept media (DWG-010 Rev P3) regenerated. `cad/src/product_model.py` has the blocks, with sizes from `model.py`.
+
+### Not done
+
+4. Decision 11 (R3 rerun with the reference motor's data): needs the maker's winding resistance, thermal capacity and temperature limit; outreach is Amish's.
+5. Decision 4 (confirm the motor's axle flats): needs the physical donor survey.
+
+### Documents changed
+
+- `docs/04-calcs/01-sizing.md` SSP-CAL-001 v0.5; `docs/03-requirements.md` SSP-REQ-001 v0.7; `docs/02-concept.md` SSP-PRC-001 v0.7; `docs/06-design-decisions.md` SSP-DEC-001 v0.3 (To confirm item 11, Value engineering section: "Value-engineering target: USD 250 ... Estimated cost of the constructable design: USD 208 for the bike kit (USD 42 under the target)"); `docs/05-build-plan.md` SSP-BLD-001 v0.3; `README.md`; `bom/bom.csv`, `bom/bom-notes.md`.
+
+### Requirement status changes
+
+None. R11 stays at risk: the wet stop with the new blocks rests on an assumed friction. R6 still met (6.88 kg), R12 still met (USD 208).
+
+### Proposed, awaiting Amish
+
+- The value of R11's wet target: 14 m from 20 km/h (alternatives: 9 m, the dry figure, which would need a cut-off near 17 km/h; or a value from the blocks maker's data). Recommended: 14 m.
+- The assumed wet friction of 0.25 for the blocks, and their USD 6 a pair price: both unverified until the maker's data or a wet braking test (TRL 4, on hold).
+- The blocks are drawn as plain rubber blocks on the rim faces; the donor's stirrups and rods are not drawn (appearance and model simplification).
+
+### Cross-repo actions
+
+None for SwapCell or any other repo.
+
+### Safety
+
+Wet braking remains the main hazard. The 20 km/h cut-off, the brake cut-off sensors and the no-wet-riding rule (build plan S7) stay; no trial is ridden in the wet until a wet braking test meets the target.
+
+### Next step
+
+Amish confirms the wet target and friction assumption and the render on the Mac. TRL 4 stays on hold.
+
+## 2026-10-02: photoreal renders redone on the constructable design
+
+Rendered with Blender Cycles on Amish's Mac from the updated appearance model; captioned with `.kit/photo_caption.py`; `media/card.png` and `media/social-preview.png` regenerated with `.kit/cards.py`. Views: hero, exploded, detail. image_qc passes. Appearance deviations are those logged above as proposed, awaiting Amish.

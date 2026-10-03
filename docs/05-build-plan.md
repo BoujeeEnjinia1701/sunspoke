@@ -3,7 +3,7 @@ doc_id: SSP-BLD-001
 title: SunSpoke prototype build plan
 project: SunSpoke
 doc_type: Build plan
-version: "0.2"
+version: "0.3"
 status: Draft
 date: '2026-10-02'
 author: Amish Chadha
@@ -17,6 +17,10 @@ revisions:
     date: '2026-10-02'
     author: Amish Chadha
     change: "Safety stop S7 adds the no-wet-riding rule decided by Amish on 2026-10-02"
+  - version: "0.3"
+    date: '2026-10-02'
+    author: Amish Chadha
+    change: "Wet-weather brake blocks added (line 15): new step 11, joint 11 (Figure 26), section 3.9.6, overview item 10; later steps renumbered 12 to 16; mass, cost and figures follow SSP-CAL-001 v0.5"
 ---
 
 # SunSpoke prototype build plan
@@ -27,15 +31,15 @@ revisions:
 
 ![Figure 1. The kit on the bike, pulled apart and numbered in build order](05-build-plan/overview.png)
 
-*Figure 1. The kit on the donor bicycle, pulled apart and numbered in build order. The SwapCell pack (11) comes from the SwapCell project; the frame, fork and bars (12) are the rider's own.*
+*Figure 1. The kit on the donor bicycle, pulled apart and numbered in build order. The SwapCell pack (12) comes from the SwapCell project; the frame, fork and bars (13) are the rider's own.*
 
-The prototype is one SunSpoke kit fitted to a 28 in steel roadster, plus its solar charging set. On the bike: a receiver cradle clamped to the down tube that holds a SwapCell pack, a 250 W hub motor laced into a new front wheel with a torque arm on each side of the fork, a sealed controller strapped to the seat tube, a pedal-assist sensor at the bottom bracket, a display and two brake sensors on the handlebar, and a harness joining them. Off the bike: a 100 W panel on a timber stand with a charger and a 5 m cable to the bike. Figure 1 shows the 11 kit components in the order you fit them. Made in a small workshop: the cradle's tray, V-saddles, slide strips, catch bar, end stop and gate, the two torque arms and the panel stand. Bought and fitted: the motor, controller, sensors, display, harness, host adapter, receptacle, hinge, draw latch, band clamps, panel, charger and cable. The work is cutting, folding and drilling aluminium sheet, sawing and filing steel and aluminium bar, sawing and bolting timber, lacing a wheel, and plugging bought electrical parts together. Nothing is welded, and nothing is drilled or cut on the donor frame or fork. The bike kit parts cost about USD 196 and the solar set about USD 90, from the bill of materials.
+The prototype is one SunSpoke kit fitted to a 28 in steel roadster, plus its solar charging set. On the bike: a receiver cradle clamped to the down tube that holds a SwapCell pack, a 250 W hub motor laced into a new front wheel with a torque arm on each side of the fork, a sealed controller strapped to the seat tube, a pedal-assist sensor at the bottom bracket, a display and two brake sensors on the handlebar, four wet-weather brake blocks on the wheel rims, and a harness joining them. Off the bike: a 100 W panel on a timber stand with a charger and a 5 m cable to the bike. Figure 1 shows the 12 components in the order you fit them. Made in a small workshop: the cradle's tray, V-saddles, slide strips, catch bar, end stop and gate, the two torque arms and the panel stand. Bought and fitted: the motor, controller, sensors, display, brake blocks, harness, host adapter, receptacle, hinge, draw latch, band clamps, panel, charger and cable. The work is cutting, folding and drilling aluminium sheet, sawing and filing steel and aluminium bar, sawing and bolting timber, lacing a wheel, and plugging bought electrical parts together. Nothing is welded, and nothing is drilled or cut on the donor frame or fork. The bike kit parts cost about USD 208 and the solar set about USD 90, from the bill of materials.
 
 > **Safety:** The kit runs from a 468 Wh lithium-ion SwapCell pack at up to 54.6 V DC, drives a loaded bicycle at up to 20 km/h, and puts new loads on an old steel fork. Keep the pack away from the bike and the fuse out until section 6 says otherwise. Cut aluminium and steel edges are sharp: deburr everything and wear gloves when handling sheet and bar. Never ride the prototype on a road; first rides are TRL 4 tests on a closed site.
 
 ### Choosing the donor bicycle
 
-Pick a donor that the kit fits without any work on the frame or fork. It needs: a round down tube 28 to 32 mm across; front dropouts 100 mm apart inside, with slots that take the motor's 10 mm axle flats without filing (try a 10 mm gauge or the motor axle itself); a cup-and-cone bottom bracket with a lockring on the left cup; rod or cable rim brakes in good order, with new blocks fitted; and a fork and frame with no cracks, dents or rust through. Measure the step from the outside face of each dropout to the outside of its fork blade: the torque arms are made for 8 mm.
+Pick a donor that the kit fits without any work on the frame or fork. It needs: a round down tube 28 to 32 mm across; front dropouts 100 mm apart inside, with slots that take the motor's 10 mm axle flats without filing (try a 10 mm gauge or the motor axle itself); a cup-and-cone bottom bracket with a lockring on the left cup; rod or cable rim brakes in good order, with the kit's four wet-weather blocks (step 11) to be fitted; and a fork and frame with no cracks, dents or rust through. Measure the step from the outside face of each dropout to the outside of its fork blade: the torque arms are made for 8 mm.
 
 ## 2. What changed to make it buildable
 
@@ -55,7 +59,8 @@ The concept showed what the kit does; many of its parts could not be made or fix
 | Controller | Floating in front of the seat tube | On a rubber pad, held by two band clamps (Figure 22) | No drilling of the frame |
 | Pedal-assist sensor | A disc on nothing and no sensor | A disc clamped on the spindle and a sensor on a bracket under the left lockring (Figure 23) | How bolt-on sensors fit this bottom bracket |
 | Display and brake sensors | Boxes cutting into the bar | Each on its own bar clamp; magnets on the brake levers (Figure 24) | Fits the donor's own levers |
-| Harness | Running through open space and the cradle | Along the left side of the tubes on cable ties (step 11) | Clear of the cradle, wheel and cranks |
+| Brake blocks | The donor's own blocks, which stop poorly in the wet | Four wet-weather blocks suited to steel rims, front and rear (Figure 26, step 11) | Standard blocks lose most of their grip on a wet steel rim |
+| Harness | Running through open space and the cradle | Along the left side of the tubes on cable ties (step 12) | Clear of the cradle, wheel and cranks |
 | Panel stand | Legs running into the panel; nothing holding the panel | A bolted timber A-frame; the panel bolts to its rails (Figures 17 to 21) | No welding, local timber |
 
 ## 3. Making the components
@@ -320,7 +325,7 @@ The display clamps on the bar left of the stem. Each brake sensor clamps on the 
 
 *Figure 25. Block-level wiring with wire sizes. Every joint is a keyed waterproof plug; no circuit board is laid out at this stage.*
 
-Buy the harness made up to Figure 25, with keyed IP65 plugs, the 20 A fuse in a sealed holder on the pack lead, and spiral wrap. Route it as step 11 shows: from the adapter down the left side of the down tube to the bottom bracket, up the seat tube past the controller, along the left side of the top tube, down the head tube and the front of the left fork blade to the motor's axle, and up the stem to the display and brake sensors. Tie it every 150 and leave a drip loop below every plug.
+Buy the harness made up to Figure 25, with keyed IP65 plugs, the 20 A fuse in a sealed holder on the pack lead, and spiral wrap. Route it as step 12 shows: from the adapter down the left side of the down tube to the bottom bracket, up the seat tube past the controller, along the left side of the top tube, down the head tube and the front of the left fork blade to the motor's axle, and up the stem to the display and brake sensors. Tie it every 150 and leave a drip loop below every plug.
 
 #### 3.9.5 Solar set (lines 10 to 13)
 
@@ -328,9 +333,17 @@ Buy the harness made up to Figure 25, with keyed IP65 plugs, the 20 A fuse in a 
 - **Charger (line 11).** Boost charger, 15 to 25 V in, constant current and constant voltage to 54.6 V at up to 2 A out, input-voltage tracking, weather-protected case with two mounting ears.
 - **Charge cable (line 13).** 5 m of 2-core 1.5 mm² outdoor cable with a keyed plug that fits the host adapter's charge inlet.
 
+#### 3.9.6 Wet-weather brake blocks (line 15)
+
+![Figure 26. Joint 11: wet-weather brake blocks on the front rim](05-build-plan/joint-11.png)
+
+*Figure 26. Cut across the rim through the blocks: a block presses on each side face of the steel rim, below the tyre.*
+
+Buy two pairs of rubber brake blocks sold for wet-weather use on steel rims, of the donor's block type and fixing so that they fit its stirrups. Each block is about 60 long, 10 thick and 10 deep, and bears on the rim's side face about 310 from the hub. They replace the donor's blocks, so the old ones come off. Fit them as step 11 says and look at each one against its rim before the brake check.
+
 ## 4. Putting it together
 
-In each picture the parts already fitted are grey and the part being fitted is in colour, with an arrow showing the way it goes in. Steps 1 to 4 are on the bench; steps 5 to 12 on the bike; steps 13 to 15 build the solar set.
+In each picture the parts already fitted are grey and the part being fitted is in colour, with an arrow showing the way it goes in. Steps 1 to 4 are on the bench; steps 5 to 13 on the bike; steps 14 to 16 build the solar set.
 
 ### Step 1: V-saddles onto the tray
 
@@ -392,33 +405,39 @@ Left crank off; bracket under the left lockring, sensor pointing down; lockring 
 
 Display left of the stem, angled so the rider can read it. A sensor beside each lever, magnet glued on the lever.
 
-### Step 11: harness
+### Step 11: wet-weather brake blocks
 
 ![Step 11](05-build-plan/step-11.png)
 
-Route the harness as section 3.9.4 says, plug every joint with dielectric grease, and tie it every 150. Leave the fuse out. **Hold point:** safety stop S3.
+Take the donor's old block off each brake stirrup, front and rear, and fit a wet-weather block in its place, so four blocks in all. Set each block square to the rim's side face, level with the middle of the braking surface and 2 to 3 off the rim when the brake is released. Only the front pair is drawn; the rear pair fits the same way. Section 3.9.6 gives the block and how to set it.
 
-### Step 12: pack in, gate up, latch closed
+### Step 12: harness
 
 ![Step 12](05-build-plan/step-12.png)
 
-Only at safety stop S4. Fold the gate down. Hold the pack by its handle, set it on the strips from the left about 145 up from the end stop, and slide it down onto the plug until it seats on the wall and its latch drops behind the catch bar. Raise the gate, close the draw latch over centre and flip its safety catch. To take the pack out: catch off, latch open, gate down, press the pack's latch release, slide it 145 up the tube by its handle, lift it 45 off the strips and take it out to the left.
+Route the harness as section 3.9.4 says, plug every joint with dielectric grease, and tie it every 150. Leave the fuse out. **Hold point:** safety stop S3.
 
-### Step 13: the stand's two side frames
+### Step 13: pack in, gate up, latch closed
 
 ![Step 13](05-build-plan/step-13.png)
 
-Each side: a top rail and a low brace inside two legs, the tall rear leg under the high end. One coach bolt at each rail lap and two at each brace lap, washers and nuts on the inside.
+Only at safety stop S4. Fold the gate down. Hold the pack by its handle, set it on the strips from the left about 145 up from the end stop, and slide it down onto the plug until it seats on the wall and its latch drops behind the catch bar. Raise the gate, close the draw latch over centre and flip its safety catch. To take the pack out: catch off, latch open, gate down, press the pack's latch release, slide it 145 up the tube by its handle, lift it 45 off the strips and take it out to the left.
 
-### Step 14: battens, then the panel
+### Step 14: the stand's two side frames
 
 ![Step 14](05-build-plan/step-14.png)
 
-Stand the side frames 935 apart outside and screw the battens across the back of the rear legs and the front of the front legs. Lay the panel on the rails, glass up, and bolt it down through its frame holes with four M6 bolts, washers and nuts.
+Each side: a top rail and a low brace inside two legs, the tall rear leg under the high end. One coach bolt at each rail lap and two at each brace lap, washers and nuts on the inside.
 
-### Step 15: charger and panel lead
+### Step 15: battens, then the panel
 
 ![Step 15](05-build-plan/step-15.png)
+
+Stand the side frames 935 apart outside and screw the battens across the back of the rear legs and the front of the front legs. Lay the panel on the rails, glass up, and bolt it down through its frame holes with four M6 bolts, washers and nuts.
+
+### Step 16: charger and panel lead
+
+![Step 16](05-build-plan/step-16.png)
 
 Screw the charger to the outside of the left rear leg, in the panel's shade. Plug the panel lead into its input and tie it to the rail. The 5 m charge cable runs from the charger to the bike's charge inlet only at safety stop S6.
 
@@ -435,14 +454,15 @@ These are the checks a TRL 4 test report would record; this plan only lists them
 | Fit to the donor | R5 | Saddles, dropouts, bottom bracket and levers as section 1 | Every part seats as its joint picture shows |
 | Cradle grip | R13 | Push hard by hand at the end stop and sideways at the top end | No movement of the cradle on the tube |
 | Pack seating and preload | R13 | Seat the pack and close the latch; pull the gate open at the pad with a spring balance | Latch goes over centre with 50 N or less at its lever; the gate does not lift off the pack below 330 N; safety catch engages |
-| Pack swap | R13 | Take the pack out and put it back as step 12 | No tools needed and nothing catches; time recorded |
+| Pack swap | R13 | Take the pack out and put it back as step 13 | No tools needed and nothing catches; time recorded |
 | Torque arms | R10 | Check both arms are keyed and clamped; wheel turns freely | No shake on the flats; clamps at torque |
 | Fuse and wiring | R9, R10 | Pack out, fuse out: meter every plug to frame | Open circuit to the frame everywhere |
 | Wake and power switch | R10, R13 | Pack in, fuse in, switch on and off | The pack wakes with the switch on and its output opens with it off |
+| Wet-weather blocks | R11 | Look at each block against its rim with the brake released and applied | All four blocks bear flat on the rim's side face, 2 to 3 off it when released, and clear of the tyre |
 | Brake cut-off | R10 | Wheel off the ground, gentle assist, pull each brake lever | Motor stops within 0.5 s on either lever |
 | Assist settings | R1 | Read the controller settings | 20 km/h cut-off, walk assist 6 km/h, no throttle |
 | Charging | R8, R13 | Panel in sun, charge cable to the inlet, bike off then on | Charger output flows into the pack; mode 3 with the bike off, mode 4 with it on |
-| Mass | R6 | Weigh the bike before and after, with the pack | 7 kg or less added (6.78 kg estimated) |
+| Mass | R6 | Weigh the bike before and after, with the pack | 7 kg or less added (6.88 kg estimated) |
 | Stand | | Push on the panel corners by hand | Nothing moves at any joint |
 
 ## 6. Safety stops
@@ -451,9 +471,9 @@ Stop at each point. Carry on only when everything listed is true.
 
 - **S1. Before the pack comes near the workshop.** It is a SwapCell pack from that project, undamaged, not swollen and never submerged, at a storage charge. A charging place is ready on a non-combustible surface, in shade and away from sleeping areas, with a fire extinguisher for electrical fires and a sand bucket within reach.
 - **S2. Before the bike is ridden or the motor turned under power (after step 7).** Both torque arms keyed on the flats and clamped; axle nuts at the motor maker's torque; the fork and dropouts uncracked and unfiled.
-- **S3. Before the fuse goes in (after step 11).** Pack out. Every plug fully home and greased; no cable crossing a moving part (wheel, cranks, steering lock to lock); every lead meters open to the frame; the fuse is 20 A.
-- **S4. Before the pack goes in (step 12).** Fuse in; power switch off; brake sensors and their magnets fitted; the wheel off the ground or the bike on a stand.
-- **S5. Before any powered test.** Gate closed with the latch over centre and its safety catch on; cradle bands at torque; the bike on a stand with the front wheel clear of the ground; brakes adjusted with new blocks.
+- **S3. Before the fuse goes in (after step 12).** Pack out. Every plug fully home and greased; no cable crossing a moving part (wheel, cranks, steering lock to lock); every lead meters open to the frame; the fuse is 20 A.
+- **S4. Before the pack goes in (step 13).** Fuse in; power switch off; brake sensors and their magnets fitted; all four wet-weather blocks fitted; the wheel off the ground or the bike on a stand.
+- **S5. Before any powered test.** Gate closed with the latch over centre and its safety catch on; cradle bands at torque; the bike on a stand with the front wheel clear of the ground; brakes adjusted with the wet-weather blocks of step 11.
 - **S6. Before any charging.** The charging place of S1; the charger's output set and measured at 54.6 V or less with nothing connected; the panel lead and charge cable polarity checked with a meter; never charge a pack that is hot, damaged or below 0 °C; attended throughout the first charge.
 - **S7. Before anyone rides it (outside this plan).** No trial is ridden in the wet until a wet braking test with the wet-weather blocks meets R11's wet target (SSP-DEC-001). First rides are TRL 4 tests on a closed, dry site, at walking pace first, by a rider with a helmet, after the brake cut-off and stopping checks pass. Rod brakes on steel rims stop poorly in the wet: no wet riding.
 
@@ -469,10 +489,10 @@ Stop at each point. Carry on only when everything listed is true.
 
 ## 8. Where the numbers come from
 
-- Model and constructability checks: `cad/src/model.py` (`python cad/src/model.py --check`, 57 checks); STEP and STL exports in `cad/step/` and `cad/stl/`.
+- Model and constructability checks: `cad/src/model.py` (`python cad/src/model.py --check`, 59 checks); STEP and STL exports in `cad/step/` and `cad/stl/`.
 - Pictures: `cad/src/build_plan_media.py`, using `.kit/build_views.py`; written to `docs/05-build-plan/` and `cad/drawings/SSP-DWG-101` to `SSP-DWG-110`.
-- General arrangement: `cad/drawings/SSP-DWG-001.pdf`, Rev P3.
-- Calculations: `docs/04-calcs/01-sizing.md` (SSP-CAL-001 v0.3) and `docs/04-calcs/sizing.py`; mass (section 2), torque arms (section 7), cradle retention, gate and end stop (section 8), fit and removal path (section 9).
+- General arrangement: `cad/drawings/SSP-DWG-001.pdf`, Rev P4.
+- Calculations: `docs/04-calcs/01-sizing.md` (SSP-CAL-001 v0.5) and `docs/04-calcs/sizing.py`; mass (section 2), torque arms (section 7), cradle retention, gate and end stop (section 8), fit and removal path (section 9).
 - Bill of materials: `bom/bom.csv`.
 - Decisions: `docs/decisions/0003-design-for-construction.md` (SSP-DDR-003), with SSP-DDR-001 and SSP-DDR-002; open items in `docs/06-design-decisions.md` (SSP-DEC-001).
-- Requirements: `docs/03-requirements.md` (SSP-REQ-001 v0.5).
+- Requirements: `docs/03-requirements.md` (SSP-REQ-001 v0.7).

@@ -897,6 +897,16 @@
       <path d="M -167.753459,445.206538 A 4.0,3.9911406314264357 -90.0 0,1 -168.263494,443.25" />
       <path d="M -599.416904,-94.475982 Q -599.427339,-94.468963 -599.437773,-94.461943 Q -599.468944,-94.440973 -599.500116,-94.420004 Q -599.551633,-94.385347 -599.603149,-94.35069 Q -599.674363,-94.302782 -599.745578,-94.254875 Q -599.835594,-94.194318 -599.92561,-94.133762 Q -600.033295,-94.061319 -600.140981,-93.988876 Q -600.264983,-93.905457 -600.388984,-93.822037 Q -600.527742,-93.728691 -600.6665,-93.635345 Q -600.818269,-93.533246 -600.970038,-93.431147 Q -601.132909,-93.321579 -601.295781,-93.212011 Q -601.467707,-93.096351 -601.639633,-92.980692 Q -601.818452,-92.860396 -601.997271,-92.740099 Q -602.362885,-92.494141 -602.735793,-92.243275" />
       <line x1="-593.092522" y1="-85.074874" x2="-599.416904" y2="-94.475982" />
+      <line x1="-96.779275" y1="129.595645" x2="-100.199477" y2="138.992571" />
+      <line x1="-40.397718" y1="150.116854" x2="-43.817919" y2="159.51378" />
+      <line x1="-96.779275" y1="129.595645" x2="-77.464482" y2="136.625655" />
+      <line x1="-56.790976" y1="144.150196" x2="-40.397718" y2="150.116854" />
+      <line x1="-100.199477" y1="138.992571" x2="-80.83679" y2="146.040013" />
+      <line x1="-60.163283" y1="153.564554" x2="-59.15765" y2="153.930575" />
+      <line x1="-53.86553" y1="155.856749" x2="-43.817919" y2="159.51378" />
+      <line x1="-1038.146988" y1="150.116854" x2="-1034.726786" y2="159.51378" />
+      <line x1="-1038.146988" y1="150.116854" x2="-987.065453" y2="131.524696" />
+      <line x1="-1034.726786" y1="159.51378" x2="-982.646871" y2="140.558241" />
       <line x1="807.613162" y1="188.050678" x2="816.671829" y2="221.858082" />
       <line x1="807.613162" y1="188.050678" x2="1454.783466" y2="14.641918" />
       <line x1="1454.783466" y1="14.641918" x2="1463.842132" y2="48.449322" />
@@ -3979,6 +3989,36 @@
       <line x1="-589.154951" y1="-79.221727" x2="-593.092522" y2="-85.074874" />
       <path d="M -589.154951,-79.221727 L -589.238162,-79.165748 L -589.483624,-79.000619 L -589.879028,-78.73462 L -590.404546,-78.38109 L -591.033827,-77.957755 L -591.735317,-77.485844 L -592.473839,-76.98902 L -593.212361,-76.492196 L -593.913851,-76.020285 L -594.543132,-75.59695 L -595.068651,-75.24342 L -595.464054,-74.977421 L -595.709516,-74.812292 L -595.792728,-74.756313" />
       <path d="M -595.792728,-74.756313 L -595.709516,-74.812292 L -595.464054,-74.977421 L -595.068651,-75.24342 L -594.543132,-75.59695 L -593.913851,-76.020285 L -593.212361,-76.492196 L -592.473839,-76.98902 L -591.735317,-77.485844 L -591.033827,-77.957755 L -590.404546,-78.38109 L -589.879028,-78.73462 L -589.483624,-79.000619 L -589.238162,-79.165748 L -589.154951,-79.221727" />
+      <line x1="-96.779275" y1="129.595645" x2="-100.199477" y2="138.992571" />
+      <line x1="-40.397718" y1="150.116854" x2="-43.817919" y2="159.51378" />
+      <line x1="-77.464482" y1="136.625655" x2="-56.790976" y2="144.150196" />
+      <line x1="-80.83679" y1="146.040013" x2="-60.163283" y2="153.564554" />
+      <line x1="-59.15765" y1="153.930575" x2="-53.86553" y2="155.856749" />
+      <line x1="-96.779275" y1="129.595645" x2="-40.397718" y2="150.116854" />
+      <line x1="-100.199477" y1="138.992571" x2="-43.817919" y2="159.51378" />
+      <line x1="-96.779275" y1="129.595645" x2="-100.199477" y2="138.992571" />
+      <line x1="-96.779275" y1="129.595645" x2="-100.199477" y2="138.992571" />
+      <line x1="-40.397718" y1="150.116854" x2="-43.817919" y2="159.51378" />
+      <line x1="-40.397718" y1="150.116854" x2="-43.817919" y2="159.51378" />
+      <line x1="-96.779275" y1="129.595645" x2="-40.397718" y2="150.116854" />
+      <line x1="-100.199477" y1="138.992571" x2="-43.817919" y2="159.51378" />
+      <line x1="-96.779275" y1="129.595645" x2="-40.397718" y2="150.116854" />
+      <line x1="-100.199477" y1="138.992571" x2="-43.817919" y2="159.51378" />
+      <line x1="-1038.146988" y1="150.116854" x2="-1034.726786" y2="159.51378" />
+      <line x1="-981.765431" y1="129.595645" x2="-978.345229" y2="138.992571" />
+      <line x1="-981.765431" y1="129.595645" x2="-978.345229" y2="138.992571" />
+      <line x1="-987.065453" y1="131.524696" x2="-981.765431" y2="129.595645" />
+      <line x1="-982.646871" y1="140.558241" x2="-978.345229" y2="138.992571" />
+      <line x1="-1038.146988" y1="150.116854" x2="-981.765431" y2="129.595645" />
+      <line x1="-1034.726786" y1="159.51378" x2="-978.345229" y2="138.992571" />
+      <line x1="-1038.146988" y1="150.116854" x2="-1034.726786" y2="159.51378" />
+      <line x1="-1038.146988" y1="150.116854" x2="-1034.726786" y2="159.51378" />
+      <line x1="-981.765431" y1="129.595645" x2="-978.345229" y2="138.992571" />
+      <line x1="-981.765431" y1="129.595645" x2="-978.345229" y2="138.992571" />
+      <line x1="-1038.146988" y1="150.116854" x2="-981.765431" y2="129.595645" />
+      <line x1="-1034.726786" y1="159.51378" x2="-978.345229" y2="138.992571" />
+      <line x1="-1038.146988" y1="150.116854" x2="-981.765431" y2="129.595645" />
+      <line x1="-1034.726786" y1="159.51378" x2="-978.345229" y2="138.992571" />
       <line x1="807.613162" y1="188.050678" x2="816.671829" y2="221.858082" />
       <line x1="816.671829" y1="221.858082" x2="1463.842132" y2="48.449322" />
       <line x1="807.613162" y1="188.050678" x2="1454.783466" y2="14.641918" />
@@ -8783,6 +8823,54 @@
       <path d="M -589.154951,6.25 A 4.0,3.3188884408000376 90.0 0,0 -592.473839,2.25" />
       <path d="M -592.473839,2.25 A 4.0,3.3188884408000376 90.0 0,0 -592.473839,10.25" />
       <path d="M -592.473839,10.25 A 4.0,3.3188884408000376 90.0 0,0 -589.154951,6.25" />
+      <line x1="-96.779275" y1="-13.75" x2="-100.199477" y2="-13.75" />
+      <line x1="-100.199477" y1="-13.75" x2="-100.199477" y2="-3.75" />
+      <line x1="-96.779275" y1="-3.75" x2="-100.199477" y2="-3.75" />
+      <line x1="-96.779275" y1="-13.75" x2="-96.779275" y2="-3.75" />
+      <line x1="-40.397718" y1="-13.75" x2="-43.817919" y2="-13.75" />
+      <line x1="-43.817919" y1="-13.75" x2="-43.817919" y2="-3.75" />
+      <line x1="-40.397718" y1="-3.75" x2="-43.817919" y2="-3.75" />
+      <line x1="-40.397718" y1="-13.75" x2="-40.397718" y2="-3.75" />
+      <line x1="-96.779275" y1="-13.75" x2="-40.397718" y2="-13.75" />
+      <line x1="-100.199477" y1="-13.75" x2="-43.817919" y2="-13.75" />
+      <line x1="-96.779275" y1="-3.75" x2="-40.397718" y2="-3.75" />
+      <line x1="-100.199477" y1="-3.75" x2="-43.817919" y2="-3.75" />
+      <line x1="-96.779275" y1="16.25" x2="-100.199477" y2="16.25" />
+      <line x1="-100.199477" y1="16.25" x2="-100.199477" y2="26.25" />
+      <line x1="-96.779275" y1="26.25" x2="-100.199477" y2="26.25" />
+      <line x1="-96.779275" y1="16.25" x2="-96.779275" y2="26.25" />
+      <line x1="-40.397718" y1="16.25" x2="-43.817919" y2="16.25" />
+      <line x1="-43.817919" y1="16.25" x2="-43.817919" y2="26.25" />
+      <line x1="-40.397718" y1="26.25" x2="-43.817919" y2="26.25" />
+      <line x1="-40.397718" y1="16.25" x2="-40.397718" y2="26.25" />
+      <line x1="-96.779275" y1="16.25" x2="-40.397718" y2="16.25" />
+      <line x1="-100.199477" y1="16.25" x2="-43.817919" y2="16.25" />
+      <line x1="-96.779275" y1="26.25" x2="-40.397718" y2="26.25" />
+      <line x1="-100.199477" y1="26.25" x2="-43.817919" y2="26.25" />
+      <line x1="-1038.146988" y1="-13.75" x2="-1034.726786" y2="-13.75" />
+      <line x1="-1034.726786" y1="-13.75" x2="-1034.726786" y2="-3.75" />
+      <line x1="-1038.146988" y1="-3.75" x2="-1034.726786" y2="-3.75" />
+      <line x1="-1038.146988" y1="-13.75" x2="-1038.146988" y2="-3.75" />
+      <line x1="-981.765431" y1="-13.75" x2="-978.345229" y2="-13.75" />
+      <line x1="-978.345229" y1="-13.75" x2="-978.345229" y2="-3.75" />
+      <line x1="-981.765431" y1="-3.75" x2="-978.345229" y2="-3.75" />
+      <line x1="-981.765431" y1="-13.75" x2="-981.765431" y2="-3.75" />
+      <line x1="-1038.146988" y1="-13.75" x2="-981.765431" y2="-13.75" />
+      <line x1="-1034.726786" y1="-13.75" x2="-978.345229" y2="-13.75" />
+      <line x1="-1038.146988" y1="-3.75" x2="-981.765431" y2="-3.75" />
+      <line x1="-1034.726786" y1="-3.75" x2="-978.345229" y2="-3.75" />
+      <line x1="-1038.146988" y1="16.25" x2="-1034.726786" y2="16.25" />
+      <line x1="-1034.726786" y1="16.25" x2="-1034.726786" y2="26.25" />
+      <line x1="-1038.146988" y1="26.25" x2="-1034.726786" y2="26.25" />
+      <line x1="-1038.146988" y1="16.25" x2="-1038.146988" y2="26.25" />
+      <line x1="-981.765431" y1="16.25" x2="-978.345229" y2="16.25" />
+      <line x1="-978.345229" y1="16.25" x2="-978.345229" y2="26.25" />
+      <line x1="-981.765431" y1="26.25" x2="-978.345229" y2="26.25" />
+      <line x1="-981.765431" y1="16.25" x2="-981.765431" y2="26.25" />
+      <line x1="-1038.146988" y1="16.25" x2="-981.765431" y2="16.25" />
+      <line x1="-1034.726786" y1="16.25" x2="-978.345229" y2="16.25" />
+      <line x1="-1038.146988" y1="26.25" x2="-981.765431" y2="26.25" />
+      <line x1="-1034.726786" y1="26.25" x2="-978.345229" y2="26.25" />
       <line x1="807.613162" y1="-493.75" x2="1454.783466" y2="-493.75" />
       <line x1="1454.783466" y1="-493.75" x2="1463.842132" y2="-493.75" />
       <line x1="807.613162" y1="506.25" x2="1454.783466" y2="506.25" />
@@ -13810,6 +13898,54 @@
       <path d="M 6.25,-79.221727 A 4.0,2.23270676926548 180.0 0,0 2.25,-76.98902" />
       <path d="M 2.25,-76.98902 A 4.0,2.23270676926548 180.0 0,0 10.25,-76.98902" />
       <path d="M 10.25,-76.98902 A 4.0,2.23270676926548 180.0 0,0 6.25,-79.221727" />
+      <line x1="-13.75" y1="129.595645" x2="-13.75" y2="138.992571" />
+      <line x1="-13.75" y1="138.992571" x2="-3.75" y2="138.992571" />
+      <line x1="-3.75" y1="129.595645" x2="-3.75" y2="138.992571" />
+      <line x1="-13.75" y1="129.595645" x2="-3.75" y2="129.595645" />
+      <line x1="-13.75" y1="150.116854" x2="-13.75" y2="159.51378" />
+      <line x1="-13.75" y1="159.51378" x2="-3.75" y2="159.51378" />
+      <line x1="-3.75" y1="150.116854" x2="-3.75" y2="159.51378" />
+      <line x1="-13.75" y1="150.116854" x2="-3.75" y2="150.116854" />
+      <line x1="-13.75" y1="129.595645" x2="-13.75" y2="150.116854" />
+      <line x1="-13.75" y1="138.992571" x2="-13.75" y2="159.51378" />
+      <line x1="-3.75" y1="129.595645" x2="-3.75" y2="150.116854" />
+      <line x1="-3.75" y1="138.992571" x2="-3.75" y2="159.51378" />
+      <line x1="16.25" y1="129.595645" x2="16.25" y2="138.992571" />
+      <line x1="16.25" y1="138.992571" x2="26.25" y2="138.992571" />
+      <line x1="26.25" y1="129.595645" x2="26.25" y2="138.992571" />
+      <line x1="16.25" y1="129.595645" x2="26.25" y2="129.595645" />
+      <line x1="16.25" y1="150.116854" x2="16.25" y2="159.51378" />
+      <line x1="16.25" y1="159.51378" x2="26.25" y2="159.51378" />
+      <line x1="26.25" y1="150.116854" x2="26.25" y2="159.51378" />
+      <line x1="16.25" y1="150.116854" x2="26.25" y2="150.116854" />
+      <line x1="16.25" y1="129.595645" x2="16.25" y2="150.116854" />
+      <line x1="16.25" y1="138.992571" x2="16.25" y2="159.51378" />
+      <line x1="26.25" y1="129.595645" x2="26.25" y2="150.116854" />
+      <line x1="26.25" y1="138.992571" x2="26.25" y2="159.51378" />
+      <line x1="-13.75" y1="150.116854" x2="-13.75" y2="159.51378" />
+      <line x1="-13.75" y1="159.51378" x2="-3.75" y2="159.51378" />
+      <line x1="-3.75" y1="150.116854" x2="-3.75" y2="159.51378" />
+      <line x1="-13.75" y1="150.116854" x2="-3.75" y2="150.116854" />
+      <line x1="-13.75" y1="129.595645" x2="-13.75" y2="138.992571" />
+      <line x1="-13.75" y1="138.992571" x2="-3.75" y2="138.992571" />
+      <line x1="-3.75" y1="129.595645" x2="-3.75" y2="138.992571" />
+      <line x1="-13.75" y1="129.595645" x2="-3.75" y2="129.595645" />
+      <line x1="-13.75" y1="150.116854" x2="-13.75" y2="129.595645" />
+      <line x1="-13.75" y1="159.51378" x2="-13.75" y2="138.992571" />
+      <line x1="-3.75" y1="150.116854" x2="-3.75" y2="129.595645" />
+      <line x1="-3.75" y1="159.51378" x2="-3.75" y2="138.992571" />
+      <line x1="16.25" y1="150.116854" x2="16.25" y2="159.51378" />
+      <line x1="16.25" y1="159.51378" x2="26.25" y2="159.51378" />
+      <line x1="26.25" y1="150.116854" x2="26.25" y2="159.51378" />
+      <line x1="16.25" y1="150.116854" x2="26.25" y2="150.116854" />
+      <line x1="16.25" y1="129.595645" x2="16.25" y2="138.992571" />
+      <line x1="16.25" y1="138.992571" x2="26.25" y2="138.992571" />
+      <line x1="26.25" y1="129.595645" x2="26.25" y2="138.992571" />
+      <line x1="16.25" y1="129.595645" x2="26.25" y2="129.595645" />
+      <line x1="16.25" y1="150.116854" x2="16.25" y2="129.595645" />
+      <line x1="16.25" y1="159.51378" x2="16.25" y2="138.992571" />
+      <line x1="26.25" y1="150.116854" x2="26.25" y2="129.595645" />
+      <line x1="26.25" y1="159.51378" x2="26.25" y2="138.992571" />
       <line x1="-493.75" y1="188.050678" x2="-493.75" y2="221.858082" />
       <line x1="506.25" y1="188.050678" x2="506.25" y2="221.858082" />
       <line x1="-493.75" y1="188.050678" x2="506.25" y2="188.050678" />
@@ -14506,8 +14642,8 @@
       <path d="M -1186.272306,-77.998341 A 303.0,186.48360883368915 116.21406534015115 0,1 -1086.717608,-163.187359" />
       <path d="M -1082.717608,-165.319415 A 303.0,186.48360883368915 116.21406534015115 0,1 -980.39592,-187.039937" />
       <path d="M -976.348674,-186.42766 A 303.0,186.48360883368915 116.21406534015115 0,1 -950.994195,-179.237557" />
-      <path d="M -877.535321,-16.616634 A 303.0,186.48360883368915 116.21406534015115 0,1 -1004.064936,286.290831" />
-      <path d="M -1016.006822,298.241823 A 303.0,186.48360883368915 116.21406534015115 0,1 -1222.841383,362.038355" />
+      <path d="M -877.535321,-16.616634 A 303.0,186.48360883368915 116.21406534015115 0,1 -1000.222843,282.220358" />
+      <path d="M -1043.407787,321.969149 A 303.0,186.48360883368915 116.21406534015115 0,1 -1222.841383,362.038355" />
       <path d="M -1233.579967,356.400807 A 303.0,186.48360883368915 116.21406534015115 0,1 -957.945666,-182.962012" />
       <path d="M -957.945666,-182.962012 A 303.0,186.48360883368915 116.21406534015115 0,1 -884.375766,-79.356723" />
       <path d="M -880.727792,-60.401995 A 303.0,186.48360883368915 116.21406534015115 0,1 -877.535321,-16.616634" />
@@ -14568,7 +14704,7 @@
       <path d="M -398.546104,-19.355472 A 317.0,195.10001320224242 116.21406534015115 0,1 -418.643053,-27.107646" />
       <path d="M -418.643053,-27.107646 A 317.0,195.10001320224242 116.21406534015115 0,1 -138.588703,-595.90072" />
       <path d="M -138.588703,-595.90072 A 317.0,195.10001320224242 116.21406534015115 0,1 -59.19828,-475.95116" />
-      <path d="M -64.362523,-416.995242 A 303.0,186.48360883368915 116.21406534015115 0,1 -369.743713,-27.951991" />
+      <path d="M -64.362523,-416.995242 A 303.0,186.48360883368915 116.21406534015115 0,1 -337.24644,-28.975546" />
       <path d="M -395.120853,-32.812155 A 303.0,186.48360883368915 116.21406534015115 0,1 -412.458887,-39.667745" />
       <path d="M -412.458887,-39.667745 A 303.00000035733495,186.4836090536136 116.21406534015115 0,1 -144.772868,-583.340621" />
       <path d="M -144.772868,-583.340621 A 303.0,186.48360883368915 116.21406534015115 0,1 -68.776103,-468.076383" />
@@ -15615,6 +15751,25 @@
       <path d="M -370.355783,296.912195 A 4.0,2.7105978995876496 -60.72252278484017 0,0 -370.299978,296.15588" />
       <path d="M -370.299978,296.15588 A 4.0,2.7105978995876496 -60.72252278484017 0,0 -371.412028,293.930411" />
       <path d="M -371.412028,293.930411 A 4.0,2.7105978995876496 -60.72252278484017 0,0 -371.676574,293.808482" />
+      <line x1="-339.515707" y1="-30.092856" x2="-341.934155" y2="-20.72312" />
+      <line x1="-341.934155" y1="-20.72312" x2="-334.863087" y2="-17.241567" />
+      <line x1="-332.44464" y1="-26.611303" x2="-334.863087" y2="-17.241567" />
+      <line x1="-339.515707" y1="-30.092856" x2="-332.44464" y2="-26.611303" />
+      <line x1="-369.728794" y1="-28.752918" x2="-339.515707" y2="-30.092856" />
+      <line x1="-369.901469" y1="-19.482782" x2="-341.934155" y2="-20.72312" />
+      <line x1="-369.97222" y1="-15.684492" x2="-334.863087" y2="-17.241567" />
+      <line x1="-1045.030982" y1="317.278852" x2="-1042.612534" y2="324.267066" />
+      <line x1="-1042.612534" y1="324.267066" x2="-1035.541467" y2="327.748619" />
+      <line x1="-1005.163201" y1="279.787894" x2="-1002.744753" y2="286.776107" />
+      <line x1="-1002.744753" y1="286.776107" x2="-995.935386" y2="290.128808" />
+      <line x1="-998.092133" y1="283.269447" x2="-995.777781" y2="289.956871" />
+      <line x1="-1005.163201" y1="279.787894" x2="-998.092133" y2="283.269447" />
+      <line x1="-1045.030982" y1="317.278852" x2="-1018.791989" y2="292.604167" />
+      <line x1="-1006.606879" y1="281.145504" x2="-1005.163201" y2="279.787894" />
+      <line x1="-1042.612534" y1="324.267066" x2="-1015.66758" y2="298.928506" />
+      <line x1="-1003.48247" y1="287.469843" x2="-1002.744753" y2="286.776107" />
+      <line x1="-1035.541467" y1="327.748619" x2="-1012.250182" y2="305.845905" />
+      <line x1="-1000.065071" y1="294.387243" x2="-998.613186" y2="293.021915" />
       <line x1="-79.292719" y1="-459.429742" x2="-72.887274" y2="-433.157996" />
       <line x1="-72.887274" y1="-433.157996" x2="634.219507" y2="-85.002685" />
       <line x1="-79.292719" y1="-459.429742" x2="378.325792" y2="-835.678473" />
@@ -16037,4 +16192,4 @@
       <circle cx="1147.826889" cy="89.816288" r="115.0" />
     </g>
   </g>
-</svg><text x="346.00" y="156.00" font-family="IBM Plex Sans, Helvetica, Arial, sans-serif" font-size="2.8" font-weight="600" fill="#EEF5FF" text-anchor="middle">ISOMETRIC VIEW</text><text x="346.00" y="160.00" font-family="IBM Plex Sans, Helvetica, Arial, sans-serif" font-size="2.2" font-weight="400" fill="#AFC8EC" text-anchor="middle">Not to scale; figure is a 1.75 m person; seen from the front right and above, about 30 deg elevation</text><rect x="276" y="168" width="140" height="31.0" fill="#143F73" stroke="#EEF5FF" stroke-width="0.35"/><text x="279.00" y="173.00" font-family="IBM Plex Sans, Helvetica, Arial, sans-serif" font-size="2.3" font-weight="600" fill="#8FE3D6" text-anchor="start">KEY FIGURES</text><text x="279.00" y="178.00" font-family="IBM Plex Sans, Helvetica, Arial, sans-serif" font-size="2.6" font-weight="400" fill="#EEF5FF" text-anchor="start">250 W geared front hub, 48 V on SwapCell (decided)</text><text x="279.00" y="182.60" font-family="IBM Plex Sans, Helvetica, Arial, sans-serif" font-size="2.6" font-weight="400" fill="#EEF5FF" text-anchor="start">SwapCell about 468 Wh: about 37 km loaded (SSP-CAL-001)</text><text x="279.00" y="187.20" font-family="IBM Plex Sans, Helvetica, Arial, sans-serif" font-size="2.6" font-weight="400" fill="#EEF5FF" text-anchor="start">100 W panel: about 315 Wh/day stored at 4.5 sun hours</text><text x="279.00" y="191.80" font-family="IBM Plex Sans, Helvetica, Arial, sans-serif" font-size="2.6" font-weight="400" fill="#EEF5FF" text-anchor="start">Added mass 6.78 kg with pack; torque arms both sides</text><text x="279.00" y="196.40" font-family="IBM Plex Sans, Helvetica, Arial, sans-serif" font-size="2.6" font-weight="400" fill="#EEF5FF" text-anchor="start">Bike kit about USD 196; solar set about USD 90; pack excluded</text><rect x="273.8" y="10.0" width="148" height="10.4" fill="#143F73" stroke="#EEF5FF" stroke-width="0.5"/><rect x="273.8" y="10.0" width="148" height="5.2" fill="#1D4F8A" stroke="#EEF5FF" stroke-width="0.5"/><text x="275.60" y="13.60" font-family="IBM Plex Sans, Helvetica, Arial, sans-serif" font-size="2.0" font-weight="600" fill="#EEF5FF" text-anchor="start">REV</text><text x="289.60" y="13.60" font-family="IBM Plex Sans, Helvetica, Arial, sans-serif" font-size="2.0" font-weight="600" fill="#EEF5FF" text-anchor="start">DESCRIPTION</text><text x="381.60" y="13.60" font-family="IBM Plex Sans, Helvetica, Arial, sans-serif" font-size="2.0" font-weight="600" fill="#EEF5FF" text-anchor="start">DATE</text><text x="407.60" y="13.60" font-family="IBM Plex Sans, Helvetica, Arial, sans-serif" font-size="2.0" font-weight="600" fill="#EEF5FF" text-anchor="start">BY</text><line x1="273.8" y1="15.2" x2="421.8" y2="15.2" stroke="#6F93C4" stroke-width="0.3"/><text x="275.60" y="18.80" font-family="IBM Plex Mono, Menlo, monospace" font-size="2.3" font-weight="400" fill="#EEF5FF" text-anchor="start">P2</text><text x="289.60" y="18.80" font-family="IBM Plex Sans, Helvetica, Arial, sans-serif" font-size="2.3" font-weight="400" fill="#EEF5FF" text-anchor="start">Concept sheet</text><text x="381.60" y="18.80" font-family="IBM Plex Sans, Helvetica, Arial, sans-serif" font-size="2.3" font-weight="400" fill="#EEF5FF" text-anchor="start">2026-10-01</text><text x="407.60" y="18.80" font-family="IBM Plex Sans, Helvetica, Arial, sans-serif" font-size="2.3" font-weight="400" fill="#EEF5FF" text-anchor="start">AC</text><rect x="231.8" y="213.39999999999998" width="190.0" height="56.0" fill="#143F73" stroke="#EEF5FF" stroke-width="0.7"/><rect x="231.8" y="213.39999999999998" width="3" height="56.0" fill="#8FE3D6"/><line x1="231.8" y1="227.39999999999998" x2="421.8" y2="227.39999999999998" stroke="#6F93C4" stroke-width="0.3"/><line x1="231.8" y1="239.39999999999998" x2="421.8" y2="239.39999999999998" stroke="#6F93C4" stroke-width="0.3"/><line x1="231.8" y1="251.39999999999998" x2="421.8" y2="251.39999999999998" stroke="#6F93C4" stroke-width="0.3"/><line x1="231.8" y1="260.4" x2="421.8" y2="260.4" stroke="#6F93C4" stroke-width="0.3"/><text x="237.80" y="218.40" font-family="IBM Plex Sans, Helvetica, Arial, sans-serif" font-size="2.2" font-weight="600" fill="#8FE3D6" text-anchor="start">SUNSPOKE</text><text x="418.80" y="218.40" font-family="IBM Plex Mono, Menlo, monospace" font-size="2.2" font-weight="500" fill="#8FE3D6" text-anchor="end">github.com/BoujeeEnjinia1701/sunspoke</text><text x="237.80" y="224.40" font-family="IBM Plex Sans, Helvetica, Arial, sans-serif" font-size="4.4" font-weight="600" fill="#EEF5FF" text-anchor="start">Roadster conversion kit concept</text><text x="236.80" y="230.80" font-family="IBM Plex Sans, Helvetica, Arial, sans-serif" font-size="1.8" font-weight="500" fill="#AFC8EC" text-anchor="start">DRAWING NO.</text><text x="236.80" y="235.60" font-family="IBM Plex Mono, Menlo, monospace" font-size="3.4" font-weight="600" fill="#EEF5FF" text-anchor="start">SSP-DWG-010</text><text x="316.80" y="230.80" font-family="IBM Plex Sans, Helvetica, Arial, sans-serif" font-size="1.8" font-weight="500" fill="#AFC8EC" text-anchor="start">REV</text><text x="316.80" y="235.60" font-family="IBM Plex Mono, Menlo, monospace" font-size="3.4" font-weight="600" fill="#EEF5FF" text-anchor="start">P2</text><line x1="314.8" y1="227.39999999999998" x2="314.8" y2="239.39999999999998" stroke="#6F93C4" stroke-width="0.3"/><text x="341.80" y="230.80" font-family="IBM Plex Sans, Helvetica, Arial, sans-serif" font-size="1.8" font-weight="500" fill="#AFC8EC" text-anchor="start">SHEET</text><text x="341.80" y="235.60" font-family="IBM Plex Sans, Helvetica, Arial, sans-serif" font-size="3.4" font-weight="600" fill="#EEF5FF" text-anchor="start">1 of 1</text><line x1="339.8" y1="227.39999999999998" x2="339.8" y2="239.39999999999998" stroke="#6F93C4" stroke-width="0.3"/><text x="371.80" y="230.80" font-family="IBM Plex Sans, Helvetica, Arial, sans-serif" font-size="1.8" font-weight="500" fill="#AFC8EC" text-anchor="start">SIZE</text><text x="371.80" y="235.60" font-family="IBM Plex Sans, Helvetica, Arial, sans-serif" font-size="3.4" font-weight="600" fill="#EEF5FF" text-anchor="start">ANSI B</text><line x1="369.8" y1="227.39999999999998" x2="369.8" y2="239.39999999999998" stroke="#6F93C4" stroke-width="0.3"/><text x="236.80" y="242.80" font-family="IBM Plex Sans, Helvetica, Arial, sans-serif" font-size="1.8" font-weight="500" fill="#AFC8EC" text-anchor="start">SCALE</text><text x="236.80" y="247.20" font-family="IBM Plex Sans, Helvetica, Arial, sans-serif" font-size="3.0" font-weight="500" fill="#EEF5FF" text-anchor="start">1:20</text><text x="266.80" y="242.80" font-family="IBM Plex Sans, Helvetica, Arial, sans-serif" font-size="1.8" font-weight="500" fill="#AFC8EC" text-anchor="start">UNITS</text><text x="266.80" y="247.20" font-family="IBM Plex Sans, Helvetica, Arial, sans-serif" font-size="3.0" font-weight="500" fill="#EEF5FF" text-anchor="start">mm</text><line x1="264.8" y1="239.39999999999998" x2="264.8" y2="251.39999999999998" stroke="#6F93C4" stroke-width="0.3"/><text x="291.80" y="242.80" font-family="IBM Plex Sans, Helvetica, Arial, sans-serif" font-size="1.8" font-weight="500" fill="#AFC8EC" text-anchor="start">PROJECTION</text><path d="M302.8 244.39999999999998 L308.8 242.89999999999998 L308.8 250.89999999999998 L302.8 249.39999999999998 Z" fill="none" stroke="#EEF5FF" stroke-width="0.3"/><circle cx="314.8" cy="246.89999999999998" r="4" fill="none" stroke="#EEF5FF" stroke-width="0.3"/><circle cx="314.8" cy="246.89999999999998" r="2.3" fill="none" stroke="#EEF5FF" stroke-width="0.3"/><line x1="300.8" y1="246.89999999999998" x2="320.3" y2="246.89999999999998" stroke="#EEF5FF" stroke-width="0.18" stroke-dasharray="3 1 0.6 1"/><line x1="289.8" y1="239.39999999999998" x2="289.8" y2="251.39999999999998" stroke="#6F93C4" stroke-width="0.3"/><text x="326.80" y="242.80" font-family="IBM Plex Sans, Helvetica, Arial, sans-serif" font-size="1.8" font-weight="500" fill="#AFC8EC" text-anchor="start">DATE</text><text x="326.80" y="247.20" font-family="IBM Plex Sans, Helvetica, Arial, sans-serif" font-size="3.0" font-weight="500" fill="#EEF5FF" text-anchor="start">2026-10-01</text><line x1="324.8" y1="239.39999999999998" x2="324.8" y2="251.39999999999998" stroke="#6F93C4" stroke-width="0.3"/><text x="366.80" y="242.80" font-family="IBM Plex Sans, Helvetica, Arial, sans-serif" font-size="1.8" font-weight="500" fill="#AFC8EC" text-anchor="start">DRAWN</text><text x="366.80" y="247.20" font-family="IBM Plex Sans, Helvetica, Arial, sans-serif" font-size="3.0" font-weight="500" fill="#EEF5FF" text-anchor="start">Amish Chadha</text><line x1="364.8" y1="239.39999999999998" x2="364.8" y2="251.39999999999998" stroke="#6F93C4" stroke-width="0.3"/><text x="236.80" y="254.80" font-family="IBM Plex Sans, Helvetica, Arial, sans-serif" font-size="1.8" font-weight="500" fill="#AFC8EC" text-anchor="start">MATERIAL / NOTES</text><text x="236.80" y="258.80" font-family="IBM Plex Sans, Helvetica, Arial, sans-serif" font-size="2.6" font-weight="400" fill="#EEF5FF" text-anchor="start">Massing model for concept communication</text><text x="236.80" y="266.20" font-family="IBM Plex Sans, Helvetica, Arial, sans-serif" font-size="2.1" font-weight="400" fill="#AFC8EC" text-anchor="start">Licensed CERN-OHL-S-2.0 · Design Molecule Lab · designmolecule.com</text><text x="418.80" y="266.20" font-family="IBM Plex Sans, Helvetica, Arial, sans-serif" font-size="1.9" font-weight="400" fill="#AFC8EC" text-anchor="end">Generated from cad/src; do not edit by hand</text></svg>
+</svg><text x="346.00" y="156.00" font-family="IBM Plex Sans, Helvetica, Arial, sans-serif" font-size="2.8" font-weight="600" fill="#EEF5FF" text-anchor="middle">ISOMETRIC VIEW</text><text x="346.00" y="160.00" font-family="IBM Plex Sans, Helvetica, Arial, sans-serif" font-size="2.2" font-weight="400" fill="#AFC8EC" text-anchor="middle">Not to scale; figure is a 1.75 m person; seen from the front right and above, about 30 deg elevation</text><rect x="276" y="168" width="140" height="31.0" fill="#143F73" stroke="#EEF5FF" stroke-width="0.35"/><text x="279.00" y="173.00" font-family="IBM Plex Sans, Helvetica, Arial, sans-serif" font-size="2.3" font-weight="600" fill="#8FE3D6" text-anchor="start">KEY FIGURES</text><text x="279.00" y="178.00" font-family="IBM Plex Sans, Helvetica, Arial, sans-serif" font-size="2.6" font-weight="400" fill="#EEF5FF" text-anchor="start">250 W geared front hub, 48 V on SwapCell (decided)</text><text x="279.00" y="182.60" font-family="IBM Plex Sans, Helvetica, Arial, sans-serif" font-size="2.6" font-weight="400" fill="#EEF5FF" text-anchor="start">SwapCell about 468 Wh: about 37 km loaded (SSP-CAL-001)</text><text x="279.00" y="187.20" font-family="IBM Plex Sans, Helvetica, Arial, sans-serif" font-size="2.6" font-weight="400" fill="#EEF5FF" text-anchor="start">100 W panel: about 315 Wh/day stored at 4.5 sun hours</text><text x="279.00" y="191.80" font-family="IBM Plex Sans, Helvetica, Arial, sans-serif" font-size="2.6" font-weight="400" fill="#EEF5FF" text-anchor="start">Added mass 6.88 kg with pack; torque arms both sides</text><text x="279.00" y="196.40" font-family="IBM Plex Sans, Helvetica, Arial, sans-serif" font-size="2.6" font-weight="400" fill="#EEF5FF" text-anchor="start">Bike kit about USD 208; solar set about USD 90; pack excluded</text><rect x="273.8" y="10.0" width="148" height="10.4" fill="#143F73" stroke="#EEF5FF" stroke-width="0.5"/><rect x="273.8" y="10.0" width="148" height="5.2" fill="#1D4F8A" stroke="#EEF5FF" stroke-width="0.5"/><text x="275.60" y="13.60" font-family="IBM Plex Sans, Helvetica, Arial, sans-serif" font-size="2.0" font-weight="600" fill="#EEF5FF" text-anchor="start">REV</text><text x="289.60" y="13.60" font-family="IBM Plex Sans, Helvetica, Arial, sans-serif" font-size="2.0" font-weight="600" fill="#EEF5FF" text-anchor="start">DESCRIPTION</text><text x="381.60" y="13.60" font-family="IBM Plex Sans, Helvetica, Arial, sans-serif" font-size="2.0" font-weight="600" fill="#EEF5FF" text-anchor="start">DATE</text><text x="407.60" y="13.60" font-family="IBM Plex Sans, Helvetica, Arial, sans-serif" font-size="2.0" font-weight="600" fill="#EEF5FF" text-anchor="start">BY</text><line x1="273.8" y1="15.2" x2="421.8" y2="15.2" stroke="#6F93C4" stroke-width="0.3"/><text x="275.60" y="18.80" font-family="IBM Plex Mono, Menlo, monospace" font-size="2.3" font-weight="400" fill="#EEF5FF" text-anchor="start">P3</text><text x="289.60" y="18.80" font-family="IBM Plex Sans, Helvetica, Arial, sans-serif" font-size="2.3" font-weight="400" fill="#EEF5FF" text-anchor="start">Concept sheet</text><text x="381.60" y="18.80" font-family="IBM Plex Sans, Helvetica, Arial, sans-serif" font-size="2.3" font-weight="400" fill="#EEF5FF" text-anchor="start">2026-10-02</text><text x="407.60" y="18.80" font-family="IBM Plex Sans, Helvetica, Arial, sans-serif" font-size="2.3" font-weight="400" fill="#EEF5FF" text-anchor="start">AC</text><rect x="231.8" y="213.39999999999998" width="190.0" height="56.0" fill="#143F73" stroke="#EEF5FF" stroke-width="0.7"/><rect x="231.8" y="213.39999999999998" width="3" height="56.0" fill="#8FE3D6"/><line x1="231.8" y1="227.39999999999998" x2="421.8" y2="227.39999999999998" stroke="#6F93C4" stroke-width="0.3"/><line x1="231.8" y1="239.39999999999998" x2="421.8" y2="239.39999999999998" stroke="#6F93C4" stroke-width="0.3"/><line x1="231.8" y1="251.39999999999998" x2="421.8" y2="251.39999999999998" stroke="#6F93C4" stroke-width="0.3"/><line x1="231.8" y1="260.4" x2="421.8" y2="260.4" stroke="#6F93C4" stroke-width="0.3"/><text x="237.80" y="218.40" font-family="IBM Plex Sans, Helvetica, Arial, sans-serif" font-size="2.2" font-weight="600" fill="#8FE3D6" text-anchor="start">SUNSPOKE</text><text x="418.80" y="218.40" font-family="IBM Plex Mono, Menlo, monospace" font-size="2.2" font-weight="500" fill="#8FE3D6" text-anchor="end">github.com/BoujeeEnjinia1701/sunspoke</text><text x="237.80" y="224.40" font-family="IBM Plex Sans, Helvetica, Arial, sans-serif" font-size="4.4" font-weight="600" fill="#EEF5FF" text-anchor="start">Roadster conversion kit concept</text><text x="236.80" y="230.80" font-family="IBM Plex Sans, Helvetica, Arial, sans-serif" font-size="1.8" font-weight="500" fill="#AFC8EC" text-anchor="start">DRAWING NO.</text><text x="236.80" y="235.60" font-family="IBM Plex Mono, Menlo, monospace" font-size="3.4" font-weight="600" fill="#EEF5FF" text-anchor="start">SSP-DWG-010</text><text x="316.80" y="230.80" font-family="IBM Plex Sans, Helvetica, Arial, sans-serif" font-size="1.8" font-weight="500" fill="#AFC8EC" text-anchor="start">REV</text><text x="316.80" y="235.60" font-family="IBM Plex Mono, Menlo, monospace" font-size="3.4" font-weight="600" fill="#EEF5FF" text-anchor="start">P3</text><line x1="314.8" y1="227.39999999999998" x2="314.8" y2="239.39999999999998" stroke="#6F93C4" stroke-width="0.3"/><text x="341.80" y="230.80" font-family="IBM Plex Sans, Helvetica, Arial, sans-serif" font-size="1.8" font-weight="500" fill="#AFC8EC" text-anchor="start">SHEET</text><text x="341.80" y="235.60" font-family="IBM Plex Sans, Helvetica, Arial, sans-serif" font-size="3.4" font-weight="600" fill="#EEF5FF" text-anchor="start">1 of 1</text><line x1="339.8" y1="227.39999999999998" x2="339.8" y2="239.39999999999998" stroke="#6F93C4" stroke-width="0.3"/><text x="371.80" y="230.80" font-family="IBM Plex Sans, Helvetica, Arial, sans-serif" font-size="1.8" font-weight="500" fill="#AFC8EC" text-anchor="start">SIZE</text><text x="371.80" y="235.60" font-family="IBM Plex Sans, Helvetica, Arial, sans-serif" font-size="3.4" font-weight="600" fill="#EEF5FF" text-anchor="start">ANSI B</text><line x1="369.8" y1="227.39999999999998" x2="369.8" y2="239.39999999999998" stroke="#6F93C4" stroke-width="0.3"/><text x="236.80" y="242.80" font-family="IBM Plex Sans, Helvetica, Arial, sans-serif" font-size="1.8" font-weight="500" fill="#AFC8EC" text-anchor="start">SCALE</text><text x="236.80" y="247.20" font-family="IBM Plex Sans, Helvetica, Arial, sans-serif" font-size="3.0" font-weight="500" fill="#EEF5FF" text-anchor="start">1:20</text><text x="266.80" y="242.80" font-family="IBM Plex Sans, Helvetica, Arial, sans-serif" font-size="1.8" font-weight="500" fill="#AFC8EC" text-anchor="start">UNITS</text><text x="266.80" y="247.20" font-family="IBM Plex Sans, Helvetica, Arial, sans-serif" font-size="3.0" font-weight="500" fill="#EEF5FF" text-anchor="start">mm</text><line x1="264.8" y1="239.39999999999998" x2="264.8" y2="251.39999999999998" stroke="#6F93C4" stroke-width="0.3"/><text x="291.80" y="242.80" font-family="IBM Plex Sans, Helvetica, Arial, sans-serif" font-size="1.8" font-weight="500" fill="#AFC8EC" text-anchor="start">PROJECTION</text><path d="M302.8 244.39999999999998 L308.8 242.89999999999998 L308.8 250.89999999999998 L302.8 249.39999999999998 Z" fill="none" stroke="#EEF5FF" stroke-width="0.3"/><circle cx="314.8" cy="246.89999999999998" r="4" fill="none" stroke="#EEF5FF" stroke-width="0.3"/><circle cx="314.8" cy="246.89999999999998" r="2.3" fill="none" stroke="#EEF5FF" stroke-width="0.3"/><line x1="300.8" y1="246.89999999999998" x2="320.3" y2="246.89999999999998" stroke="#EEF5FF" stroke-width="0.18" stroke-dasharray="3 1 0.6 1"/><line x1="289.8" y1="239.39999999999998" x2="289.8" y2="251.39999999999998" stroke="#6F93C4" stroke-width="0.3"/><text x="326.80" y="242.80" font-family="IBM Plex Sans, Helvetica, Arial, sans-serif" font-size="1.8" font-weight="500" fill="#AFC8EC" text-anchor="start">DATE</text><text x="326.80" y="247.20" font-family="IBM Plex Sans, Helvetica, Arial, sans-serif" font-size="3.0" font-weight="500" fill="#EEF5FF" text-anchor="start">2026-10-02</text><line x1="324.8" y1="239.39999999999998" x2="324.8" y2="251.39999999999998" stroke="#6F93C4" stroke-width="0.3"/><text x="366.80" y="242.80" font-family="IBM Plex Sans, Helvetica, Arial, sans-serif" font-size="1.8" font-weight="500" fill="#AFC8EC" text-anchor="start">DRAWN</text><text x="366.80" y="247.20" font-family="IBM Plex Sans, Helvetica, Arial, sans-serif" font-size="3.0" font-weight="500" fill="#EEF5FF" text-anchor="start">Amish Chadha</text><line x1="364.8" y1="239.39999999999998" x2="364.8" y2="251.39999999999998" stroke="#6F93C4" stroke-width="0.3"/><text x="236.80" y="254.80" font-family="IBM Plex Sans, Helvetica, Arial, sans-serif" font-size="1.8" font-weight="500" fill="#AFC8EC" text-anchor="start">MATERIAL / NOTES</text><text x="236.80" y="258.80" font-family="IBM Plex Sans, Helvetica, Arial, sans-serif" font-size="2.6" font-weight="400" fill="#EEF5FF" text-anchor="start">Massing model for concept communication</text><text x="236.80" y="266.20" font-family="IBM Plex Sans, Helvetica, Arial, sans-serif" font-size="2.1" font-weight="400" fill="#AFC8EC" text-anchor="start">Licensed CERN-OHL-S-2.0 · Design Molecule Lab · designmolecule.com</text><text x="418.80" y="266.20" font-family="IBM Plex Sans, Helvetica, Arial, sans-serif" font-size="1.9" font-weight="400" fill="#AFC8EC" text-anchor="end">Generated from cad/src; do not edit by hand</text></svg>

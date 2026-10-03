@@ -3,7 +3,7 @@ doc_id: SSP-REQ-001
 title: SunSpoke requirements
 project: SunSpoke
 doc_type: Requirements
-version: "0.6"
+version: "0.7"
 status: Draft
 date: '2026-10-02'
 author: Amish Chadha
@@ -33,13 +33,17 @@ revisions:
   date: '2026-10-02'
   author: Amish Chadha
   change: "R11 adds a wet stopping target, decided by Amish on 2026-10-02 (SSP-DEC-001)"
+- version: "0.7"
+  date: '2026-10-02'
+  author: Amish Chadha
+  change: "Status values from SSP-CAL-001 v0.5: R11 wet stop with wet-weather blocks and a proposed wet target of 14 m; R6 6.88 kg; R12 USD 208; no requirement changed status"
 ---
 
 # SunSpoke requirements
 
-These requirements were checked by calculation in SSP-CAL-001 at TRL 3. None is shown to be not met; R3, R4 and R11 are at risk, and R7, R9, R10 and R13 cannot be verified until hardware exists (TRL 4, on hold by Amish's instruction). Targets are not yet validated with users and will be revised after co-design sessions (see SSP-PRB-001). Changes in v0.3 follow Amish's decisions of 2026-09-25 (SSP-DDR-001). In v0.5 the status values follow SSP-CAL-001 v0.3 for the constructable design (SSP-DDR-003); no requirement changed status. In v0.6, R11 adds a wet stopping target (SSP-DEC-001, 2026-10-02). In v0.4, R3 is restated to require a thermal derate instead of a cutout and R10 adds the handlebar power switch in the INTERLOCK loop (SSP-DDR-002).
+These requirements were checked by calculation in SSP-CAL-001 at TRL 3. None is shown to be not met; R3, R4 and R11 are at risk, and R7, R9, R10 and R13 cannot be verified until hardware exists (TRL 4, on hold by Amish's instruction). Targets are not yet validated with users and will be revised after co-design sessions (see SSP-PRB-001). Changes in v0.3 follow Amish's decisions of 2026-09-25 (SSP-DDR-001). In v0.5 the status values follow SSP-CAL-001 v0.3 for the constructable design (SSP-DDR-003); no requirement changed status. In v0.6, R11 adds a wet stopping target (SSP-DEC-001, 2026-10-02). In v0.7, the values follow SSP-CAL-001 v0.5 (wet-weather blocks, 6.88 kg, USD 208); no requirement changed status. In v0.4, R3 is restated to require a thermal derate instead of a cutout and R10 adds the handlebar power switch in the INTERLOCK loop (SSP-DDR-002).
 
-The **design load case** used throughout is a 75 kg rider, 25 kg of cargo on the rear carrier, a 22 kg roadster and about 6.78 kg of kit and pack: about 130 kg (128.78 kg) in total, on a dry dirt road.
+The **design load case** used throughout is a 75 kg rider, 25 kg of cargo on the rear carrier, a 22 kg roadster and about 6.88 kg of kit and pack: about 130 kg (128.88 kg) in total, on a dry dirt road.
 
 *Table 1. Requirements with status from SSP-CAL-001.*
 
@@ -50,13 +54,13 @@ The **design load case** used throughout is a 75 kg rider, 25 kg of cargo on the
 | R3 | Climb a loaded hill | 8 % grade for 500 m at 8 km/h or more in the design load case, rider at 80 W, at 35 °C ambient; the controller derates motor current on a winding thermistor from 110 °C so the winding stays at or below 120 °C, and never cuts assist abruptly | Force and thermal calculation; later hill test | At risk |
 | R4 | Fit to the donor bike without fabrication | No welding, drilling or cutting of the frame or fork; fitted in 90 min or less by a trained local mechanic with basic tools (spanners to 18 mm, hex keys, spoke key, screwdriver, file) | Fitting sequence review; later timed fitting trials | At risk |
 | R5 | Fit the common roadster | 28 in (ETRTO 635) front wheel, 100 mm front dropout spacing, round down tube 28 to 32 mm, rod or cable brakes | Survey of donor bikes with the partner; model check | Met (on paper) |
-| R6 | Keep the bike rideable and liftable | Added mass 7 kg or less including the pack; bike still stands on its kickstand and can be pushed with the system off | Mass estimate; later weighing | Met (6.78 kg) |
+| R6 | Keep the bike rideable and liftable | Added mass 7 kg or less including the pack; bike still stands on its kickstand and can be pushed with the system off | Mass estimate; later weighing | Met (6.88 kg) |
 | R7 | Survive dust, rain and heat | Controller, host adapter and connectors IP65; motor IP54 or better; ride through heavy rain and 150 mm of standing water; operate at 0 to 45 °C ambient | Datasheets and design review; later spray and dust tests | Not verifiable at TRL 3 |
 | R8 | Charge from one 100 W solar panel | Energy for 20 km or more of loaded assist per day at 4.5 peak sun hours; full recharge (10 to 100 %) of the pack in 2 days or less | Solar yield calculation | Met (27 km/day, 1.3 days) |
 | R9 | Repairable by a local mechanic | Every electrical joint pluggable with keyed connectors; any single kit part swapped in 20 min or less at the roadside; basic faults diagnosed with a multimeter and a printed fault chart; 70 % or more of kit cost in generic parts available in regional towns | Design review; parts availability survey with the partner | Not verifiable at TRL 3 (84 % generic) |
 | R10 | Safe assist control | Brake cut-off on both brake levers; assist stops within 0.5 s of braking or of pedaling stopping; pack output fused; torque arms on both fork dropouts; a handlebar power switch in series with the INTERLOCK coding resistor opens the pack output when switched off | Design review; later bench test | Not verifiable at TRL 3 |
-| R11 | Stop safely with the added mass and speed | Design load case stops from 20 km/h in 9 m or less on a dry dirt road, and meets a wet stopping target on a wet dirt road (added 2026-10-02, SSP-DEC-001; its value is to be set with the wet-weather blocks' data) | Braking calculation; later field tests dry and wet with wet-weather brake blocks for steel rims | At risk (8.5 m dry; 21.7 m wet with standard blocks; wet target not yet set) |
-| R12 | Affordable | Bike conversion kit (items 1 to 5, 7 to 9, 14) $250 or less in parts; the solar charging set is costed separately; the SwapCell pack is excluded and priced once in SwapCell | Priced BOM (`bom/bom.csv`) | Met (USD 196, USD 54 under the USD 250 value-engineering target) |
+| R11 | Stop safely with the added mass and speed | Design load case stops from 20 km/h in 9 m or less on a dry dirt road, and meets a wet stopping target on a wet dirt road (added 2026-10-02, SSP-DEC-001; proposed value 14 m from 20 km/h, awaiting Amish, to be confirmed with the wet-weather blocks' data) | Braking calculation; later field tests dry and wet with wet-weather brake blocks for steel rims | At risk (8.5 m dry; 21.8 m wet with standard blocks; 11.9 m wet with wet-weather blocks at an assumed friction of 0.25, against a proposed 14 m target) |
+| R12 | Affordable | Bike conversion kit (items 1 to 5, 7 to 9, 14, 15) $250 or less in parts; the solar charging set is costed separately; the SwapCell pack is excluded and priced once in SwapCell | Priced BOM (`bom/bom.csv`) | Met (USD 208, USD 42 under the USD 250 value-engineering target) |
 | R13 | Build to SwapCell interface v0.3 | Cradle receptacle fits the 10 kΩ ±1 % INTERLOCK coding resistor (item W); host adapter acts as the vehicle host for modes 2, 3 and 4 within the pack's published limits (item C); cradle is a latch class V1 vehicle receiver with at least 330 N preload (item V) | Design review against SWC-PRC-001 v0.3; later vibration and shock test | Not verifiable at TRL 3 |
 
 ## Assumptions

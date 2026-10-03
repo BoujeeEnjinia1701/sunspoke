@@ -3,7 +3,7 @@ doc_id: SSP-PRC-001
 title: SunSpoke design precis
 project: SunSpoke
 doc_type: Design precis
-version: "0.6"
+version: "0.7"
 status: Draft
 date: '2026-10-02'
 author: Amish Chadha
@@ -33,11 +33,15 @@ revisions:
   date: '2026-10-02'
   author: Amish Chadha
   change: "Region, slot filing, reference motor and wet braking decided by Amish on 2026-10-02 (SSP-DEC-001)"
+- version: "0.7"
+  date: '2026-10-02'
+  author: Amish Chadha
+  change: "Figures from SSP-CAL-001 v0.5: wet-weather brake blocks in the kit, wet stop 11.9 m with them against a proposed 14 m wet target, added mass 6.88 kg, bike kit USD 208"
 ---
 
 # SunSpoke design precis
 
-SunSpoke converts a steel roadster bicycle into a pedal-assist e-bike with a 48 V, 250 W geared front hub motor, a sealed controller and a SwapCell pack clamped inside the main triangle, all bolted on with no welding, and charges the pack from one 100 W solar panel or a shared village hub. The sizing note SSP-CAL-001 gives about 37 km of loaded range on one pack, about 315 Wh stored per 4.5 sun-hour day from one panel (about 27 km of loaded riding), 6.78 kg of added mass, and a bike kit costing about USD 196 in parts (USD 54 under its USD 250 value-engineering target), with the solar set (about USD 90) costed separately and the pack priced in SwapCell. No requirement is shown to be not met; motor heating on a long loaded climb (R3, now handled by a thermistor derate rather than a cutout), fork slot fit (R4) and stopping distance (R11) are at risk.
+SunSpoke converts a steel roadster bicycle into a pedal-assist e-bike with a 48 V, 250 W geared front hub motor, a sealed controller and a SwapCell pack clamped inside the main triangle, all bolted on with no welding, and charges the pack from one 100 W solar panel or a shared village hub. The sizing note SSP-CAL-001 gives about 37 km of loaded range on one pack, about 315 Wh stored per 4.5 sun-hour day from one panel (about 27 km of loaded riding), 6.88 kg of added mass, and a bike kit costing about USD 208 in parts (USD 42 under its USD 250 value-engineering target), with the solar set (about USD 90) costed separately and the pack priced in SwapCell. No requirement is shown to be not met; motor heating on a long loaded climb (R3, now handled by a thermistor derate rather than a cutout), fork slot fit (R4) and stopping distance (R11) are at risk.
 
 ![Hero render](../media/hero.png)
 
@@ -84,7 +88,7 @@ Numbers match the exploded view (Figure 3) and `bom/bom.csv`. The general arrang
 
 ## Key numbers
 
-All values come from SSP-CAL-001 (`docs/04-calcs/sizing.py`) and are paper estimates. The design load case is 128.78 kg (75 kg rider, 25 kg cargo, 22 kg roadster, 6.78 kg of kit and pack) on a dry dirt road.
+All values come from SSP-CAL-001 (`docs/04-calcs/sizing.py`) and are paper estimates. The design load case is 128.88 kg (75 kg rider, 25 kg cargo, 22 kg roadster, 6.88 kg of kit and pack) on a dry dirt road.
 
 | Quantity | Value | Basis | Requirement |
 | --- | --- | --- | --- |
@@ -93,7 +97,7 @@ All values come from SSP-CAL-001 (`docs/04-calcs/sizing.py`) and are paper estim
 | Motor on the 8 % grade at 8 km/h | 204 W and 32.6 N·m (81 % of a 40 N·m peak) | 127.7 N, rider 80 W | R3 met on power |
 | Motor winding, top of 500 m at 35 °C | about 100 °C base case; about 139 °C hot case | Lumped thermal model | R3 **at risk** |
 | Thermal derate from 110 °C | Starts after 694 m (base) or 224 m (hot) of the 8 % climb; sustained 4.7 or 3.7 km/h on an unending climb | Winding held at 120 °C, rider 80 W | R3 |
-| Added mass | 6.78 kg (kit 3.93, pack 2.85) | Table 2 of SSP-CAL-001 | R6 met, 0.22 kg margin |
+| Added mass | 6.88 kg (kit 4.03, pack 2.85) | Table 2 of SSP-CAL-001 | R6 met, 0.12 kg margin |
 | Solar, one 100 W panel | 315 Wh/day stored (280 at 4 h); about 27 km of loaded riding per day | 20 % derating, 92 % MPPT, 95 % charging | R8 met |
 | Recharge 10 to 100 % | 1.3 days (1.5 at 4 h) | 421 Wh / 315 Wh per day | R8 met |
 | Peak charge current | 1.47 A (0.15C); 1.39 A net in mode 4 | 74 W into about 50 V | R13 |
@@ -102,8 +106,8 @@ All values come from SSP-CAL-001 (`docs/04-calcs/sizing.py`) and are paper estim
 | Dropout slot filing | about 0.24 mm per side on a 9.53 mm slot | 10 mm flats | R4 **at risk** |
 | Cradle retention at 25 g | Axial margin 7.7; rotation margin 1.44 | 3.5 kg pack plus 1.10 kg cradle, three band clamps over V-saddles | R13, not verifiable |
 | Pack fit in the triangle | 121 mm clearance; 165 mm free travel for removal (143 needed); removal path checked against every cradle part | Parametric model, pack at 48 % of the down tube | R5 met on paper |
-| Stopping from 20 km/h | 8.5 m dry; 21.7 m wet | Rod brakes on steel rims, 0.5 s delay | R11 **at risk** |
-| Bike kit cost | about USD 196, USD 54 under the USD 250 value-engineering target | Items 1 to 5, 7 to 9, 14 | R12 met |
+| Stopping from 20 km/h | 8.5 m dry; 21.8 m wet with standard blocks, 11.9 m wet with wet-weather blocks (assumed friction 0.25) | Rod brakes on steel rims, 0.5 s delay | R11 **at risk** |
+| Bike kit cost | about USD 208, USD 42 under the USD 250 value-engineering target | Items 1 to 5, 7 to 9, 14, 15 | R12 met |
 | Solar set cost | about USD 90 | Items 10 to 13, costed separately | |
 | SwapCell pack | $414, priced in SwapCell (SWC-CAL-001) | Excluded from the kit | |
 
@@ -116,7 +120,7 @@ The motor pushes against its own axle. At the assumed 40 N·m peak, the axle fla
 All of these were decided by Amish on 2026-09-25 (go with recommendation), in SSP-DDR-001 or SSP-DDR-002.
 
 - **48 V on the SwapCell pack (Option A).** Meets R2, shares packs and docks with other portfolio vehicles and keeps the pitch. A 36 V kit with its own generic pack (Option B) is kept only as a later low-cost variant.
-- **Budget covers the bike kit.** `budget_usd` stays at USD 250, a value-engineering target, and R12 applies to the bike kit (about USD 196); the solar set is costed separately and the pack is priced once in SwapCell.
+- **Budget covers the bike kit.** `budget_usd` stays at USD 250, a value-engineering target, and R12 applies to the bike kit (about USD 208); the solar set is costed separately and the pack is priced once in SwapCell.
 - **Front geared hub motor.** Leaves the drivetrain, rear brake and carrier untouched and is the easiest bolt-on.
 - **Pack in the main triangle on the down tube.** Keeps the rear carrier free and the mass low and central.
 - **Motor laced locally into a 28 in rim**, with a lacing card.
@@ -134,7 +138,7 @@ All of these were decided by Amish on 2026-09-25 (go with recommendation), in SS
 - **Lithium pack.** A cell in thermal runaway vents flammable, toxic gas and can ignite its neighbors. Use only a SwapCell pack with its BMS, fuse the harness (item 9), charge on a non-combustible surface in shade and away from sleeping areas, never charge a pack that is damaged, swollen or has been submerged, and keep the pack out of direct sun when parked. The pack refuses charge below 0 °C and above 45 °C cell temperature.
 - **Pack retention.** A pack that leaves its cradle at speed is a 2.85 kg projectile with live contacts. The cradle must meet SwapCell latch class V1, the draw latch must have its safety catch engaged, and the three band clamps must be tightened to their stated torque and checked at every service; rotation resistance at a 25 g lateral shock has only about 1.44 margin on paper.
 - **Fork dropout failure.** A spun axle can rip the motor cable and let the wheel leave the fork, which throws the rider over the bars. Torque arms on both sides are mandatory, axle nuts need a set torque and a check at every service, and a fork with cracked, bent or heavily filed dropouts must not be converted. Fork fatigue under the heavier wheel is unverified.
-- **Braking with added speed and mass.** At 20 km/h the loaded bike carries about 2.0 kJ, about 2.5 times the unconverted bike at 13 km/h. Rod brakes on steel rims lose most of their grip in rain: about 22 m to stop from 20 km/h wet against 8.5 m dry. Brake cut-off sensors on both levers, the 20 km/h limit, and a brake check at fitting with new wet-weather blocks suited to steel rims are part of the kit (decided 2026-10-02). R11 now has a wet stopping target, and no trial is ridden in the wet until a wet braking test meets it (SSP-DEC-001). Braking with only the front brake on loose ground can wash out the front wheel.
+- **Braking with added speed and mass.** At 20 km/h the loaded bike carries about 2.0 kJ, about 2.5 times the unconverted bike at 13 km/h. Rod brakes on steel rims lose most of their grip in rain: about 22 m to stop from 20 km/h wet against 8.5 m dry; with the wet-weather blocks, assuming a friction of 0.25, the wet stop is about 11.9 m, inside a proposed wet target of 14 m. Brake cut-off sensors on both levers, the 20 km/h limit, and a brake check at fitting with new wet-weather blocks suited to steel rims are part of the kit (decided 2026-10-02). R11 now has a wet stopping target, and no trial is ridden in the wet until a wet braking test meets it (SSP-DEC-001). Braking with only the front brake on loose ground can wash out the front wheel.
 - **Motor overheating.** On a long loaded climb in the heat the winding may exceed its limit (R3). A sudden cutout on a hill can stall a loaded bike, so the controller derates on the motor thermistor instead (decided, SSP-DDR-002); the bike slows to walking pace on a very long hot climb but keeps moving.
 - **Wiring in rain.** The system is about 50 V DC, below the usual touch-safety threshold, but water in connectors causes corrosion, shorts and sudden loss of assist. Use keyed IP65 connectors with dielectric grease, drip loops, and routing that keeps the motor cable exit facing down. The fuse protects against a pinched cable shorting to the frame. Opening the power switch opens the pack output within 1 ms.
 - **Traction.** With cargo on the rear carrier, the front wheel carries little weight and a front motor can spin on sand or wet laterite. Assist ramp-up must be soft.
@@ -146,7 +150,7 @@ These remain after SSP-DDR-001. None of them is TRL 4 work to be started now; TR
 - First partner and region for co-design and fitting trials. Decided 2026-10-02: western Kenya and eastern Uganda as the default region, with a bicycle mechanics' group or rural transport organization there as the partner type; the partner is named when the portfolio picks partners for this area (SSP-DEC-001).
 - Slot filing (R4). Decided 2026-10-02: never file the fork for now; choose donors whose slots take 10 mm flats, and if the donor survey shows 3/8 in slots are the norm, look first for a motor whose axle flats fit them (SSP-DEC-001).
 - Motor data for R3: winding resistance, thermal capacity and gear temperature limit. Decided 2026-10-02: the reference motor is a widely sold 250 W front geared hub such as one of Bafang's; its maker is asked for the data and R3 is rerun, and the winding resistance is measured at TRL 4 if the data are not published (SSP-DEC-001).
-- Wet braking: decided 2026-10-02, R11 adds a wet stopping target (value still to be set), wet-weather brake blocks suited to steel rims go in the kit, and trials keep a no-wet-riding rule until a wet braking test meets the target (SSP-DEC-001).
+- Wet braking: decided 2026-10-02, R11 adds a wet stopping target (proposed value 14 m from 20 km/h, awaiting Amish), wet-weather brake blocks suited to steel rims go in the kit, and trials keep a no-wet-riding rule until a wet braking test meets the target (SSP-DEC-001).
 - The legacy-to-heartbeat transition in the SwapCell pack. Raising it with the SwapCell project is decided (SSP-DDR-002); the change belongs to that repo.
 - Confirm that a low-cost boost charger with input-voltage tracking gives near-MPPT yield from one 18 V panel.
 

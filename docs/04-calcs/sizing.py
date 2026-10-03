@@ -29,6 +29,7 @@ KIT_MASS = {
     "Host adapter and charge port": 0.15,
     "Pedal-assist sensor": 0.10,
     "Handlebar control and brake sensors": 0.15,
+    "Wet-weather brake blocks, 4 (they replace the donor blocks; counted in full to be safe)": 0.10,
     "Wiring harness and fuse": 0.40,
 }
 PACK_MASS = 2.85                                # kg, SWC-CAL-001
@@ -111,7 +112,9 @@ V_BRAKE = 20.0               # km/h
 T_APPLY = 0.5                # s, lever travel and linkage delay
 STOP_TARGET = 9.0            # m
 PAD_N = 250.0                # N clamp per pad from a 100 N hand force on rod levers
-MU_DRY, MU_WET = 0.40, 0.12  # block on steel rim
+MU_DRY, MU_WET = 0.40, 0.12  # standard block on steel rim, dry and wet
+MU_WET_BLOCK = 0.25          # assumed wet friction of wet-weather blocks for steel rims (SSP-DEC-001, 2026-10-02); replace with the maker's data or the TRL 4 wet braking test
+WET_TARGET = 14.0            # m, R11 wet target from 20 km/h on a wet dirt road with wet-weather blocks (proposed value, 1.5 x the dry target)
 R_RIM = 0.310                # m, braking surface radius
 
 # INTERLOCK wake (item W)
@@ -370,6 +373,19 @@ for label, mu in (("dry", MU_DRY), ("wet", MU_WET)):
 put("Distance during 0.5 s application, m", d_react)
 put("Deceleration needed for 9 m, m/s2", a_need)
 put("Dry margin on deceleration, %", 100 * (res["dry"][0] / a_need - 1), "{:.0f}")
+# wet braking with wet-weather blocks (R11 wet target, decided 2026-10-02)
+f_wb = 2 * (2 * MU_WET_BLOCK * PAD_N * R_RIM / WHEEL_R)
+a_wb = f_wb / m_design
+d_wb = d_react + vb ** 2 / (2 * a_wb)
+a_need_wet = vb ** 2 / (2 * (WET_TARGET - d_react))
+put("Deceleration, wet-weather blocks (assumed 0.25), wet, m/s2", a_wb)
+put("Stopping distance from 20 km/h, wet-weather blocks, wet, m", d_wb, "{:.1f}")
+put("Deceleration needed for the wet target, m/s2", a_need_wet)
+put("Wet margin on deceleration with wet-weather blocks, %", 100 * (a_wb / a_need_wet - 1), "{:.0f}")
+vmax = lambda D, a: (-a * T_APPLY + math.sqrt((a * T_APPLY) ** 2 + 2 * a * D)) * 3.6   # km/h that stops in D m
+v_wet_max = vmax(WET_TARGET, a_wb)
+put("Highest speed that meets the wet target with these blocks, km/h", v_wet_max, "{:.1f}")
+put("Highest speed that meets 9 m wet with these blocks, km/h", vmax(STOP_TARGET, a_wb), "{:.1f}")
 ke20 = 0.5 * m_design * vb ** 2
 ke13 = 0.5 * (RIDER + CARGO + BIKE) * (13 / 3.6) ** 2
 put("Kinetic energy at 20 km/h, J", ke20, "{:.0f}")
@@ -382,13 +398,13 @@ put("Dry stopping distance from 25 km/h, m", v25 * T_APPLY + v25 ** 2 / (2 * res
 section("Cost (R12) from bom/bom.csv")
 rows = list(csv.DictReader((ROOT / "bom/bom.csv").open()))
 num = lambda r: int(r["item"].split()[0])
-BIKE_KIT = {1, 2, 3, 4, 5, 7, 8, 9, 14}
+BIKE_KIT = {1, 2, 3, 4, 5, 7, 8, 9, 14, 15}
 SOLAR = {10, 11, 12, 13}
 cost = {num(r): float(r["qty"]) * float(r["unit_cost_usd"]) for r in rows}
 bike_kit = sum(v for k, v in cost.items() if k in BIKE_KIT)
 solar = sum(v for k, v in cost.items() if k in SOLAR)
 generic = sum(cost[num(r)] for r in rows if num(r) in BIKE_KIT | SOLAR and "generic" in r["notes"].lower())
-put("Bike conversion kit (1-5, 7-9, 14), USD", bike_kit, "{:.0f}")
+put("Bike conversion kit (1-5, 7-9, 14, 15), USD", bike_kit, "{:.0f}")
 put("Solar charging set (10-13), USD", solar, "{:.0f}")
 put("Kit plus solar set, pack excluded, USD", bike_kit + solar, "{:.0f}")
 put("SwapCell pack, priced in SwapCell, USD", cost[6], "{:.0f}")
@@ -407,8 +423,9 @@ results = [
     ("R4", f"Slot filing about {R['Slot filing needed per side, mm']:.2f} mm per side on a 9.53 mm slot; fitting time not calculable",
      "No fabrication; 90 min or less", "At risk"),
     ("R11", f"{R['Stopping distance from 20 km/h, dry, m']:.1f} m dry ({R['Dry margin on deceleration, %']:.0f} % margin); "
-            f"{R['Stopping distance from 20 km/h, wet, m']:.1f} m wet",
-     "9 m or less from 20 km/h, dry dirt", "At risk"),
+            f"{R['Stopping distance from 20 km/h, wet, m']:.1f} m wet with standard blocks, "
+            f"{R['Stopping distance from 20 km/h, wet-weather blocks, wet, m']:.1f} m wet with wet-weather blocks (assumed friction 0.25)",
+     "9 m or less from 20 km/h, dry dirt; 14 m or less wet with wet-weather blocks (proposed value)", "At risk"),
     ("R7", "IP ratings by part selection only", "IP65 electronics, IP54 motor, 150 mm water, 0 to 45 °C", "Not verifiable at TRL 3"),
     ("R9", f"Generic parts {R['Generic share of kit plus solar cost, %']:.0f} % of kit cost; swap time not calculable",
      "Pluggable joints, 20 min swap, 70 % generic", "Not verifiable at TRL 3"),
@@ -425,7 +442,7 @@ results = [
     ("R6", f"{R['Added mass with pack, kg']:.2f} kg", "7 kg or less", "Met"),
     ("R8", f"{R['Daily loaded range, mid, km']:.0f} km/day; recharge {R['Days to recharge 10 to 100 %, mid']:.1f} days "
            f"({R['Days to recharge 10 to 100 %, low']:.1f} at 4 h)", "20 km/day; 2 days or less", "Met"),
-    ("R12", f"Bike kit ${R['Bike conversion kit (1-5, 7-9, 14), USD']:.0f} (${R['Bike kit under the USD 250 value-engineering target by, USD']:.0f} under the target); solar set ${R['Solar charging set (10-13), USD']:.0f} costed separately",
+    ("R12", f"Bike kit ${R['Bike conversion kit (1-5, 7-9, 14, 15), USD']:.0f} (${R['Bike kit under the USD 250 value-engineering target by, USD']:.0f} under the target); solar set ${R['Solar charging set (10-13), USD']:.0f} costed separately",
      "Bike kit $250 or less (value-engineering target)", "Met"),
 ]
 with (Path(__file__).parent / "results.csv").open("w", newline="") as f:
